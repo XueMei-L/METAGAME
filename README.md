@@ -1,3 +1,6 @@
+# PROYECTO METAGAME
+
+```
 >>  PROYECTO: METAGAME
 >>  EQUIPO: 04 (PE102)
 >>  COMPONENTES: XueMei Lin
@@ -13,3 +16,4 @@
 >>  VERSION:     0.0.1
 >>  FECHA:       XX-XX-2022
 >>  GITHUB:      https://github.com/XueMei-L/METAGAME.git
+```
