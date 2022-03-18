@@ -1,7 +1,6 @@
 /* La cabecera */
 .container {
   
-  
   text-align: center;
 
   /* obligatorio */
@@ -12,11 +11,5 @@
   color:black;
   font-size: 1.50em;
   outline-style: solid;
-  background-image: url("./img/cabecera.jpg");
-}
-
-
-.inputcontainer{
-  position: relative; 
-  top: -25px;
+  background-image: url("../img/cabecera.jpg");
 }

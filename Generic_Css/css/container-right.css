@@ -1,14 +1,34 @@
-.container-right {
-   width: 130px;
-  position: relative;
-  right: 0px;
-  color: black;
-  /* position: left; */
+.containerRight {
+
+  float:left;
+
+  /* display: inline-block; */
+  position:absolute;
+  right:0px;
   
+  width:130px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin: 10px;
+  height: 95%;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+
+  background-color: lightcyan;
+}
+
+.container-right {
+  width: 130px;
+ position: relative;
+ right: 0px;
+ color: black;
+ /* position: left; */
+ 
 }
 p.container-right {
-  position: relative;
-  right: 0px;
-  text-align: right;
-  /* right:100px; */
+ position: relative;
+ right: 0px;
+ text-align: right;
+ /* right:100px; */
 }
