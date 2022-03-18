@@ -1,0 +1,14 @@
+.container-right {
+   width: 130px;
+  position: relative;
+  right: 0px;
+  color: black;
+  /* position: left; */
+  
+}
+p.container-right {
+  position: relative;
+  right: 0px;
+  text-align: right;
+  /* right:100px; */
+}
