@@ -13,6 +13,6 @@
 >>               alu0101237961@ull.edu.es
 >>  UNIVERSIDAD: Universidad de La Laguna
 >>  ASIGNATURA:  Usabilidad y Accesibilidad
->>  VERSION:     0.0.2
+>>  VERSION:     0.0.3
 >>  GITHUB:      https://github.com/XueMei-L/METAGAME.git
 ```

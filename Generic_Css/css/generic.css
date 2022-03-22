@@ -1,10 +1,12 @@
 /* General */
 .generic {
-    /*position: absolute;
 
+    
     /* tamano de la caja */
     width: 770px;   /*obligatorio*/
     outline-style: solid;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 
