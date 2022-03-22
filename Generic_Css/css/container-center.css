@@ -2,7 +2,6 @@
 .containerCenter {
 
     float:left; 
-    
 
     align-items: center;
     
@@ -14,6 +13,7 @@
     margin-right: 150px;
     margin-top: 10px;
     margin-bottom: 10px;
+
     width:100%;
     
     background-color: rgb(243, 150, 150);
