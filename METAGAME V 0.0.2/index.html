@@ -72,12 +72,12 @@
         
         
         <!-- <div style="background-image:../"> -->
-          <ul class="sidenav" id="mobile-demo">
+          <!-- <ul class="sidenav" id="mobile-demo">
             <li><a href="sass.html">Sass</a></li>
             <li><a href="badges.html">Components</a></li>
             <li><a href="collapsible.html">Javascript</a></li>
             <li><a href="mobile.html">Mobile</a></li>
-          </ul>
+          </ul> -->
         <!-- <h2 align="center"><select>
                 <option>Accion</option>
                 <option>Carreras</option>
@@ -88,6 +88,49 @@
                 <option>RPG</option>
             </select></h2>
             <h2 align="center"></h2> -->
+            <div class="row">
+              <div class="col s12" style="background-color: #851014;">
+                <!-- <div class="carousel">ddfsdfas
+                  <a class="carousel-item" href="#one!"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J5NMFGGUFFGPZPA3HRFAXTJUQA.jpg"></a>
+                  <a class="carousel-item" href="#two!"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J5NMFGGUFFGPZPA3HRFAXTJUQA.jpg"></a>
+                  <a class="carousel-item" href="#three!"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J5NMFGGUFFGPZPA3HRFAXTJUQA.jpg"></a>
+                  <a class="carousel-item" href="#four!"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J5NMFGGUFFGPZPA3HRFAXTJUQA.jpg"></a>
+                  <a class="carousel-item" href="#five!"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J5NMFGGUFFGPZPA3HRFAXTJUQA.jpg"></a>
+                </div> -->
+                <div class="carousel carousel-slider center" data-indicators="true">
+                  <div class="carousel-fixed-item center">
+                  </div>
+                  <div class="carousel-item red white-text" href="#one!">
+                    <h2>1</h2>
+                    <p class="white-text">2</p>
+                  </div>
+                  <div class="carousel-item amber white-text" href="#two!">
+                    <h2>2</h2>
+                    <p class="white-text">2</p>
+                  </div>
+                  <div class="carousel-item green white-text" href="#three!">
+                    <h2>3</h2>
+                    <p class="white-text">3</p>
+                  </div>
+                  <div class="carousel-item blue white-text" href="#four!">
+                    <h2>4</h2>
+                    <p class="white-text">4</p>
+                  </div>
+                </div>
+                <script>
+                  $('.carousel.carousel-slider').carousel({full_width: true});
+                </script>
+              </div>
+            </div>
+
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+              var elems = document.querySelectorAll('.carousel');
+              var instances = M.Carousel.init(elems, options);
+            });
+            </script>
+
+
 
             <div class="s">
               <blz-image class="backgroundImg" slot="background">
@@ -95,8 +138,6 @@
               <div class="navbar">
                 <!-- <a href="#!"><img src="./img/logo.png" alt="metagame" width="auto" height="70"></a></h1> -->
                 <nav style="background-color:#171D2D;">
-                  <div class="nav-wrapper">
-                    
                     <div class="row">
                       <div class="col s2">
                         <a href="#!" style="text-transform: uppercase;">Juegos destacados</a>
@@ -111,25 +152,32 @@
                 </nav>
               </div>
 
+              <!-- <div class="col s12 m2">
+                <p class="z-depth-1">z-depth-1</p>
+              </div> -->
+
                 <div class="row">
                   <div class="divider"></div><br>
-                    <div style="margin: 0% 10px;">
-                      <div class = "col s4">
-                        <a href="../src/eldenRing.html"><img class="responsive-img" src="./img/eldenring.jpg" alt="eldenring" width=100% height="292,5"></a>
+                    <div style="margin: 10px;">
+                      <!-- <div class = "col s4 z-depth-4" style="background-color:#2c4366;"> -->
+                      <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
+                        <a href="../src/eldenRing.html"><img class="responsive-img" style="margin-top:10px;" src="./img/eldenring.jpg" alt="eldenring" width=100% height="292,5"></a>
                         <p class="light-blue-text text-darken-2 flow-text center">
                           Elden Ring 
                         </p>
                       </div>
 
-                      <div class = "col s4">
-                        <a href="../src/ark.html"><img class="responsive-img" src="./img/ARK.jfif" alt="ark" width=100% height="292,5"></a>
+                      <!-- <div class = "col s4 z-depth-4" style="background-color:#2c4366;"> -->
+                      <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
+                        <a href="../src/ark.html"><img class="responsive-img" style="margin-top:10px;" src="./img/ARK.jfif" alt="ark" width=100% height="292,5"></a>
                         <p class="light-blue-text text-darken-2 flow-text center">
                           Ark 
                         </p>
                       </div>
 
-                      <div class = "col s4" >
-                        <a href="../src/gtaV.html"><img class="responsive-img" src="./img/gtaV.jpg" alt="gtaV" width=100% height="292,5"></a>
+                      <!-- <div class = "col s4 z-depth-4" style="background-color:#2c4366;" > -->
+                        <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
+                        <a href="../src/gtaV.html"><img class="responsive-img" style="margin-top:10px;" src="./img/gtaV.jpg" alt="gtaV" width=100% height="292,5"></a>
                         <p class="light-blue-text text-darken-2 flow-text center">
                           GTA V
                         </p>
@@ -153,22 +201,22 @@
               <div class="row">
                 <div class="divider"></div><br>
                   <div style="margin: 0% 10px;">
-                    <div class = "col s4">
-                      <a href="../src/eldenRing.html"><img class="responsive-img" src="./img/valheim.jpg" alt="Valheim" width=100% height="292,5"></a>
+                    <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
+                      <a href="#"><img class="responsive-img" style="margin-top:10px;" src="./img/valheim.jpg" alt="Valheim" width=100% height="292,5"></a>
                       <p class="light-blue-text text-darken-2 flow-text center">
                         Valheim
                       </p>
                     </div>
 
-                    <div class = "col s4">
-                      <a href="../src/ark.html"><img class="responsive-img" src="./img/overCooked.jpg" alt="overcooked" width=100% height="292,5"></a>
+                    <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
+                      <a href="#"><img class="responsive-img" style="margin-top:10px;" src="./img/overCooked.jpg" alt="overcooked" width=100% height="292,5"></a>
                       <p class="light-blue-text text-darken-2 flow-text center">
                         Overcooked 
                       </p>
                     </div>
 
-                    <div class = "col s4" >
-                      <a href="../src/gtaV.html"><img class="responsive-img" src="./img/lostARK.jpeg" alt="lostARK" width=100% height="292,5"></a>
+                    <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
+                      <a href="#"><img class="responsive-img" style="margin-top:10px;" src="./img/lostARK.jpeg" alt="lostARK" width=100% height="292,5"></a>
                       <p class="light-blue-text text-darken-2 flow-text center">
                         Lost ARK
                       </p>
@@ -176,6 +224,46 @@
                     
                   </div>
               </div>
+              
+
+              <div class="navbar">
+                <!-- <a href="#!"><img src="./img/logo.png" alt="metagame" width="auto" height="70"></a></h1> -->
+                <nav style="background-color:#171D2D;">
+                  <div class="nav-wrapper">
+                    <div class="row">
+                      <div class="col s2">
+                        <a href="#!" style="text-transform: uppercase;">Ofertas</a>
+                      </div>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+                <div class="row">
+                  <div class="divider"></div><br>
+                    <div style="margin: 0% 10px;">
+                      <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
+                        <a href="#"><img class="responsive-img" style="margin-top:10px;" src="./img/hero.jpg" alt="StardewValley" width=100% height="292,5"></a>
+                        <p class="light-blue-text text-darken-2 flow-text center">
+                          Stardew Valley
+                        </p>
+                      </div>
+  
+                      <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
+                        <a href="#"><img class="responsive-img" style="margin-top:10px;" src="./img/dyingLight2.jfif" alt="DyingLight2" width=100% height="292,5"></a>
+                        <p class="light-blue-text text-darken-2 flow-text center">
+                          Dying Light 2 
+                        </p>
+                      </div>
+  
+                      <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
+                        <a href="#"><img class="responsive-img" style="margin-top:10px;" src="./img/cities skylines.jpg" alt="Cities: Skylines" width=100% height="292,5"></a>
+                        <p class="light-blue-text text-darken-2 flow-text center">
+                          Cities: Skylines
+                        </p>
+                      </div>
+                      
+                    </div>
+                </div>
 
               <div class="carousel">
                 <a class="carousel-item" href="#one!"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J5NMFGGUFFGPZPA3HRFAXTJUQA.jpg"></a>
@@ -184,6 +272,7 @@
                 <a class="carousel-item" href="#four!"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J5NMFGGUFFGPZPA3HRFAXTJUQA.jpg"></a>
                 <a class="carousel-item" href="#five!"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J5NMFGGUFFGPZPA3HRFAXTJUQA.jpg"></a>
               </div>
+
               <script>
                 document.addEventListener('DOMContentLoaded', function() {
                 var elems = document.querySelectorAll('.carousel');
@@ -193,14 +282,30 @@
 
 
             <!-- <br><br><p style="color: white;" align="center"> ABOUT | SUPPORT | CONTACT US | PRESS | API <p> -->
-              <footer class="page-footer" style="background-color:#171717;">
+              <footer class="page-footer" style="background-color:#851014;">
                 <div class="container">
                   <div class="row">
-                    <div class="col l6 s12" style="background-color:#992525;">
-                      <i class="large material-icons">insert_chart</i>
-                      <h5 class="white-text">Redes Sociales</h5>
+                    <div class="col l6 s12">
+                      <!-- <h5 class="white-text">Redes Sociales</h5> -->
+                      <ul>
+                        <img src="./img/logo.png" style="width:20%; height:auto">
+                        <a href="https://www.linkedin.com/">         
+                          <img src="./img/LinkedIn.png">
+                        </a>
+                        <a href="https://es-es.facebook.com/">
+                          <img src="./img/Twitter.png">
+                        </a>
+                      </ul>
+                      <br>
+                      <span>
+                        <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
+                        <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
+                        <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
+                        <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
+                      </span>
                       <!-- <li></li> -->
                     </div>
+
                     <div class="col l4 offset-l1 s12">
                       <!-- <h5 class="white-text">Redes Sociales</h5> -->
                       <ul>
@@ -214,6 +319,10 @@
                 <div class="footer-copyright">
                   <div class="container">
                   <a class="grey-text text-lighten-4 right" href="#!"></a>
+                    <p class="center">© 2022 XMOJ Corporation. All rights reserved. <br>
+                      All product names, logos, brands, trademarks and registered trademarks are property of their respective owners. 
+                      All company, product and service names used in this website are for identification purposes only. 
+                    </p>
                   </div>
                 </div>
               </footer>
@@ -224,7 +333,4 @@
             <!--JavaScript at end of body for optimized loading-->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </body>
-
-
-    
 </html>
