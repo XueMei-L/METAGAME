@@ -24,19 +24,13 @@
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
         <link rel="icon" href="img/logo.png" width="32" height="32" >
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function() {
                 var elems = document.querySelectorAll('.sidenav');
                 var instances = M.Sidenav.init(elems, options);
-              });
-            
-              // Or with jQuery
-            
-              $(document).ready(function(){
-                $('.sidenav').sidenav();
-              });            
+              });          
         </script>
 
         <!--Let browser know website is optimized for mobile-->
@@ -46,35 +40,45 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     </head>
-    <!-- <h1 align="center"><a href=""><img src="./img/logo.png" alt="metagame" width="70" height="50"></a></h1> -->
-    <!-- <h1 align="center">METAGAME</h1><br> -->
 
+    <body style="background-color:#0a2635;">
+      <!-- #851014; ROJO--> 
+      <!-- #181A1B; NEGRO -->
 
-    <body>
         <!-- La cabecera de la pagina web -->
-        <!--<h2 align="center">Categorías&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Búsqueda&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Noticias&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lo más vendido&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ofertas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Novedades&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Búsqueda&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cuenta personal </h2> !-->
-        <nav>
-          <div class="nav-wrapper" style="position:fixed; top:0; width:100%;">
-            <!-- <a href="#!"><img src="./img/logo.png" alt="metagame" width="auto" height="70"></a></h1> -->
-
-            <a href="#!" style="text-shadow: 2px 2px;" class="brand-logo left"><img src="./img/logo.png" alt="metagame" width="auto" height="64"></a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="left hide-on-med-and-down">
-              <li><a href="sass.html">Sass</a></li>
-              <li><a href="badges.html">Components</a></li>
-              <li><a href="collapsible.html">Javascript</a></li>
-              <li><a href="mobile.html">Mobile</a></li>
-            </ul>
-          </div>
-        </nav>
+        <div class="navbar-fixed">
+          <nav style="background-color:#851014;">
+            <div class="nav-wrapper">
+              <!-- <a href="#!"><img src="./img/logo.png" alt="metagame" width="auto" height="70"></a></h1> -->
+            <div class="row">
+              <a href="#!" style="text-shadow: 2px 2px;" class="col s1"><img src="./img/logo.png" alt="metagame" width="auto" height="64"></a>
+              <ul id="nav-mobile" class="col s3 hide-on-med-and-down">
+                <li><a href="sass.html">Categorías</a></li>
+                <li><a href="badges.html">Búsqueda</a></li>
+                <li><a href="collapsible.html">Noticias</a></li>
+                <li><a href="mobile.html">Lo más vendido</a></li>
+              </ul>
+              <ul class="col s6 hide-on-med-and-down">
+                <li><i class="material-icons left">search</i></li>
+                <li><input style="color: white;" value="Introduzca el termino de busqueda" size=50 type="text"></li>
+              </ul>
+              <ul class="col s2 hide-on-med-and-down">
+                <li><a class="waves-effect waves-light btn flow-text" href="mobile.html"><i class="material-icons left">account_box</i>Cuenta personal</a></li>
+              </ul>
+            </div>
+            <div>
+          </nav>
+        </div>
         
+        
+        <!-- <div style="background-image:../"> -->
           <ul class="sidenav" id="mobile-demo">
             <li><a href="sass.html">Sass</a></li>
             <li><a href="badges.html">Components</a></li>
             <li><a href="collapsible.html">Javascript</a></li>
             <li><a href="mobile.html">Mobile</a></li>
           </ul>
-        <h2 align="center"><select>
+        <!-- <h2 align="center"><select>
                 <option>Accion</option>
                 <option>Carreras</option>
                 <option>FPS</option>
@@ -83,41 +87,142 @@
                 <option>Estrategia</option>
                 <option>RPG</option>
             </select></h2>
-            <h2 align="center"><input value="Introduzca el termino de busqueda" size=50 type="text"></h2>
-            <br>
+            <h2 align="center"></h2> -->
+
+            <div class="s">
+              <blz-image class="backgroundImg" slot="background">
+              <!-- La primera fila ELDENRING AKR GTV -->
+              <div class="navbar">
+                <!-- <a href="#!"><img src="./img/logo.png" alt="metagame" width="auto" height="70"></a></h1> -->
+                <nav style="background-color:#171D2D;">
+                  <div class="nav-wrapper">
+                    
+                    <div class="row">
+                      <div class="col s2">
+                        <a href="#!" style="text-transform: uppercase;">Juegos destacados</a>
+                      </div>
+                      <ul class="col s5 hide-on-med-and-down">
+                        <li><a class="waves-effect waves-light btn">PC</a></li>
+                        <li><a class="waves-effect waves-light btn">CONSOLA</a></li>
+                        <li></li><a class="waves-effect waves-light btn">OTRO</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+
+                <div class="row">
+                  <div class="divider"></div><br>
+                    <div style="margin: 0% 10px;">
+                      <div class = "col s4">
+                        <a href="../src/eldenRing.html"><img class="responsive-img" src="./img/eldenring.jpg" alt="eldenring" width=100% height="292,5"></a>
+                        <p class="light-blue-text text-darken-2 flow-text center">
+                          Elden Ring 
+                        </p>
+                      </div>
+
+                      <div class = "col s4">
+                        <a href="../src/ark.html"><img class="responsive-img" src="./img/ARK.jfif" alt="ark" width=100% height="292,5"></a>
+                        <p class="light-blue-text text-darken-2 flow-text center">
+                          Ark 
+                        </p>
+                      </div>
+
+                      <div class = "col s4" >
+                        <a href="../src/gtaV.html"><img class="responsive-img" src="./img/gtaV.jpg" alt="gtaV" width=100% height="292,5"></a>
+                        <p class="light-blue-text text-darken-2 flow-text center">
+                          GTA V
+                        </p>
+                      </div>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="navbar">
+              <!-- <a href="#!"><img src="./img/logo.png" alt="metagame" width="auto" height="70"></a></h1> -->
+              <nav style="background-color:#171D2D;">
+                <div class="nav-wrapper">
+                  <div class="row">
+                    <div class="col s2">
+                      <a href="#!" style="text-transform: uppercase;">Novedades</a>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+            </div>
+              <div class="row">
+                <div class="divider"></div><br>
+                  <div style="margin: 0% 10px;">
+                    <div class = "col s4">
+                      <a href="../src/eldenRing.html"><img class="responsive-img" src="./img/valheim.jpg" alt="Valheim" width=100% height="292,5"></a>
+                      <p class="light-blue-text text-darken-2 flow-text center">
+                        Valheim
+                      </p>
+                    </div>
+
+                    <div class = "col s4">
+                      <a href="../src/ark.html"><img class="responsive-img" src="./img/overCooked.jpg" alt="overcooked" width=100% height="292,5"></a>
+                      <p class="light-blue-text text-darken-2 flow-text center">
+                        Overcooked 
+                      </p>
+                    </div>
+
+                    <div class = "col s4" >
+                      <a href="../src/gtaV.html"><img class="responsive-img" src="./img/lostARK.jpeg" alt="lostARK" width=100% height="292,5"></a>
+                      <p class="light-blue-text text-darken-2 flow-text center">
+                        Lost ARK
+                      </p>
+                    </div>
+                    
+                  </div>
+              </div>
+
+              <div class="carousel">
+                <a class="carousel-item" href="#one!"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J5NMFGGUFFGPZPA3HRFAXTJUQA.jpg"></a>
+                <a class="carousel-item" href="#two!"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J5NMFGGUFFGPZPA3HRFAXTJUQA.jpg"></a>
+                <a class="carousel-item" href="#three!"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J5NMFGGUFFGPZPA3HRFAXTJUQA.jpg"></a>
+                <a class="carousel-item" href="#four!"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J5NMFGGUFFGPZPA3HRFAXTJUQA.jpg"></a>
+                <a class="carousel-item" href="#five!"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J5NMFGGUFFGPZPA3HRFAXTJUQA.jpg"></a>
+              </div>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.carousel');
+                var instances = M.Carousel.init(elems, options);
+              });
+              </script> 
 
 
-            <!-- La primera fila ELDENRING AKR GTV -->
-            <h2 align="left">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              Elden Ring &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              Ark &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                              GTAV</h2>
-            <span>
-                <a href="../src/eldenRing.html"><img src="./img/eldenring.jpg" alt="eldenring" width="520" height="292,5"></a>
-                <a href="../src/ark.html"><img src="./img/ARK.jfif" alt="ark" width="520" height="292,5"></a>
-                <a href="../src/gtaV.html"><img src="./img/gtaV.jpg" alt="gtaV" width="520" height="292,5"></a>
-            </span>
-            
-
-            <!-- La segundo fila  VALHEIM OVERCOOKED LOST ARK-->
-            <h2 align="left">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                Valheim &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                Overcooked &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                Lost Ark</h2>
-            <span>
-                <a href="../src/valheim.html"><img src="./img/valheim.jpg" alt="valheim" width="520" height="292,5"></a> 
-                <a href="../src/overcooked.html"><img src="./img/overCooked.jpg" alt="overcooked" width="520" height="292,5"></a>
-                <!-- <div><strong>EL NUEVO JUEGO DE ROL Y ACCIÓN DE AMBIENTACIÓN FANTÁSTICA.</strong><br><br>Álzate, Sinluz, y que la gracia te guíe para abrazar el poder del Círculo de Elden y encumbrarte como señor del Círculo en las Tierras Intermedias.<br><br>• Un extenso mundo lleno de emociones<br>Un vasto mundo perfectamente conectado en el que los territorios abiertos estarán repletos de situaciones y mazmorras enormes con diseños complejos y tridimensionales. Mientras exploras, experimentarás el deleite de descubrir amenazas desconocidas y sobrecogedoras, y eso te haré sentir la emoción de la superación.<br><br>• Crea tu propio personaje<br>Además de personalizar la apariencia de tu personaje, puedes combinar libremente las armas, armaduras y la magia que te equipas. Puedes desarrollar a tu personaje según tu estilo de juego, tanto para aumentar tu fuerza bruta y ser un guerrero poderoso, como para dominar la magia.<br><br>• Un drama épico nacido de un mito<br>Una historia muy profunda contada en fragmentos. Un drama épico en el que las motivaciones de cada personaje se encuentran en las Tierras Intermedias.<br><br>• Jugabilidad online única que te conecta libremente con otros jugadores<br>Además del multijugador, en el que te puedes conectar directamente con otros jugadores y viajar juntos, el juego incluye un elemento online asíncrono único que te permite sentir la presencia de otros.						</div> -->
-                <a href="../src/lostArk.html"><img src="./img/lostARK.jpeg" alt="lostark" width="520" height="292,5"></a>
-            </span>
-
-            <br><br><p align="center"> ABOUT | SUPPORT | CONTACT US | PRESS | API <p>
+            <!-- <br><br><p style="color: white;" align="center"> ABOUT | SUPPORT | CONTACT US | PRESS | API <p> -->
+              <footer class="page-footer" style="background-color:#171717;">
+                <div class="container">
+                  <div class="row">
+                    <div class="col l6 s12" style="background-color:#992525;">
+                      <i class="large material-icons">insert_chart</i>
+                      <h5 class="white-text">Redes Sociales</h5>
+                      <!-- <li></li> -->
+                    </div>
+                    <div class="col l4 offset-l1 s12">
+                      <!-- <h5 class="white-text">Redes Sociales</h5> -->
+                      <ul>
+                        <li><i class="material-icons">email</i><span> support@metagame.com</span></li>
+                        <li><i class="material-icons">place</i><span> Av. Capitán Ramón Freire, Rancagua, O'Higgins, Chile</span></li>
+                        <li><i class="material-icons">contacts</i><span> +34 123456789</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="footer-copyright">
+                  <div class="container">
+                  <a class="grey-text text-lighten-4 right" href="#!"></a>
+                  </div>
+                </div>
+              </footer>
 
         
         <!-- <p>Parrafo <em>Texto Marcado </em> <br>Nueva linea <br> Nueva linea 2 </emp> </p> -->
         <!-- <p><a href="https://store.steampowered.com/">Asociados</a></p> -->
             <!--JavaScript at end of body for optimized loading-->
-            <script type="text/javascript" src="js/materialize.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </body>
 
 
