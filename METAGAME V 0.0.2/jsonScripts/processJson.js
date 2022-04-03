@@ -1,12 +1,12 @@
+
 function process(directory) {
+  var result = ''
   fetch(directory)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      var result = calcularTotal(data);
-      processCart(result)
+      result = calcularTotal(data);
+      alert('Precio de la compra: '+result)
     })
-    .catch(function (err) {
-    });
 } 

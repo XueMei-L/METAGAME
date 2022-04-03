@@ -104,22 +104,21 @@
 
               <ul class="col s3 hide-on-med-and-down">
                 <li><a onclick = "processSearch(document.getElementById('searchBox').value)"><i class="material-icons left">search</i></a></li>
-                <li><input id="searchBox" style="color: white;" placeholder="Introduzca el termino de busqueda" size=50 type="text"></li>
+                <li><input id="searchBox" style="color: white;" placeholder="Introduzca el termino de busqueda" size=45 type="text"></li>
               </ul>
-              <ul class="col s2 hide-on-med-and-down">
-                <li id ='element-count'></li>
+              <ul class="col s1 hide-on-med-and-down">
+                <!-- <li id ='element-count'></li> -->
+                <li><a class="waves-effect waves-light btn flow-text" onclick="alert(getElementsCountString())"><i class="material-icons">settings</i></a></li>
               </ul>
               <ul class="col s2 hide-on-med-and-down">
                 <li><a class="waves-effect waves-light btn flow-text" href="#"><i class="material-icons left">account_box</i>Cuenta personal</a></li>
               </ul>
-              <div class="col s1">
+              <ul class="col s1 hide-on-med-and-down">
+                <li><a class="waves-effect waves-light btn flow-text" onclick="process('./jsonScripts/dataBase.json')"><i class="material-icons">shopping_cart</i></a></li>
+              </ul>
+              <!-- <div class="col s1">
                 <div style="background-color: #264F89">
                   <div class="card-content white-text">
-                    <span class="card-title">
-                      <button class="waves-effect waves-light btn" onclick="myFunction()">
-                        My Cart
-                      </button>
-                    </span>
                       <table class="center" id="demo" style="display:none">
                         <thead>
                           <tr>
@@ -144,70 +143,55 @@
                       </table>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
           </nav>
         </div>
         
           <div class="aboutMeCarousel carousel carousel-slider center">
-            <div class="carousel-fixed-item center middle-indicator">
-            <div class="left">
-                <a class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"><i class="material-arrows left  middle-indicator-text">chevron_left</i></a>
-            </div>
-        
-            <div class="right" onclick="moveNext()">
-                <a class="moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"><i class="material-arrows right middle-indicator-text">chevron_right</i></a>
-            </div>
-            </div>
             <!-- <div class="carousel-fixed-item center">
                 <a class="btn waves-effect white grey-text darken-text-2">button</a>
             </div> -->
-            <div class="carousel-item red white-text" href="#one!">
+            <div class="carousel-item" href="#one!">
               
               <!-- hay que solucionar la parte arriba (zona roja)!!! -->
-              <img class="responsive-img" style="margin-top:10px;" src="./img/eldenring.jpg" alt="eldenring">
+              <img class="responsive-img" src="./img/haveANiceDeath.jpg" alt="eldenring">
                 <h2>First Panel</h2>
-                <p class="red-text">This is your first panel</p>
+                <!-- <p class="red-text">This is your first panel</p> -->
             </div>
-            <div class="carousel-item amber white-text" href="#two!">
+            <div class="carousel-item" href="#two!">
+              <img class="responsive-img" src="./img/midnight.jpg" alt="midnight">
                 <h2>Second Panel</h2>
-                <p class="white-text">This is your second panel</p>
             </div>
             <div class="carousel-item green white-text" href="#three!">
+              <img class="responsive-img" src="./img/death.jpg" alt="death">
                 <h2>Third Panel</h2>
-                <p class="white-text">This is your third panel</p>
             </div>
-            <div class="carousel-item blue white-text" href="#four!">
+            <div class="carousel-item" href="#four!">
+              <img class="responsive-img" src="./img/overCooked.jpg" alt="overcoked">
                 <h2>Fourth Panel</h2>
-                <p class="white-text">This is your fourth panel</p>
             </div>
         </div>
 
+        <!-- carousel -->
         <script>
-          document.addEventListener('DOMContentLoaded', function(){
+          document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.carousel.carousel-slider');
             var instance = M.Carousel.init(elems, {
                 fullWidth: true,
                 indicators: true
             });
-        
           });
-          
-          function moveNext(){
-              var elems = document.querySelectorAll('.carousel.carousel-slider');
-              var moveRight = M.Carousel.getInstance(elems);
-              moveRight.next(1);
-          }
-        </script> 
         
+          //function moveNext() {
+              //var elems = document.querySelectorAll('.carousel.carousel-slider');
+              //var moveRight = M.Carousel.getInstance(elems);
+              //moveRight.next(1);
+          //}
 
-
-
-
-
+        </script> 
             <div class="s">
-              <blz-image class="backgroundImg" slot="background">
               <!-- La primera fila ELDENRING AKR GTV -->
               <div class="navbar">
                 <nav style="background-color:#171D2D;">
@@ -266,9 +250,6 @@
                   <div class="row">
                     <div class="col s2">
                       <a href="#!" style="text-transform: uppercase; font-family:Times New Roman; font-size:25px;">Novedades</a>
-                    </div>
-                    <div class="col s5 offset-s3">
-                      <a id='cartText' style='visibility:visible;'>placeholder </a>
                     </div>
                   </div>
                 </div>
@@ -471,12 +452,6 @@
                   x.style.display = "none";
                 }
               }
-            </script>
-            <script>
-              getElementsCount();
-            </script>
-            <script>
-              process('./jsonScripts/dataBase.json');
             </script>
     </body>
 </html>
