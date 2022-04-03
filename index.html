@@ -15,7 +15,7 @@
         <!--Import materialize.css-->
         <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
         <link rel="icon" href="img/logo.png" width="32" height="32" >
-        <!-- <script>
+        <script>
           function getElementsCount() {
             var p_count = 0;
             var div_count = 0;
@@ -25,7 +25,7 @@
             li_count = document.getElementsByTagName('li').length;
             document.getElementById('element-count').innerText = ('Nº p: ' + p_count + ' Nº divs: '+ div_count + ' Nº li: '+ li_count);
           }
-        </script> -->
+        </script>
         <!-- <script>
           function processSearch(searchBox) {
             document.getElementById('searchText').innerText = ('Ha buscado: ' + searchBox);
@@ -40,34 +40,21 @@
             document.getElementById('cartText').style.visibility = 'visible';
           }
         </script> -->
-        <!-- <script>
+        <script>
           function processCart(price) {
             document.getElementById('cartText').innerText = ('Coste total: ' + price);
             document.getElementById('cartText').style.visibility = 'visible';
           }
-        </script> -->
-        
-        <!-- <script>
+        </script>
+        <script>
           function process() {
-            fetch('dataBase.json')
-              .then(function (response) {
-                return response.json();
-              })
-              .then(function (data) {
-                var result = calcularTotal(data);
-                processCart(result)
-              })
-              .catch(function (err) {
-              });
+            const userCart = fetch('dataBase.json');
+            alert(JSON.stringify(userCart))
+            var result = calcularTotal(userCart);
+            processCart(result)
+            
           } 
-        </script> -->
-        
-        <!-- 
-        <script type="module">
-          import { hello } from './hello.mjs'; // Or the extension could be just `.js`
-          hello('world');
-        </script> -->
-
+        </script>
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>METAGAMES</title>
@@ -96,13 +83,13 @@
                     <li class="divider"></li>
                     <li><a href="#!">thr</a></li>
                   </ul>
-                -->
+                   -->
                 <li><a href="#">Búsqueda</a></li>
                 <li><a href="#">Noticias</a></li>
                 <li><a href="#">Lo más vendido</a></li>
               </ul>
 
-              <ul class="col s3 hide-on-med-and-down">
+              <ul class="col s4 hide-on-med-and-down">
                 <li><a onclick = "processSearch(document.getElementById('searchBox').value)"><i class="material-icons left">search</i></a></li>
                 <li><input id="searchBox" style="color: white;" placeholder="Introduzca el termino de busqueda" size=50 type="text"></li>
               </ul>
@@ -110,102 +97,13 @@
                 <li id ='element-count'></li>
               </ul>
               <ul class="col s2 hide-on-med-and-down">
-                <li><a class="waves-effect waves-light btn flow-text" href="#"><i class="material-icons left">account_box</i>Cuenta personal</a></li>
+                <li><a class="waves-effect waves-light btn flow-text" href="mobile.html"><i class="material-icons left">account_box</i>Cuenta personal</a></li>
               </ul>
-              <div class="col s1">
-                <div style="background-color: #264F89">
-                  <div class="card-content white-text">
-                    <span class="card-title">
-                      <button class="waves-effect waves-light btn" onclick="myFunction()">
-                        My Cart
-                      </button>
-                    </span>
-                      <table class="center" id="demo" style="display:none">
-                        <thead>
-                          <tr>
-                              <th data-field="id">Product</th>
-                              <th data-field="price">Price</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>123</td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>123</td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>123</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           </nav>
         </div>
         
-          <div class="aboutMeCarousel carousel carousel-slider center">
-            <div class="carousel-fixed-item center middle-indicator">
-            <div class="left">
-                <a class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"><i class="material-arrows left  middle-indicator-text">chevron_left</i></a>
-            </div>
-        
-            <div class="right" onclick="moveNext()">
-                <a class="moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"><i class="material-arrows right middle-indicator-text">chevron_right</i></a>
-            </div>
-            </div>
-            <!-- <div class="carousel-fixed-item center">
-                <a class="btn waves-effect white grey-text darken-text-2">button</a>
-            </div> -->
-            <div class="carousel-item red white-text" href="#one!">
-              
-              <!-- hay que solucionar la parte arriba (zona roja)!!! -->
-              <img class="responsive-img" style="margin-top:10px;" src="./img/eldenring.jpg" alt="eldenring">
-                <h2>First Panel</h2>
-                <p class="red-text">This is your first panel</p>
-            </div>
-            <div class="carousel-item amber white-text" href="#two!">
-                <h2>Second Panel</h2>
-                <p class="white-text">This is your second panel</p>
-            </div>
-            <div class="carousel-item green white-text" href="#three!">
-                <h2>Third Panel</h2>
-                <p class="white-text">This is your third panel</p>
-            </div>
-            <div class="carousel-item blue white-text" href="#four!">
-                <h2>Fourth Panel</h2>
-                <p class="white-text">This is your fourth panel</p>
-            </div>
-        </div>
-
-        <script>
-          document.addEventListener('DOMContentLoaded', function(){
-            var elems = document.querySelectorAll('.carousel.carousel-slider');
-            var instance = M.Carousel.init(elems, {
-                fullWidth: true,
-                indicators: true
-            });
-        
-          });
-          
-          function moveNext(){
-              var elems = document.querySelectorAll('.carousel.carousel-slider');
-              var moveRight = M.Carousel.getInstance(elems);
-              moveRight.next(1);
-          }
-        </script> 
-        
-
-
-
-
-
             <div class="s">
               <blz-image class="backgroundImg" slot="background">
               <!-- La primera fila ELDENRING AKR GTV -->
@@ -267,7 +165,7 @@
                     <div class="col s2">
                       <a href="#!" style="text-transform: uppercase; font-family:Times New Roman; font-size:25px;">Novedades</a>
                     </div>
-                    <div class="col s5 offset-s3">
+                    <div class="col s2 offset-s3">
                       <a id='cartText' style='visibility:visible;'>placeholder </a>
                     </div>
                   </div>
@@ -351,20 +249,10 @@
                           </strike>
                           / 59.99€
                         </p>
-                      </div> 
+                      </div>
+                      
                     </div>
                 </div>
-<!-- 
-                <div class="fixed-action-btn horizontal click-to-toggle">
-                  <a class="btn-floating btn-large red">
-                    <i class="material-icons">menu</i>
-                  </a>
-                  <ul>
-                    <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-                  </ul>
-                </div> -->
-
-                  <!-- <div class="row" style="position: fixed; left:0; bottom:30%;"> -->
 
               <!-- <div class="carousel">
                 <a class="carousel-item" href="#one!"><img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/J5NMFGGUFFGPZPA3HRFAXTJUQA.jpg"></a>
@@ -380,12 +268,6 @@
                 var instances = M.Carousel.init(elems, options);
               });
               </script>  -->
-
-
-
-
-
-
 
             <!-- <br><br><p style="color: white;" align="center"> ABOUT | SUPPORT | CONTACT US | PRESS | API <p> -->
               <footer class="page-footer" style="background-color:#141E2B;">
@@ -448,35 +330,18 @@
         
             <!--JavaScript at end of body for optimized loading-->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            <script src="./jsonScripts/calculateTotal.js"></script>
-            <script src="./jsonScripts/processCart.js"></script>
-            <script src="./jsonScripts/processSearch.js"></script>
-            <script src="./jsonScripts/ElementsCount.js"></script>
-            <script src="./jsonScripts/processJson.js"></script>
-
-
+            <script src="../jsonScripts/calculateTotal.js"></script>
             <script type="text/javascript">
               document.addEventListener('DOMContentLoaded', function() {
                   var elems = document.querySelectorAll('.sidenav');
                   var instances = M.Sidenav.init(elems, options);
                 });          
             </script>
-            <!-- para ocultar -->
             <script>
-              function myFunction() {
-                var x = document.getElementById("demo");
-                if (x.style.display === "none") {
-                  x.style.display = "block";
-                } else {
-                  x.style.display = "none";
-                }
-              }
+              getElementsCount()
             </script>
             <script>
-              getElementsCount();
-            </script>
-            <script>
-              process('./jsonScripts/dataBase.json');
+              process()
             </script>
     </body>
 </html>
