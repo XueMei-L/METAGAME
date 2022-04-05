@@ -19,7 +19,7 @@
 
 ## METAGAME Version 2.0.0 Css hay dos subversiones:
 ## [Version 2.0.1](./METAGAME%20V%202.0.1%20CSS/):
-![img](./img/Dise%C3%B1o.png)
+![img](./METAGAME%20V%202.0.1%20CSS/img/Dise%C3%B1o.png)
 ```Definir la estructura básica de la página: anchura fija de 770 píxel,  columna derecha (2) de anchura 130 píxel.  
 La cabecera (1) tiene una altura de 100 píxel y una imagen de fondo llamada cabecera.jpg. Incorporar en la cun menú. 
 La fuente debe ser Arial, color negro, tamaño 1.5em. 
