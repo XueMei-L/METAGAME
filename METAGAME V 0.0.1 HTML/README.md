@@ -18,5 +18,7 @@
 ```
 
 Diseñamos una página web de tipo tienda de videojuegos online. Desarrollamos un pagina web inicio para muestrar información incorporando todos los elementos de HTML.
-En este version del proyecto solo pide crear la pagina web html
+
+En este version del proyecto solo pide crear la página web html.
+
 **No incluimos ningún estilo, ni código javascript.**
