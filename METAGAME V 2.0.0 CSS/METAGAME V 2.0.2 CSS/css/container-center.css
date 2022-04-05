@@ -1,0 +1,29 @@
+/* tabla central */
+.containerCenter {
+
+    float:left; 
+
+    align-items: center;
+    
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+
+    /* margenes */
+    margin-right: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    width:100%;
+    
+    background-color: rgb(243, 150, 150);
+}
+
+.containerCenter.nav {
+    align-items: center;
+}
+
+menu {
+    margin-bottom: 0.7em;
+    padding: 0.3em;
+}

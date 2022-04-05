@@ -1,0 +1,42 @@
+/* General */
+.generic {
+
+    
+    /* tamano de la caja */
+    width: 770px;   /*obligatorio*/
+    outline-style: solid;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+
+/* zona central */
+.contecArea {
+    
+    position: relative;
+    left: 0px;
+
+    display: flex; 
+    flex-direction: row; 
+
+}
+
+
+a:link {
+    color: blue;
+}
+
+
+a:visited {
+    color: blue;
+}
+
+a:hover {
+    color: red;
+}
+
+p {
+    margin-top: 0.5em;
+}
+

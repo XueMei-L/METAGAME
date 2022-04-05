@@ -1,0 +1,16 @@
+/* La cabecera */
+.container {
+  
+  text-align: center;
+
+  /* obligatorio */
+  height: 100px;
+  
+  /* tamaño de letras */
+  font-family: Arial;
+  color:black;
+  font-size: 1.50em;
+  outline-style: solid;
+  background-image: url("../img/cabecera.jpg");
+  
+}
