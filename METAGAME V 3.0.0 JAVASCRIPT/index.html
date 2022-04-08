@@ -15,6 +15,41 @@
         <!--Import materialize.css-->
         <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
         <link rel="icon" href="img/logo.png" width="32" height="32" >
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="module">
+          // Import the functions you need from the SDKs you need
+          import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+          import { getDatabase, ref , onValue, child } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js'; 
+          //import { getDatabase } from './node_modules/firebase/database'; 
+          // TODO: Add SDKs for Firebase products that you want to use
+          // https://firebase.google.com/docs/web/setup#available-libraries
+        
+          // Your web app's Firebase configuration
+          const firebaseConfig = {
+            apiKey: "AIzaSyC8C7FZP3oD1cAtjEt_GNi0SqyDRqtO1ps",
+            authDomain: "metagame-9b42d.firebaseapp.com",
+            databaseURL: "https://metagame-9b42d-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "metagame-9b42d",
+            storageBucket: "metagame-9b42d.appspot.com",
+            messagingSenderId: "77098664441",
+            appId: "1:77098664441:web:fc5001254ba7f8eeffbd28"
+          };
+        
+          // Initialize Firebase
+          const app = initializeApp(firebaseConfig);
+          const db = getDatabase();
+          const productsReference = ref(db, 'products/');
+          
+          onValue(productsReference, (snapshot) => {
+            $("#ark-price").text(snapshot.val().ARK.price + '€');
+            //myElement.text("Hello Sweden!");
+            //document.getElementById('ark-price').innerText = snapshot.val().ARK.price;
+          });
+          
+
+        </script>
+        
+        
         <!-- <script>
           function getElementsCount() {
             var p_count = 0;
@@ -102,7 +137,7 @@
                 <li><a href="#">Lo más vendido</a></li>
               </ul>
 
-              <ul class="col s3 hide-on-med-and-down">
+              <ul class="col s4 hide-on-med-and-down">
                 <li><a onclick = "processSearch(document.getElementById('searchBox').value)"><i class="material-icons left">search</i></a></li>
                 <li><input id="searchBox" style="color: white;" placeholder="Introduzca el termino de busqueda" size=45 type="text"></li>
               </ul>
@@ -114,7 +149,7 @@
                 <li><a class="waves-effect waves-light btn flow-text" href="#"><i class="material-icons left">account_box</i>Cuenta personal</a></li>
               </ul>
               <ul class="col s1 hide-on-med-and-down">
-                <li><a class="waves-effect waves-light btn flow-text" onclick="process('./jsonScripts/dataBase.json')"><i class="material-icons">shopping_cart</i></a></li>
+                <li><a class="waves-effect waves-light btn flow-text" onclick="processJson('./jsonScripts/dataBase.json')"><i class="material-icons">shopping_cart</i></a></li>
               </ul>
               <!-- <div class="col s1">
                 <div style="background-color: #264F89">
@@ -229,7 +264,10 @@
                       <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
                         <a href="#"><img class="responsive-img" style="margin-top:10px;" src="./img/ARK.jfif" alt="ark" width=100% height="292,5"></a>
                         <p class="light-blue-text text-darken-2 flow-text center">
-                          Ark 20.00€
+                          Ark
+                        </p>
+                        <p id = "ark-price" class="light-blue-text text-darken-2 flow-text center">
+                          placeholder
                         </p>
                       </div>
 
@@ -434,14 +472,15 @@
             <script src="./jsonScripts/processSearch.js"></script>
             <script src="./jsonScripts/ElementsCount.js"></script>
             <script src="./jsonScripts/processJson.js"></script>
+            <script src="./jsonScripts/firebase/main.js"></script>
 
 
-            <script type="text/javascript">
+            <!-- <script type="text/javascript">
               document.addEventListener('DOMContentLoaded', function() {
                   var elems = document.querySelectorAll('.sidenav');
                   var instances = M.Sidenav.init(elems, options);
                 });          
-            </script>
+            </script> -->
             <!-- para ocultar -->
             <script>
               function myFunction() {
@@ -452,6 +491,8 @@
                   x.style.display = "none";
                 }
               }
+            </script>
+            <script>
             </script>
     </body>
 </html>

@@ -1,5 +1,5 @@
 
-function process(directory) {
+function processJson(directory) {
   var result = ''
   fetch(directory)
     .then(function (response) {

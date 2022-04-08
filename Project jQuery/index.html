@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <link rel="icon" href="img/logo.png" width="32" height="32" >
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>Test</title>
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      
+      <link rel="stylesheet" type="text/css" href="./index.css">
+
+    </head>
+    <body style="background-color:#0a2635;">
+
+        <div class="form">
+            <div class="input-container ic1">
+              <input id="DNI" class="input" type="text" placeholder=" " onblur="getvalue()" />
+              <label for="firstname" class="placeholder">DNI</label>
+            </div>
+            <button onclick="var petition = nif(getvalue()); (petition !== '' && document.getElementById('result-container') == undefined) ? addResultBlock() : undefined; document.getElementById('result-text').innerText = petition;" type="text" class="submit">submit</button>
+        </div>
+        
+        
+    <script>
+      function addResultBlock() {
+        $('body').append('<div id="result-container" class="form" style=""><div class="input-container ic1"><p id="result-text">placeholder</p></div></div>');
+      }
+    </script> 
+    
+    <script>
+      function getvalue() {
+        if(document.getElementById("DNI").value != "") {
+        //if($("#DNI")[0] != "")
+            //return document.getElementById("DNI").value;
+            return document.getElementById("DNI").value;
+        }  
+      }
+    </script>
+
+    <script>
+        function nif(dni) {
+          var numero
+          var letr
+          var letra
+          var expresion_regular_dni
+          var result
+          expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+         
+          if(expresion_regular_dni.test (dni) == true) {
+             numero = dni.substr(0,dni.length-1);
+             letr = dni.substr(dni.length-1,1);
+             numero = numero % 23;
+             letra='TRWAGMYFPDXBNJZSQVHLCKET';
+             letra=letra.substring(numero,numero+1);
+            if (letra!=letr.toUpperCase()) {
+               alert('Dni erroneo, la letra del NIF no se corresponde');
+             }else{
+               //alert('Dni correcto');
+               $.ajax({
+                type: "GET",
+                url: "http://localhost:3000/petition",
+                contentType: "application/json",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    var counter;
+                    data.forEach((user, index) =>{
+                      if (user.dni === dni){
+                        counter = index;
+                      }
+                    });
+                   result = `${JSON.stringify(data[counter])}`;
+                },
+                error: function () {
+                 alert('Get petition didnt resolve properly');
+                }
+              });
+             }
+          }else{
+             alert('Dni erroneo, formato no válido');
+             result = '';
+           }
+          return result;
+        }
+    </script>
+  </body>
+</html>
