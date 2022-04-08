@@ -39,11 +39,20 @@
           const app = initializeApp(firebaseConfig);
           const db = getDatabase();
           const productsReference = ref(db, 'products/');
-          
           onValue(productsReference, (snapshot) => {
+            console.log(snapshot.val());
+            var line = {
+              "text-decoration": "line-through"
+            }
             $("#ark-price").text(snapshot.val().ARK.price + '€');
-            //myElement.text("Hello Sweden!");
-            //document.getElementById('ark-price').innerText = snapshot.val().ARK.price;
+            $("#eldenring-price").text(snapshot.val()["Elden Ring"].price + '€');
+            $("#gta-price").text(snapshot.val().GTAV.price + '€');
+            $("#overcooked-price").text(snapshot.val().Overcooked.price + '€');
+            $("#valheim-price").text(snapshot.val().Valheim.price + '€');
+            $("#lostark-price").text(snapshot.val()["Lost Ark"].price);
+            $("#dyinglight2-price").html('<strike>'+(snapshot.val()["Dying Light 2"].price)+'</strike>' + ' ' + ((snapshot.val()["Dying Light 2"].price)-(snapshot.val()["Dying Light 2"].price)*(snapshot.val()["Dying Light 2"].discount)).toFixed(2).toString() + '€');
+            $("#citiesskylines-price").html('<strike>'+(snapshot.val()["Cities Skylines"].price)+'</strike>' + ' ' + ((snapshot.val()["Cities Skylines"].price)-(snapshot.val()["Cities Skylines"].price)*(snapshot.val()["Cities Skylines"].discount)).toFixed(2).toString() + '€');
+            $("#stardew-price").html('<strike>'+(snapshot.val()["Stardew Valley"].price)+'</strike>' + ' ' + ((snapshot.val()["Stardew Valley"].price)-(snapshot.val()["Stardew Valley"].price)*(snapshot.val()["Stardew Valley"].discount)).toFixed(2).toString() + '€');
           });
           
 
@@ -256,9 +265,11 @@
                       <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
                         <a href="#"><img class="responsive-img" style="margin-top:10px;" src="./img/eldenring.jpg" alt="eldenring" width=100% height="292,5"></a>
                         <p class="light-blue-text text-darken-2 flow-text center">
-                          Elden Ring 59.99€
+                          Elden Ring
                         </p>
-
+                        <p id = "eldenring-price" class="light-blue-text text-darken-2 flow-text center">
+                          placeholder
+                        </p>
                       </div>
 
                       <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
@@ -274,7 +285,10 @@
                       <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
                         <a href="#"><img class="responsive-img" style="margin-top:10px;" src="./img/gtaV.jpg" alt="gtaV" width=100% height="292,5"></a>
                         <p class="light-blue-text text-darken-2 flow-text center">
-                          GTA V 49.99€
+                          GTA V 
+                        </p>
+                        <p id = "gta-price" class="light-blue-text text-darken-2 flow-text center">
+                          placeholder
                         </p>
                       </div>
                       
@@ -301,14 +315,20 @@
                     <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
                       <a href="#"><img class="responsive-img" style="margin-top:10px;" src="./img/valheim.jpg" alt="Valheim" width=100% height="292,5"></a>
                       <p class="light-blue-text text-darken-2 flow-text center">
-                        Valheim 14.99€
+                        Valheim 
+                      </p>
+                      <p id = "valheim-price" class="light-blue-text text-darken-2 flow-text center">
+                        placeholder
                       </p>
                     </div>
 
                     <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
                       <a href="#"><img class="responsive-img" style="margin-top:10px;" src="./img/overCooked.jpg" alt="overcooked" width=100% height="292,5"></a>
                       <p class="light-blue-text text-darken-2 flow-text center">
-                        Overcooked 12.99€
+                        Overcooked 
+                      </p>
+                      <p id = "overcooked-price" class="light-blue-text text-darken-2 flow-text center">
+                        placeholder
                       </p>
                     </div>
 
@@ -316,6 +336,9 @@
                       <a href="#"><img class="responsive-img" style="margin-top:10px;" src="./img/lostARK.jpeg" alt="lostARK" width=100% height="292,5"></a>
                       <p class="light-blue-text text-darken-2 flow-text center">
                         Lost ARK Gratis
+                      </p>
+                      <p id = "lostark-price" class="light-blue-text text-darken-2 flow-text center">
+                        placeholder
                       </p>
                     </div>
                   </div>
@@ -343,21 +366,22 @@
                         <a href="#"><img class="responsive-img" style="margin-top:10px;" src="./img/hero.jpg" alt="StardewValley" width=100% height="292,5"></a>
                         <p class="light-blue-text text-darken-2 flow-text center">
                           Stardew Valley 
-                          <strike>
-                            19.99€
-                          </strike>
-                          / 9.99€
                         </p>
+                        <p id = "stardew-price" class="light-blue-text text-darken-2 flow-text center">
+                          <strike>placeholder</strike>
+                        </p>
+                        <!-- <p id = "stardewdis-price" class="light-blue-text text-darken-2 flow-text center" >
+                          <strike>placeholder</strike>
+                        </p> -->
                       </div>
   
                       <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
                         <a href="#"><img class="responsive-img" style="margin-top:10px;" src="./img/dyingLight2.jfif" alt="DyingLight2" width=100% height="292,5"></a>
                         <p class="light-blue-text text-darken-2 flow-text center">
                           Dying Light 2 
-                          <strike>
-                            45.99€
-                          </strike>
-                          / 25.99€
+                        </p>
+                        <p id = "dyinglight2-price" class="light-blue-text text-darken-2 flow-text center">
+                          <strike>placeholder</strike>
                         </p>
                       </div>
   
@@ -365,11 +389,8 @@
                         <a href="#"><img class="responsive-img" style="margin-top:10px;" src="./img/cities skylines.jpg" alt="Cities: Skylines" width=100% height="292,5"></a>
                         <p class="light-blue-text text-darken-2 flow-text center">
                           Cities: Skylines
-                          <strike>
-                            69.99€
-                          </strike>
-                          / 59.99€
-                        </p>
+                        <p id = "citiesskylines-price" class="light-blue-text text-darken-2 flow-text center">
+                          <strike>placeholder</strike>
                       </div> 
                     </div>
                 </div>
@@ -399,12 +420,6 @@
                 var instances = M.Carousel.init(elems, options);
               });
               </script>  -->
-
-
-
-
-
-
 
             <!-- <br><br><p style="color: white;" align="center"> ABOUT | SUPPORT | CONTACT US | PRESS | API <p> -->
               <footer class="page-footer" style="background-color:#141E2B;">
