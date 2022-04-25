@@ -58,7 +58,7 @@
                 <!-- Precio total -->
                 <!-- <p class="text-right">Total: <span id="total"></span>&euro;</p> -->
                 <p id = 'cart-Paragraph'>placeholder</p>
-                <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
+                <button id="boton-vaciar" onclick="purgeCartFromDB()" class="btn btn-danger">Vaciar</button>
             </aside>
         </div>
           
@@ -123,6 +123,7 @@
           <script type="module">import {addProductToDB} from './jsonScripts/databaseFunctions.js';  window.addProductToDB = addProductToDB</script>
           <script type="module">import {getProductFromDB} from './jsonScripts/databaseFunctions.js';  window.getProductFromDB = getProductFromDB</script>
           <script type="module">import {getCartFromDB} from './jsonScripts/databaseFunctions.js'; window.getCartFromDB = getCartFromDB</script>
+          <script type="module">import {purgeCartFromDB} from './jsonScripts/databaseFunctions.js'; window.purgeCartFromDB = purgeCartFromDB</script>
           <script>
             window.onload = () => {
               console.log(window);

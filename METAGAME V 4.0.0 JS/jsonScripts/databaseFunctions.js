@@ -18,9 +18,6 @@ export function getPricesFromDB() {
   const db = getDatabase();
   const productsReference = ref(db, 'products/');
   onValue(productsReference, (snapshot) => {
-    var line = {
-      "text-decoration": "line-through"
-    }
     $("#ark-price").text(snapshot.val().ARK.price + '€');
     $("#eldenring-price").text(snapshot.val()["Elden Ring"].price + '€');
     $("#gta-price").text(snapshot.val().GTAV.price + '€');
@@ -34,19 +31,36 @@ export function getPricesFromDB() {
 }
 
 
+export function purgeCartFromDB(user) {
+  const currentDB = ref(getDatabase());
+  get(child(currentDB, `users/${user}/current_cart`)).then((snapshot) => {
+    let current_cart = snapshot.val()
+    if (current_cart.length < 1) {
+      alert('El carro esta vacio')
+      return;
+    }
+    console.log(snapshot.val())
+    current_cart = []
+    console.log(current_cart)
+    const updates = {};
+    updates['users/' + id + '/current_cart'] = current_cart;
+    update(ref(db), updates)
+    alert('Se han borrado todos los elementos del carro')
+  });
+}
+
+
+
+
 export function getCartFromDB(user) {
   const currentDB = ref(getDatabase());
   get(child(currentDB, `users/${user}/current_cart`)).then((snapshot) => {
-    var line = {
-      "text-decoration": "line-through"
-    }
     let current_cart = snapshot.val()
     let wholeString = ''
-    if (current_cart.length < 1) {
-      wholeString = 'The cart is empty';
-    }
     current_cart.forEach((item) => {
       wholeString += item.product + ` ${item.price}`  + '€' + '<br>'
+    }).catch((error) => {
+      alert('El carro esta vacio')
     });
     
     $("#cart-Paragraph").html(wholeString);
@@ -70,11 +84,9 @@ export function getProductFromDB(name) {
 }
 
 
-export function addProductToDB(product) {
+export function addProductToDB(product, id) {
   const db = getDatabase();
-  let id = '2'
   let current_cart = null;
-  console.log('2')
   let price = getProductFromDB(product);
   const currentDB = ref(getDatabase());
 
@@ -89,6 +101,17 @@ export function addProductToDB(product) {
     const updates = {};
     updates['users/' + id + '/current_cart'] = current_cart;
     update(ref(db), updates)
+  }).catch((error) => {
+    const newCurrentCart = push(child(ref(db), 'users/${id}/'),'current_cart');
+    const updates = {};
+    let current_cart = [];
+    current_cart.push({
+      "price": price,
+      "product": product
+    })
+    updates['users/' + id + '/current_cart'] = current_cart;
+    update(ref(db), updates);
+  
   });
   
 }
