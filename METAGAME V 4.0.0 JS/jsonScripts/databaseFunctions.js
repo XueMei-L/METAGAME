@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getDatabase, ref , onValue, child, set, update, get } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js'; 
+import { getDatabase, ref , onValue, child, set, update, get, push } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js'; 
 
 const firebaseConfig = {
   apiKey: "AIzaSyC8C7FZP3oD1cAtjEt_GNi0SqyDRqtO1ps",
@@ -33,6 +33,7 @@ export function getPricesFromDB() {
 
 export function purgeCartFromDB(user) {
   const currentDB = ref(getDatabase());
+  const db = getDatabase();
   get(child(currentDB, `users/${user}/current_cart`)).then((snapshot) => {
     let current_cart = snapshot.val()
     if (current_cart.length < 1) {
@@ -43,7 +44,7 @@ export function purgeCartFromDB(user) {
     current_cart = []
     console.log(current_cart)
     const updates = {};
-    updates['users/' + id + '/current_cart'] = current_cart;
+    updates['users/' + user + '/current_cart'] = current_cart;
     update(ref(db), updates)
     alert('Se han borrado todos los elementos del carro')
   });
@@ -55,16 +56,18 @@ export function purgeCartFromDB(user) {
 export function getCartFromDB(user) {
   const currentDB = ref(getDatabase());
   get(child(currentDB, `users/${user}/current_cart`)).then((snapshot) => {
+    console.log(snapshot.val())
     let current_cart = snapshot.val()
     let wholeString = ''
     current_cart.forEach((item) => {
       wholeString += item.product + ` ${item.price}`  + '€' + '<br>'
-    }).catch((error) => {
-      alert('El carro esta vacio')
     });
     
     $("#cart-Paragraph").html(wholeString);
   
+  }).catch((error) => {
+    $("#cart-Paragraph").text('El carro esta vacio');
+    alert('El carro esta vacio')
   });
 }
 
@@ -102,7 +105,6 @@ export function addProductToDB(product, id) {
     updates['users/' + id + '/current_cart'] = current_cart;
     update(ref(db), updates)
   }).catch((error) => {
-    const newCurrentCart = push(child(ref(db), 'users/${id}/'),'current_cart');
     const updates = {};
     let current_cart = [];
     current_cart.push({
