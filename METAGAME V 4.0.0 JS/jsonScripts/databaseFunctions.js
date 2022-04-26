@@ -40,9 +40,10 @@ export function purgeCartFromDB(user) {
       alert('El carro esta vacio')
       return;
     }
-    console.log(snapshot.val())
+    //console.log(snapshot.val())
     current_cart = []
-    console.log(current_cart)
+    
+    //console.log(current_cart)
     const updates = {};
     updates['users/' + user + '/current_cart'] = current_cart;
     update(ref(db), updates)
@@ -51,12 +52,10 @@ export function purgeCartFromDB(user) {
 }
 
 
-
-
 export function getCartFromDB(user) {
   const currentDB = ref(getDatabase());
   get(child(currentDB, `users/${user}/current_cart`)).then((snapshot) => {
-    console.log(snapshot.val())
+    //console.log(snapshot.val())
     let current_cart = snapshot.val()
     let wholeString = ''
     current_cart.forEach((item) => {
@@ -94,13 +93,13 @@ export function addProductToDB(product, id) {
   const currentDB = ref(getDatabase());
 
   get(child(currentDB, `users/${id}/current_cart`)).then((snapshot) => {
-    console.log(snapshot.val())
+    //console.log(snapshot.val())
     current_cart = snapshot.val()
     current_cart.push({
       "price": price,
       "product": product
     })
-    console.log(current_cart)
+    //console.log(current_cart)
     const updates = {};
     updates['users/' + id + '/current_cart'] = current_cart;
     update(ref(db), updates)

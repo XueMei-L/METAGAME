@@ -23,6 +23,7 @@ function fetchTime(next_day) {
  * @returns total price
  */
 function calcularTotal(jsonFile) {
+  console.log(jsonFile);
     // Recorremos el array del carrito 
     if (jsonFile.length === 0){
         return 0;
