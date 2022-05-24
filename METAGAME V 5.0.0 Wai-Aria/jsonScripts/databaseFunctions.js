@@ -37,7 +37,7 @@ export function purgeCartFromDB(user) {
   get(child(currentDB, `users/${user}/current_cart`)).then((snapshot) => {
     let current_cart = snapshot.val()
     if (current_cart.length < 1) {
-      alert('El carro esta vacio')
+      // alert('El carro esta vacio')
       return;
     }
     //console.log(snapshot.val())
@@ -57,18 +57,26 @@ export function getCartFromDB(user) {
   get(child(currentDB, `users/${user}/current_cart`)).then((snapshot) => {
     //console.log(snapshot.val())
     let current_cart = snapshot.val()
-    let wholeString = ''
-    current_cart.forEach((item) => {
-      wholeString += item.product + ` ${item.price}`  + '€' + '<br>'
-    });
+    let totalPrice = 0;
+    let numOfProduct = 1;
+    let tableTitle = '<table class=\'centered\' highlight> <thead> <tr> <th>Nº</th> <th>Product</th> <th>Item Price</th> </tr> </thead> <tbody> ';
     
-    $("#cart-Paragraph").html(wholeString);
+    current_cart.forEach((item) => {
+      tableTitle += '<tr> <td>' + numOfProduct  + '</td> <td>' + item.product + '</td> <td>' +  ` ${item.price}` + ' €' + '</td></tr>'
+      //wholeString += '<p class="flow-text">' + numOfProduct + ' | '   + item.product + ` ${item.price}`  + '€' + '</p>'
+      totalPrice += item.price;
+      numOfProduct++;
+    });
+    tableTitle += '</tbody> </table>';
+    $("#cart-Paragraph-Title").html(tableTitle);
+    $("#cart-Price").html(totalPrice.toFixed(2) + ' €');
   
   }).catch((error) => {
-    $("#cart-Paragraph").text('El carro esta vacio');
-    alert('El carro esta vacio')
+    $("#cart-Paragraph-Title").text('El carro esta vacio');
+    // alert('El carro esta vacio')
   });
 }
+
 
 
 export function getProductFromDB(name) {

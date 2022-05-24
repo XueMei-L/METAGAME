@@ -31,33 +31,71 @@
           <nav style="background-color:#264F89;">
             <div class="nav-wrapper">
               <div class="row" role="row">
+                <div class="s1">
                 <a href="#!" style="text-shadow: 2px 2px;" class="col s1"><img src="./img/logo.png" alt="metagame" width="auto" height="64"></a>
-                <ul role="menu" id="nav-mobile" role="menu" class="col s3 hide-on-med-and-down">
-                  <li role="menuitem" aria-haspopup="false"><a href="#">Categorías</a></li>
-                  <li role="menuitem" aria-haspopup="false"><a href="#">Búsqueda</a></li>
-                  <li role="menuitem" aria-haspopup="false"><a href="#">Noticias</a></li>
-                  <li role="menuitem" aria-haspopup="false"><a href="#">Lo más vendido</a></li>
-                </ul>
+                </div>
+                <div class="left hide-on-med-and-down">
+                  <ul role="menu" id="nav-mobile" role="menu" >
+                    <li role="menuitem" aria-haspopup="false"><a href="#">Categorías</a></li>
+                    <li role="menuitem" aria-haspopup="false"><a href="#">Búsqueda</a></li>
+                    <li role="menuitem" aria-haspopup="false"><a href="#">Noticias</a></li>
+                    <li role="menuitem" aria-haspopup="false"><a href="#">Lo más vendido</a></li>
+                  </ul>
+                </div>
 
-                <ul class="col s4 hide-on-med-and-down">
-                  <li><a onclick = "processSearch(document.getElementById('searchBox').value)"><i class="material-icons left">search</i></a></li>
-                  <li><input role="search" id="searchBox" style="color: white;" placeholder="Introduzca el termino de busqueda" size=45 type="text"></li>
-                </ul>
-                <ul class="col s1 hide-on-med-and-down">
-                  <!-- <li id ='element-count'></li> -->
-                  <li><a tabindex="0" class="waves-effect waves-light btn flow-text" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li" onclick="alert(getElementsCountString())"><i class="material-icons">settings</i></a></li>
-                </ul>
-                <ul class="col s2 hide-on-med-and-down">
-                  <li><a class="waves-effect waves-light btn flow-text" href="#"><i class="material-icons left">account_box</i>Cuenta personal</a></li>
-                </ul>
-                <ul class="col s1 hide-on-med-and-down">
-                  <li><a class="waves-effect waves-light btn flow-text" href="shoppingCart.html"><i class="material-icons">shopping_cart</i></a></li>
-                </ul>
+
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+                
+                
+                <div class="col s3 hide-on-med-and-down">
+                  <div class="row">
+                    <form class="col s12">
+                      <div class="row">
+                        <div class="input-field col s10">
+                          <input id="searchBox" type="text" class="validate" placeholder="Introduzca el termino de busqueda">
+                          <label for="sideNavSearchBox">Búsqueda</label>
+                        </div>
+                        <div class="input-field col s2">
+                          <a href="" onclick ="processSearch(document.getElementById('searchBox').value)"><i class="material-icons">search</i></a>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class=" right hide-on-med-and-down">
+                  <ul>
+                    <li><a tabindex="0" class="waves-effect waves-light btn" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li" onclick="alert(getElementsCountString())"><i class="material-icons">settings</i></a>
+                      <a class="waves-effect waves-light btn" style="margin-left:0px;" href="./login.html"><i class="material-icons">account_box</i></a>
+                      <a class="waves-effect waves-light btn" style="margin-left:0px;" href="shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
+                    </li>
+                  </ul>
+              </div>
               </div>
             </div>
           </nav>
         </div>
-      
+        <!-- Sidenav que se muestra al pulsar el boton de menu del navbar superior en tamaños de pantalla pequeños -->
+        <ul class="sidenav" id="mobile-demo">
+          <li><a href="#">Categorías</a></li>
+          <li><a href="#">Búsqueda</a></li>
+          <li><a href="#">Noticias</a></li>
+          <li><a href="#">Lo más vendido</a></li>
+          <li>
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s10">
+                    <input id="sideNavSearchBox" type="text" class="validate">
+                    <label for="sideNavSearchBox">Búsqueda</label>
+                  </div>
+                  <div class="input-field col s1">
+                    <a class="right" href="#" onclick = "processSearch(document.getElementById('sideNavSearchBox').value)"><i class="material-icons prefix ">search</i></a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </li>    
+        </ul>
         <div class="aboutMeCarousel carousel carousel-slider center">
           <!-- <div class="carousel-fixed-item center">
               <a class="btn waves-effect white grey-text darken-text-2">button</a>
@@ -101,17 +139,29 @@
               <div class="navbar">
                 <nav style="background-color:#171D2D;">
                     <div class="row">
-                      <div class="col s2">
-                        <a href="#!" style="text-transform: uppercase; font-family:Times New Roman; font-size:25px;">Juegos destacados</a>
+                      <div class="col s3 hide-on-med-and-down">
+                        <a href="#!"style="text-transform: uppercase; font-family:Times New Roman; font-size:20px; margin-left: 10px;">Juegos destacados</a>
                       </div>
-                      <div class="col s2 offset-s3">
+                      <div class="col s7 hide-on-large-only">
+                        <a href="#!" style="text-transform: uppercase; font-family:Times New Roman; font-size:20px; margin-left: 10px;">Juegos destacados</a>
+                      </div>
+                      <div class="col s2 offset-s1">
                         <a id='searchText' style='visibility:hidden;'>placeholder </a>
                       </div>  
-                      <ul class="col s3 offset-s2 hide-on-med-and-down">
+                      <ul class="right hide-on-med-and-down ">
                         <li role="menuitem" aria-haspopup ="false"><a tabindex="0" class="waves-effect waves-light btn">PC</a></li>
                         <li role="menuitem" aria-haspopup="false"><a tabindex="0" class="waves-effect waves-light btn">CONSOLA</a></li>
                         <li role="menuitem" aria-haspopup="false"></li><a tabindex="0" class="waves-effect waves-light btn">OTRO</a></li>
                       </ul>
+                      <ul id="dropdown2" class="dropdown-content">
+                        <li><a class="center">PC</a></li>
+                        <li><a class="center">CONSOLA</a></li>
+                        <li><a class="center">OTRO</a></li>
+                      </ul>
+                      <ul class="col s2 right hide-on-large-only">
+                        <li role="menuitem" aria-haspopup ="false"></li><a class="dropdown-trigger waves-effect waves-light btn" href="#!" data-target="dropdown2"><i class="large material-icons">menu</i></a></li>
+                        
+                      </div>
                     </div>
                 </nav>
               </div>
@@ -132,7 +182,7 @@
                         
                       </div>
 
-                      <div class = "col s4 card-panel hoverable" style="background-color: #0A2635;">
+                      <div class = "col s4 card-panel" style="background-color: #0A2635;">
                         <a tabindex="0" href="#"><img role="img" aria-label="Producto juego ARK" class="responsive-img" style="margin-top:10px;" src="./img/ARK.jfif" alt="ark" width=100% height="292,5"></a>
                         <p class="light-blue-text text-darken-2 flow-text center">
                           Ark
@@ -163,8 +213,11 @@
               <nav style="background-color:#171D2D;">
                 <div class="nav-wrapper">
                   <div class="row" role="row">
-                    <div class="col s2">
-                      <a href="#!" style="text-transform: uppercase; font-family:Times New Roman; font-size:25px;">Novedades</a>
+                    <div class="col s2 hide-on-med-and-down">
+                      <a href="#!" style="text-transform: uppercase; font-family:Times New Roman; font-size:20px;">Novedades</a>
+                    </div>
+                    <div class="col s7 hide-on-large-only">
+                      <a href="#!" style="text-transform: uppercase; font-family:Times New Roman; font-size:20px;">Novedades</a>
                     </div>
                   </div>
                 </div>
@@ -213,8 +266,11 @@
                 <nav style="background-color:#171D2D;">
                   <div class="nav-wrapper">
                     <div class="row" role="row">
-                      <div class="col s2">
-                        <a tabindex="0" href="#!" style="text-transform: uppercase; font-family:Times New Roman; font-size:25px;">Ofertas</a>
+                      <div class="col s2 hide-on-med-and-down">
+                        <a href="#!" style="text-transform: uppercase; font-family:Times New Roman; font-size:20px;">Ofertas</a>
+                      </div>
+                      <div class="col s7 hide-on-large-only">
+                        <a href="#!" style="text-transform: uppercase; font-family:Times New Roman; font-size:20px;">Ofertas</a>
                       </div>
                     </div>
                   </div>
@@ -326,7 +382,11 @@
             <script>
               window.onload = () => {
                 getPricesFromDB();
+                $(".dropdown-trigger").dropdown();
               }
+              $(document).ready(function(){
+                $('.sidenav').sidenav();
+              });
             </script>
             
             <!-- para ocultar -->
