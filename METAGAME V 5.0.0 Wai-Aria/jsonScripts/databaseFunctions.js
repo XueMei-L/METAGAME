@@ -48,6 +48,7 @@ export function purgeCartFromDB(user) {
     updates['users/' + user + '/current_cart'] = current_cart;
     update(ref(db), updates)
     alert('Se han borrado todos los elementos del carro')
+    location.href = './shoppingCart.html'
   });
 }
 
@@ -69,7 +70,7 @@ export function getCartFromDB(user) {
     });
     tableTitle += '</tbody> </table>';
     $("#cart-Paragraph-Title").html(tableTitle);
-    $("#cart-Price").html(totalPrice.toFixed(2) + ' €');
+    $("#cart-Price").html('Precio Total: '+totalPrice.toFixed(2) + ' €');
   
   }).catch((error) => {
     $("#cart-Paragraph-Title").text('El carro esta vacio');
@@ -92,6 +93,31 @@ export function getProductFromDB(name) {
   });
   return price;
 }
+
+export function getAllProductsFromDB(searchText) {
+  localStorage.removeItem("searchText");
+  const currentDB = ref(getDatabase());
+  get(child(currentDB, `products`)).then((snapshot) => {
+    //console.log(snapshot.val())
+    let numOfProduct = 1;
+    let productsNames = Object.keys(snapshot.val());
+    
+    let tableTitle = `<h1 id ="searchResultTitle" class="center" style="font-size:2em;">Resultados de la busqueda</h1>` + '<table class=\'centered\' highlight> <thead> <tr> <th>Nº</th> <th>Product</th> <th>Item Price</th> </tr> </thead> <tbody> ';
+    for (let i = 0; i < productsNames.length; i++) {
+      if (productsNames[i].toLowerCase().includes(searchText.toLowerCase())) {
+        tableTitle += '<tr> <td>' + numOfProduct  + '</td> <td>' + productsNames[i] + '</td> <td>' +  ` ${snapshot.val()[productsNames[i]].price}` + ' €' + '</td></tr>'
+        //wholeString += '<p class="flow-text">' + numOfProduct + ' | '   + item.product + ` ${item.price}`  + '€' + '</p>'
+        numOfProduct++;
+      }
+    }
+    tableTitle += '</tbody> </table>';
+    $("#searchResultContainer").html(tableTitle);
+    //console.log(current_cart)
+  }).catch((error) => {
+  });
+}
+
+
 
 
 export function addProductToDB(product, id) {
