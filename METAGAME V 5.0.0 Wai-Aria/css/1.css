@@ -1,17 +1,28 @@
 #juegos{
-    background-color: green;
+    background-color:#264F89;
+}
+
+#trailer{
+    float: left;
+    width: 60%;
+    padding-top: 10px;
+    background-color: #0A2635;
+    border: 1px solid black;
 }
 
 #infobasica{
-    background-color: yellow;
-}   
+    float: left;
+    width: 40%;
+    min-height: 333px;
+    padding-top: 10px;
+    background-color: #0A2635;
+    border: 1px solid black;
+}       
 
-.video{
+#descripcion_larga{
+    float: left;
+    background-color: #0A2635;
+    border: 1px solid black;
 }
-
-#descripcion{
-    
-}
-
-#carro{
+#comprar{
 }

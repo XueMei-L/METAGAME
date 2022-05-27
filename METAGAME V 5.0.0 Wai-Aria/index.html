@@ -49,14 +49,14 @@
                 
                 <div class="col s3 hide-on-med-and-down">
                   <div class="row">
-                    <form class="col s12">
+                    <form class="col s12" onsubmit="return false">
                       <div class="row">
                         <div class="input-field col s10">
-                          <input id="searchBox" type="text" placeholder="Introduzca el termino de busqueda">
+                          <input id="searchBox" type="text" placeholder="Introduzca el termino de busqueda" onkeydown="processSearch(document.getElementById('searchBox').value)">
                           <label for="searchBox">Búsqueda</label>
                         </div>
                         <div class="input-field col s2">
-                          <a href="searchResults.html" onclick ="processSearch(document.getElementById('searchBox').value)"><i class="material-icons">search</i></a>
+                          <a href="./searchResults.html" onclick ="processSearch(document.getElementById('searchBox').value)"><i class="material-icons">search</i></a>
                         </div>
                       </div>
                     </form>
@@ -82,10 +82,10 @@
           <li><a href="#">Lo más vendido</a></li>
           <li>
             <div class="row">
-              <form class="col s12">
+              <form class="col s12" onsubmit="return false">
                 <div class="row">
                   <div class="input-field col s10">
-                    <input id="sideNavSearchBox" type="text" class="validate">
+                    <input id="sideNavSearchBox" type="text" class="validate" onkeydown="processSearch(document.getElementById('searchBox').value)">
                     <label for="sideNavSearchBox">Búsqueda</label>
                   </div>
                   <div class="input-field col s1">
@@ -115,7 +115,6 @@
             <a href="./games/overcooked.html"><img role="img" aria-label="Portada juego OverCooked" class="responsive-img" src="./img/overCooked.jpg" alt="Juego Overcooked"></a>
           </div>
         </div>
-
         <!-- carousel -->
         <script>
           document.addEventListener('DOMContentLoaded', function() {

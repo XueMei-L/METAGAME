@@ -89,7 +89,7 @@
                     <label for="sideNavSearchBox">Búsqueda</label>
                   </div>
                   <div class="input-field col s1">
-                    <a class="right" href="#" onclick = "processSearch(document.getElementById('sideNavSearchBox').value)"><i class="material-icons prefix ">search</i></a>
+                    <a class="right" href="#" onclick = "processSearch(document.getElementById('sideNavSearchBox').value);"><i class="material-icons prefix ">search</i></a>
                   </div>
                 </div>
               </form>
@@ -105,13 +105,14 @@
                 <!-- <h1 class="center" style="color: white;">Login</h1> -->
                 <div class="input-field col s12 center">
                     <a href="./register.html"class="waves-effect waves-light btn">Sign in</a>
+                    <a href="./profile.html"class="waves-effect waves-light btn">Profile</a>
                 </div>
 
                 <div class="input-field col s12">
                     <!-- <p style="color: white;"> Username:  </p> -->
                     
-                    <input placeholder="Ej: UserXMRJ" id="first_name" type="text">
-                    <label style="color: white;" for="first_name">Username</label>
+                    <input placeholder="Ej: UserXMRJ" id="email" type="text">
+                    <label style="color: white;" for="email">Username</label>
                 </div>
 
                 <!-- <div class="input-field col s12">
@@ -126,7 +127,7 @@
                 
 
                 <div class="input-field col s12 center">
-                    <a class="waves-effect waves-light btn">Log in</a>
+                    <a onclick="login()" class="waves-effect waves-light btn">Log in</a>
                 </div>
               </div>
             </div>
@@ -197,6 +198,7 @@
       <script src="./jsonScripts/processSearch.js"></script>
       <script src="./jsonScripts/ElementsCount.js"></script>
       <script src="./jsonScripts/processJson.js"></script>
+      <script type="module">import {login} from './jsonScripts/firebase/loginRegister.js';  window.login = login</script>
       <script type="module">import {getPricesFromDB} from './jsonScripts/databaseFunctions.js'; window.getPricesFromDB = getPricesFromDB</script>
       <script type="module">import {addProductToDB} from './jsonScripts/databaseFunctions.js';  window.addProductToDB = addProductToDB</script>
       <script type="module">import {getProductFromDB} from './jsonScripts/databaseFunctions.js';  window.getProductFromDB = getProductFromDB</script>
