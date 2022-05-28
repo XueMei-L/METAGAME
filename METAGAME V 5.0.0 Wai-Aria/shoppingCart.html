@@ -112,7 +112,7 @@
                 <!-- Precio total -->
                 <!-- <p class="text-right">Total: <span id="total"></span>&euro;</p> -->
                 <!-- <p id = 'cart-Paragraph'>placeholder</p> -->
-                <button id="boton-vaciar" role="alert" aria-label="Vaciar carrito de productos" onclick="purgeCartFromDB(2)" class="btn btn-danger">Vaciar</button>
+                <button id="boton-vaciar" role="alert" aria-label="Vaciar carrito de productos" onclick="purgeCartFromUser()" class="btn btn-danger">Vaciar</button>
             </aside>
         </div>
           
@@ -179,11 +179,11 @@
           <script type="module">import {getPricesFromDB} from './jsonScripts/databaseFunctions.js'; window.getPricesFromDB = getPricesFromDB</script>
           <script type="module">import {addProductToDB} from './jsonScripts/databaseFunctions.js';  window.addProductToDB = addProductToDB</script>
           <script type="module">import {getProductFromDB} from './jsonScripts/databaseFunctions.js';  window.getProductFromDB = getProductFromDB</script>
-          <script type="module">import {getCartFromDB} from './jsonScripts/databaseFunctions.js'; window.getCartFromDB = getCartFromDB</script>
-          <script type="module">import {purgeCartFromDB} from './jsonScripts/databaseFunctions.js'; window.purgeCartFromDB = purgeCartFromDB</script>
+          <script type="module">import {getCartFromUser} from './jsonScripts/databaseFunctions.js'; window.getCartFromUser = getCartFromUser</script>
+          <script type="module">import {purgeCartFromUser} from './jsonScripts/databaseFunctions.js'; window.purgeCartFromUser = purgeCartFromUser</script>
           <script>
             window.onload = () => {
-              getCartFromDB(2);
+              getCartFromUser(2);
             }
             $(document).ready(function(){
               $('.sidenav').sidenav();

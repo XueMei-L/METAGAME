@@ -106,13 +106,14 @@
                   </div>
                   <div class="card-stacked">
                     <div class="card-content" style="background-color: #0a2635" style="display:inline-table">
-                        <p style="font-size:35px;">Username01</p>
-                        <p id ='database-username'>There is a username</p>
-                        <p style="font-size:15px;">username01@gmail.com</p>
-                        <p style="font-size:15px; float:left;">España</p>
-                        <p id ='database-year' style="font-size:15px;">Year</p>
+                        <p id ='database-username' style="font-size:35px;">Username01</p>
+                        <p id ='database-dni'>There is a dni</p>
+                        <p id ='database-email'style="font-size:15px;">username01@gmail.com</p>
+                        <p id ='database-location' style="font-size:15px;">España</p>
+                        <p id ='database-birthdate' style="font-size:15px;">birthdate</p>
                         <p style="font-size:15px;">un desarrollador de videojuegos que no juega</p><br>
                         <a class="waves-effect waves-light btn">Editar Perfil</a>
+                        <a onclick="signOutProfile()" class="waves-effect waves-light btn">Cerrar sesion</a>
                     </div>
                     <!-- <div class="card-action" style="background-color: #0a2635">
                       <a href="#">xx</a>
@@ -205,9 +206,12 @@
           <script type="module">import {getCartFromDB} from './jsonScripts/databaseFunctions.js'; window.getCartFromDB = getCartFromDB</script>
           <script type="module">import {purgeCartFromDB} from './jsonScripts/databaseFunctions.js'; window.purgeCartFromDB = purgeCartFromDB</script>
           <script type="module">import {showProfileData} from './jsonScripts/profileInfor.js'; window.showProfileData = showProfileData</script>
+          <script type="module">import {getLoginStatus} from './jsonScripts/profileInfor.js'; window.getLoginStatus = getLoginStatus</script>
+          <script type="module">import {signOutProfile} from './jsonScripts/profileInfor.js'; window.signOutProfile = signOutProfile</script>
           <script>
             window.onload = () => {
                 showProfileData(2);
+                getLoginStatus();
             }
             $(document).ready(function(){
               $('.sidenav').sidenav();

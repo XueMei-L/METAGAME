@@ -65,7 +65,7 @@
                 <div class=" right hide-on-med-and-down">
                   <ul>
                     <li><a tabindex="0" class="waves-effect waves-light btn" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li" onclick="alert(getElementsCountString())"><i class="material-icons">settings</i></a>
-                      <a class="waves-effect waves-light btn" style="margin-left:0px;" href="./login.html"><i class="material-icons">account_box</i></a>
+                      <a class="waves-effect waves-light btn" style="margin-left:0px;" onclick='isUserLogged()'><i class="material-icons">account_box</i></a>
                       <a class="waves-effect waves-light btn" style="margin-left:0px;" href="shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
                     </li>
                   </ul>
@@ -171,7 +171,7 @@
                           Elden Ring
                         </p>
                         <p class="light-blue-text text-darken-2 flow-text center">
-                          <a tabindex="0" id="eldenring-price" role="alert" aria-label="Añade el producto Elden Ring al carrito" onclick="addProductToDB('Elden Ring','2')" class="waves-effect waves-light btn">placeholder</a>
+                          <a tabindex="0" id="eldenring-price" role="alert" aria-label="Añade el producto Elden Ring al carrito" onclick="addProductToUser('Elden Ring')" class="waves-effect waves-light btn">placeholder</a>
                         </p>
                         
                       </div>
@@ -182,7 +182,7 @@
                           Ark
                         </p>
                         <p class="light-blue-text text-darken-2 flow-text center">
-                          <a tabindex="0" id = "ark-price" role="alert" aria-label="Añade el producto ARK al carrito" onclick="addProductToDB('ARK','2')" class="waves-effect waves-light btn">placeholder</a>
+                          <a tabindex="0" id = "ark-price" role="alert" aria-label="Añade el producto ARK al carrito" onclick="addProductToUser('ARK')" class="waves-effect waves-light btn">placeholder</a>
                         </p>
                       </div>
 
@@ -192,7 +192,7 @@
                           GTA V 
                         </p>
                         <p class="light-blue-text text-darken-2 flow-text center">
-                          <a tabindex="0" id="gta-price" role="alert" aria-label="Añade el producto GTA V al carrito" onclick="addProductToDB('GTAV','2')" class="waves-effect waves-light btn">placeholder</a>
+                          <a tabindex="0" id="gta-price" role="alert" aria-label="Añade el producto GTA V al carrito" onclick="addProductToUser('GTAV')" class="waves-effect waves-light btn">placeholder</a>
                         </p>
                         
                       </div>
@@ -227,7 +227,7 @@
                         Valheim 
                       </p>
                       <p class="light-blue-text text-darken-2 flow-text center">
-                        <a tabindex="0" id="valheim-price" role="alert" aria-label="Añade el producto Valheim al carrito" onclick="addProductToDB('Valheim','2')"class="waves-effect waves-light btn">placeholder</a>
+                        <a tabindex="0" id="valheim-price" role="alert" aria-label="Añade el producto Valheim al carrito" onclick="addProductToUser('Valheim')"class="waves-effect waves-light btn">placeholder</a>
                       </p>
                     </div>
 
@@ -238,7 +238,7 @@
                       </p>
                     
                       <p class="light-blue-text text-darken-2 flow-text center">
-                        <a tabindex="0" id = "overcooked-price" role="alert" aria-label="Añade el producto Overcooked al carrito" onclick="addProductToDB('Overcooked','2')" class="waves-effect waves-light btn">placeholder</a>
+                        <a tabindex="0" id = "overcooked-price" role="alert" aria-label="Añade el producto Overcooked al carrito" onclick="addProductToUser('Overcooked')" class="waves-effect waves-light btn">placeholder</a>
                       </p>
                     </div>
 
@@ -248,7 +248,7 @@
                         Lost ARK Gratis
                       </p>
                       <p class="light-blue-text text-darken-2 flow-text center">
-                        <a tabindex="0" id = "lostark-price" role="alert" aria-label="Añade el producto Lost Ark al carrito" onclick="addProductToDB('Lost Ark','2')" class="waves-effect waves-light btn">placeholder</a>
+                        <a tabindex="0" id = "lostark-price" role="alert" aria-label="Añade el producto Lost Ark al carrito" onclick="addProductToUser('Lost Ark')" class="waves-effect waves-light btn">placeholder</a>
                       </p>
                     </div>
                   </div>
@@ -280,7 +280,7 @@
                           Stardew Valley 
                         </p>
                         <p class="light-blue-text text-darken-2 flow-text center">
-                          <a tabindex="0" id = "stardew-price" role="alert" aria-label="Añade el producto Stardew Valley al carrito" onclick="addProductToDB('Stardew Valley','2')" class="waves-effect waves-light btn">placeholder</a>
+                          <a tabindex="0" id = "stardew-price" role="alert" aria-label="Añade el producto Stardew Valley al carrito" onclick="addProductToUser('Stardew Valley')" class="waves-effect waves-light btn">placeholder</a>
                         </p>
                       </div>
   
@@ -290,7 +290,7 @@
                           Dying Light 2 
                         </p>
                         <p class="light-blue-text text-darken-2 flow-text center">
-                          <a tabindex="0" id = "dyinglight2-price" role="alert" aria-label="Añade el producto Dying Light 2 al carrito" onclick="addProductToDB('Dying Light 2','2')" class="waves-effect waves-light btn">placeholder</a>
+                          <a tabindex="0" id = "dyinglight2-price" role="alert" aria-label="Añade el producto Dying Light 2 al carrito" onclick="addProductToUser('Dying Light 2')" class="waves-effect waves-light btn">placeholder</a>
                         </p>
                       </div>
   
@@ -299,7 +299,7 @@
                         <p class="light-blue-text text-darken-2 flow-text center">
                           Cities: Skylines
                         <p class="light-blue-text text-darken-2 flow-text center">
-                          <a tabindex="0" id = "citiesskylines-price" role="alert" aria-label="Añade el producto Cities Skylines al carrito" onclick="addProductToDB('Cities Skylines','2')" class="waves-effect waves-light btn">placeholder</a>
+                          <a tabindex="0" id = "citiesskylines-price" role="alert" aria-label="Añade el producto Cities Skylines al carrito" onclick="addProductToUser('Cities Skylines')" class="waves-effect waves-light btn">placeholder</a>
                       </div> 
                     </div>
                 </div>
@@ -369,9 +369,10 @@
             <script src="./jsonScripts/processSearch.js"></script>
             <script src="./jsonScripts/ElementsCount.js"></script>
             <script src="./jsonScripts/processJson.js"></script>
-            <script type="module">import {getPricesFromDB} from './jsonScripts/databaseFunctions.js'; window.getPricesFromDB = getPricesFromDB</script>
-            <script type="module">import {addProductToDB} from './jsonScripts/databaseFunctions.js';  window.addProductToDB = addProductToDB</script>
-            <script type="module">import {getProductFromDB} from './jsonScripts/databaseFunctions.js';  window.getProductFromDB = getProductFromDB</script>
+            <script type="module"> import {getPricesFromDB} from './jsonScripts/databaseFunctions.js'; window.getPricesFromDB = getPricesFromDB</script>
+            <script type="module"> import {addProductToUser} from './jsonScripts/databaseFunctions.js';  window.addProductToUser = addProductToUser</script>
+            <script type="module"> import {getProductFromDB} from './jsonScripts/databaseFunctions.js';  window.getProductFromDB = getProductFromDB</script>
+            <script type="module"> import {isUserLogged} from './jsonScripts/profileInfor.js';  window.isUserLogged = isUserLogged</script>
             <script>
               window.onload = () => {
                 getPricesFromDB();

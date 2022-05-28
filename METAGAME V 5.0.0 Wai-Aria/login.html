@@ -105,7 +105,7 @@
                 <!-- <h1 class="center" style="color: white;">Login</h1> -->
                 <div class="input-field col s12 center">
                     <a href="./register.html"class="waves-effect waves-light btn">Sign in</a>
-                    <a href="./profile.html"class="waves-effect waves-light btn">Profile</a>
+                    <a onclick="getLoginStatusToProfile()" class="waves-effect waves-light btn">Profile</a>
                 </div>
 
                 <div class="input-field col s12">
@@ -202,6 +202,8 @@
       <script type="module">import {getPricesFromDB} from './jsonScripts/databaseFunctions.js'; window.getPricesFromDB = getPricesFromDB</script>
       <script type="module">import {addProductToDB} from './jsonScripts/databaseFunctions.js';  window.addProductToDB = addProductToDB</script>
       <script type="module">import {getProductFromDB} from './jsonScripts/databaseFunctions.js';  window.getProductFromDB = getProductFromDB</script>
+      <script type="module"> import {getLoginStatusToProfile} from './jsonScripts/profileInfor.js';  window.getLoginStatusToProfile = getLoginStatusToProfile</script>
+
       <script>
         window.onload = () => {
         }

@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 import { getDatabase, ref , onValue, child, set, update, get, push } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js'; 
+import * as firebaseAuth from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyC8C7FZP3oD1cAtjEt_GNi0SqyDRqtO1ps",
@@ -118,6 +119,42 @@ export function getAllProductsFromDB(searchText) {
 }
 
 
+export function addProductToUser(product) {
+  const auth = firebaseAuth.getAuth();
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      addProductToDB(product, user.uid)
+    } else {
+      alert('No hay usuario conectado, inicie sesion primero para añadir un juego');
+    }
+  });
+  
+}
+
+
+export function getCartFromUser() {
+  const auth = firebaseAuth.getAuth();
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      getCartFromDB(user.uid)
+    } else {
+      alert('No hay usuario conectado, inicie sesion primero para añadir un juego');
+    }
+  });
+  
+}
+
+
+export function purgeCartFromUser() {
+  const auth = firebaseAuth.getAuth();
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      purgeCartFromDB(user.uid)
+    } else {
+      alert('No hay usuario conectado, inicie sesion primero para añadir un juego');
+    }
+  });
+}
 
 
 export function addProductToDB(product, id) {

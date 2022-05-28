@@ -102,8 +102,9 @@ export function login () {
     // Push to Firebase Database
     set(ref(database_ref, 'users/' + user.uid + '/last_login'),user_data)
 
-    // DOne
+    // Done
     alert('Inicio de sesion correcto')
+    location.href = "./index.html"
 
   })
   .catch(function(error) {
