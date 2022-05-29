@@ -36,9 +36,9 @@
                 </div>
                 <div class="left hide-on-med-and-down">
                   <ul role="menu" id="nav-mobile" role="menu" >
-                    <li role="menuitem" aria-haspopup="false"><a href="#">Categorías</a></li>
+                    <li role="menuitem" aria-haspopup="false"><a href="./category.html">Categorías</a></li>
                     <li role="menuitem" aria-haspopup="false"><a href="#">Búsqueda</a></li>
-                    <li role="menuitem" aria-haspopup="false"><a href="./noticia.html">Noticias</a></li>
+                    <li role="menuitem" aria-haspopup="false"><a href="./news.html">Noticias</a></li>
                     <li role="menuitem" aria-haspopup="false"><a href="#">Lo más vendido</a></li>
                   </ul>
                 </div>
@@ -65,7 +65,7 @@
                 <div class=" right hide-on-med-and-down">
                   <ul>
                     <li><a tabindex="0" class="waves-effect waves-light btn" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li" onclick="alert(getElementsCountString())"><i class="material-icons">settings</i></a>
-                      <a class="waves-effect waves-light btn" style="margin-left:0px;" onclick='isUserLogged()'><i class="material-icons">account_box</i></a>
+                      <a id="profileButton" class="waves-effect waves-light btn" style="margin-left:0px;" onclick='isUserLogged()'><i class="material-icons">account_box</i></a>
                       <a class="waves-effect waves-light btn" style="margin-left:0px;" href="shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
                     </li>
                   </ul>
@@ -78,7 +78,7 @@
         <ul class="sidenav" id="mobile-demo">
           <li><a href="#">Categorías</a></li>
           <li><a href="#">Búsqueda</a></li>
-          <li><a href="./noticia.html">Noticias</a></li>
+          <li><a href="./news.html">Noticias</a></li>
           <li><a href="#">Lo más vendido</a></li>
           <li>
             <div class="row">
@@ -180,7 +180,7 @@
                           Ark
                         </p>
                         <p class="light-blue-text text-darken-2 flow-text center">
-                          <a tabindex="0" id = "ark-price" role="alert" aria-label="Añade el producto ARK al carrito" onclick="addProductToUser('ARK')" class="waves-effect waves-light btn">placeholder</a>
+                          <a tabindex="0" id = "ark-price" role="alert" aria-label="Añade el producto ARK al carrito" onclick="addProductToUser('ARK');" class="waves-effect waves-light btn">placeholder</a>
                         </p>
                       </div>
 
@@ -308,10 +308,10 @@
               <div class="col l6 s6">
                 <br>
                 <div class="col s12">
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
+                    <a href="./privacy.html" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
+                    <a href="./termsofuse.html" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
+                    <a href="./cookies.html" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
+                    <a href="./employment.html" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
 
                 </div>
                 <div class="col s12">
@@ -371,9 +371,11 @@
             <script type="module"> import {addProductToUser} from './jsonScripts/databaseFunctions.js';  window.addProductToUser = addProductToUser</script>
             <script type="module"> import {getProductFromDB} from './jsonScripts/databaseFunctions.js';  window.getProductFromDB = getProductFromDB</script>
             <script type="module"> import {isUserLogged} from './jsonScripts/profileInfor.js';  window.isUserLogged = isUserLogged</script>
+            <script type="module"> import {isUserLoggedProfileButton} from './jsonScripts/profileInfor.js';  window.isUserLoggedProfileButton = isUserLoggedProfileButton</script>
             <script>
               window.onload = () => {
                 getPricesFromDB();
+                isUserLoggedProfileButton();
                 $(".dropdown-trigger").dropdown();
               }
               $(document).ready(function(){

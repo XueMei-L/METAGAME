@@ -18,7 +18,7 @@
         
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Noticias</title>
+        <title>Perfil</title>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -35,24 +35,22 @@
               <a href="./index.html" style="text-shadow: 2px 2px;"><img src="./img/logo.png" alt="metagame" width="auto" height="64"></a>
               </div>
               <div class="left hide-on-med-and-down">
-                <ul role="menu" id="nav-mobile" role="menu" >
+                <ul role="menu" id="nav-mobile" role="menu">
                   <li role="menuitem" aria-haspopup="false"><a href="#">Categorías</a></li>
                   <li role="menuitem" aria-haspopup="false"><a href="#">Búsqueda</a></li>
-                  <li role="menuitem" aria-haspopup="false"><a href="./noticia.html">Noticias</a></li>
+                  <li role="menuitem" aria-haspopup="false"><a href="./news.html">Noticias</a></li>
                   <li role="menuitem" aria-haspopup="false"><a href="#">Lo más vendido</a></li>
                 </ul>
               </div>
 
-
               <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
-              
               
               <div class="col s3 hide-on-med-and-down">
                 <div class="row">
                   <form class="col s12">
                     <div class="row">
                       <div class="input-field col s10">
-                        <input id="searchBox" type="text" class="validate" placeholder="Introduzca el termino de busqueda">
+                        <input id="searchBox" type="text" class="validate" placeholder="Introduzca el termino de busqueda" onkeydown="processSearch(document.getElementById('searchBox').value)">
                         <label for="searchBox">Búsqueda</label>
                       </div>
                       <div class="input-field col s2">
@@ -78,7 +76,7 @@
       <ul class="sidenav" id="mobile-demo">
         <li><a href="#">Categorías</a></li>
         <li><a href="#">Búsqueda</a></li>
-        <li><a href="./noticia.html">Noticias</a></li>
+        <li><a href="./news.html">Noticias</a></li>
         <li><a href="#">Lo más vendido</a></li>
         <li>
           <div class="row">
@@ -96,90 +94,112 @@
           </div>
         </li>    
       </ul>
+
       <!-- BLOQUE PRINCIPAL -->
+      <div class="row">
+        <h1 class="center" style="color:white">Perfil</h1>     
+        <div class="col s10 offset-s1" style="background-color: #264F89; color:white;">
+          <div class="row" style="background-color: #0a2635; margin:20px;">
+            <div class="divider">
+            </div>
+            <div class="section">
+              <div class="row">
+                <div class="col s11">
+                  <a onclick="userUpdateProfile();" class="waves-effect waves-light btn right">GUARDAR</a>
+                </div>
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                      <h1 class="flow-text">Biografia</h1>
+                    </div>
+                    <div class="input-field col s10 offset-s1">
+                      <textarea id="biography" class="materialize-textarea"></textarea>
+                      <label for="biography">Texto</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="divider">
 
-      <div class="row" >
-          <table style="background-color: #264F89; color:white">
-            <thead>
-              <tr>
-                  <h1 class="center" style="color:white">Noticias</h1>
-              </tr>
-            </thead>
-    
-            <tbody>
-              <tr>
-                <td>
-                  <div class="col s10 offset-s1">
-                    <div class="card horizontal">
-                      <div class="card-image" >
-                        <img src="./img/apex-featured-image-saviors-season.jpg.adapt.crop191x100.1200w.jpg">
-                      </div>
-                      <div class="card-stacked">
-                        <div class="card-content" style="background-color: #171D2D; color:white" >
-                          <p style="font-size:30px;">Apex Legends Season 13 Patch Notes Finally Nerf Fortified Legends</p>
-                          <p>Ahead of Apex Legends' 13th season launch on May 10, Respawn has released patch notes detailing the changes that will arrive alongside the new season.</p>
+            </div>
+            <div class="section">
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                      <h1 class="flow-text">Informacion Personal</h1>
+                    </div>
+                    <div class="input-field col s10 offset-s1">
+                      <h1 class="flow-text">Nombre de usuario</h1>
+                      <div class="input-field col s12">
+                        <div class="input-field col s12">
+                          <input placeholder="Ej: UserXMRJ" id="username" type="text">
+                          <label style="color: white;" for="username">Username</label>
                         </div>
-                        <a href="./news/new01.html" class="waves-effect waves-teal btn-flat center" style="background-color: #0A2635; color:white">READMORE</a>
+                      </div>
+                    </div>
+                    <div class="input-field col s10 offset-s1">
+                      <h1 class="flow-text">Foto de perfil</h1>
+                      <div class="input-field col s12">
+                        <form>
+                          <div class="file-field input-field">
+                            <div class="btn">
+                              <span>Choose File</span>
+                              <input type="file" id="pfpImageUpload" name="filename">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text">
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="input-field col s10 offset-s1">
+                      <h1 class="flow-text">Fecha de nacimiento</h1>
+                      <div class="input-field col s12">
+                        <div class="input-field col s12">
+                          <input id="birthdate" type="date">
+                          <label style="color: rgba(255, 255, 255, 0.479);" for="birthdate">Año de nacimiento</label>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <div class="col s10 offset-s1">
-                    <div class="card horizontal">
-                      <div class="card-image" >
-                        <img src="./img/new-lol2.jpg">
-                      </div>
-                      <div class="card-stacked">
-                        <div class="card-content" style="background-color: #0A2635; color:white" >
-                          <p style="font-size:30px;">League of Legends: Set de habilidades de Bel'Veth y fecha de lanzamiento</p>
-                          <p>Riot Games ha compartido oficialmente el set completo de habilidades de Bel'Veth, la nueva campeona de LoL. El personaje por fin tiene fecha de lanzamiento para España y todo el mundo.</p>
-                        </div>
-                        <a href="./news/new02.html" class="waves-effect waves-teal btn-flat center" style="background-color: #0A2635; color:white">READMORE</a>
-                      </div>
+                </form>
+              </div>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                      <h1 class="flow-text">Extra</h1>
+                    </div>
+                    <div class="input-field col s10 offset-s1">
+                      <a class="waves-effect waves-light btn-large" href="./login.html"><i class="material-icons left">account_box</i>Borrar todos los comentarios</a>
+                    </div>
+                    <div class="col s11">
+                      <a onclick="userUpdateProfile();" class="waves-effect waves-light btn right">GUARDAR</a>
                     </div>
                   </div>
-                </td>
-              </tr>
-              
-              <tr>
-                <td>
-                  <div class="col s10 offset-s1">
-                    <div class="card horizontal">
-                      <div class="card-image" >
-                        <img src="./img/new-cod.jpg">
-                      </div>
-                      <div class="card-stacked">
-                        <div class="card-content" style="background-color: #0A2635; color:white" >
-                          <p style="font-size:30px;">Call of Duty Modern Warfare 2: Se filtran ediciones, beta y bonus de reserva</p>
-                          <p>Los 'dataminers' han descubierto que habrá una edición 'cross-gen' o multigeneración, por lo que saldrá también PS4 y Xbox One el 28 de octubre junto a PC, PS5, y Xbox Series.</p>
-                        </div>
-                        <a href="./news/new03.html" class="waves-effect waves-teal btn-flat center" style="background-color: #0A2635; color:white">READMORE</a>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
-
-      </div>
-          
+                </form>
+              </div>
+            </div>
+          </div>
+          <div id="products-history">
+          </div>
         </div>
-        <footer class="page-footer" role="contentinfo" style="background-color:#141E2B;">
+      <footer class="page-footer" role="contentinfo" style="background-color:#141E2B;">
           <div class="container">
             <div class="row" role="row">
               <div class="col l6 s6">
                 <br>
                 <div class="col s12">
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
+                    <a href="./privacy.html" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
+                    <a href="./termsofuse.html" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
+                    <a href="./cookies.html" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
+                    <a href="./employment.html" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
 
                 </div>
                 <div class="col s12">
@@ -228,15 +248,20 @@
           <!-- <div> -->
         </footer>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-          <script src="./jsonScripts/processSearch.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
           <script type="module">import {getPricesFromDB} from './jsonScripts/databaseFunctions.js'; window.getPricesFromDB = getPricesFromDB</script>
           <script type="module">import {addProductToDB} from './jsonScripts/databaseFunctions.js';  window.addProductToDB = addProductToDB</script>
           <script type="module">import {getProductFromDB} from './jsonScripts/databaseFunctions.js';  window.getProductFromDB = getProductFromDB</script>
           <script type="module">import {getCartFromDB} from './jsonScripts/databaseFunctions.js'; window.getCartFromDB = getCartFromDB</script>
           <script type="module">import {purgeCartFromDB} from './jsonScripts/databaseFunctions.js'; window.purgeCartFromDB = purgeCartFromDB</script>
+          <script type="module">import {showProfileData} from './jsonScripts/profileInfor.js'; window.showProfileData = showProfileData</script>
+          <script type="module">import {signOutProfile} from './jsonScripts/profileInfor.js'; window.signOutProfile = signOutProfile</script>
+          <script type="module">import {showType} from './jsonScripts/profileInfor.js'; window.showType = showType</script>
+          <script type="module">import {loadPFP} from './jsonScripts/profileInfor.js'; window.loadPFP = loadPFP</script>
+          <script type="module">import {userUpdateProfile} from './jsonScripts/profileInfor.js'; window.userUpdateProfile = userUpdateProfile</script>
           <script>
             window.onload = () => {
+                showProfileData();
             }
             $(document).ready(function(){
               $('.sidenav').sidenav();

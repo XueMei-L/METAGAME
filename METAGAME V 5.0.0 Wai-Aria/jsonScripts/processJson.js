@@ -11,9 +11,3 @@ function processJson(directory) {
     })
 } 
 
-
-function checkPassword(pass1, pass2) {
-  if (pass1 !== pass2) {
-    $('#err-msg').html('Las contraseñas no coinciden')
-  }
-}

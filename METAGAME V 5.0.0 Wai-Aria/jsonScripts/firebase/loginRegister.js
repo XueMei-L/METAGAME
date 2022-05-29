@@ -13,62 +13,71 @@ const firebaseConfig = {
   appId: "1:77098664441:web:fc5001254ba7f8eeffbd28"
 };
 
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 // Set up our register function
-export function register () {
-  const app = initializeApp(firebaseConfig);
-  // Initialize variables
-  console.log(firebaseAuth);
-  const auth = firebaseAuth.getAuth();
-  // Get all our input fields
+export async function register () {
   let email = $("#email").val()
   let password = $("#password").val()
+  let repeatPassword = $("#re-password").val()
   let username = $("#username").val()
   let dni = $("#dni").val()
   let birthdate = $("#birthdate").val()
 
-  // Validate input fields
-  // if (validate_email(email) == false || validate_password(password) == false) {
-  //   alert('correo invalido')
-  //   return
-  //   // Don't continue running the code
-  // }
-  // if (validate_password(password) == false) {
-  //   alert('contraseña invalida')
-  //   return
-  //   // Don't continue running the code
-  // }
-  // if (validate_field(username) == false) {
-  //   alert('usuario invalido')
-  //   return
-  // }
- 
-  // Move on with Auth
-  firebaseAuth.createUserWithEmailAndPassword(auth, email, password)
-  .then(function() {
-    // Declare user variable
-    var user = auth.currentUser
-    // Add this user to Firebase Database
-    var database_ref = getDatabase();
-    // Create User data
+  if (validate_email(email) == false) {
+    alert('El campo correo no tiene un correo valido')
+    return
+  }
+  if (validate_field(username) == false) {
+    alert('Se tiene que introducir un usuario')
+    return
+  }
+  if (validate_field(birthdate) == false) {
+    alert('Se tiene que introducir la fecha de nacimiento')
+    return
+  }
+  if (validate_dni(dni) == false) {
+    alert('Se tiene que introducir un DNI valido (12345678A)')
+    return
+  }
+  if (validate_password(password) == false) {
+    alert('Contraseña invalida, debe tener longitud mayor de 6')
+    return
+  }
+  if (validate_repeatPassword(password, repeatPassword) == false) {
+    alert('Las contraseñas no coinciden')
+    return
+  }
+  let database_ref = getDatabase();
+  const auth = firebaseAuth.getAuth();
+  await firebaseAuth.createUserWithEmailAndPassword(auth, email, password)
+  .then(async function() {
+    let user = auth.currentUser
     let discount = 0;
-    var user_data = {
+    let biography = '';
+    let payment_method = {
+      method : 'none',
+      accountNumber: ''
+    }
+    let user_data = {
       email : email,
       username : username,
       discount: discount,
       dni : dni,
       birthdate: birthdate,
+      payment_method : payment_method,
+      bio : biography,
       last_login : Date.now()
     }
-    console.log(user.uid)
-    set(ref(database_ref, 'users/' + user.uid),user_data)
+    await set(ref(database_ref, 'users/' + user.uid),user_data);
 
-    // DOne
-    alert('User Created!!')
+    if(!alert('Usuario creado correctamente, se le redirigira al inicio de sesion')) {
+      location.href = "./login.html"
+    }
   })
   .catch(function(error) {
     // Firebase will use this to alert of its errors
-    var error_code = error.code
     var error_message = error.message
 
     alert(error_message)
@@ -76,18 +85,16 @@ export function register () {
 }
 
 // Set up our login function
-export function login () {
-  const app = initializeApp(firebaseConfig);
+export async function login () {
   // Initialize variables
   const auth = firebaseAuth.getAuth();
-  const database = getDatabase();
   // Get all our input fields
   let email = $("#email").val()
   let password = $("#password").val()
 
 
-  firebaseAuth.signInWithEmailAndPassword(auth, email, password)
-  .then(function(userCredential) {
+  await firebaseAuth.signInWithEmailAndPassword(auth, email, password)
+  .then(async function(userCredential) {
     // Declare user variable
     var user = auth.currentUser
 
@@ -100,16 +107,15 @@ export function login () {
     }
 
     // Push to Firebase Database
-    set(ref(database_ref, 'users/' + user.uid + '/last_login'),user_data)
+    await set(ref(database_ref, 'users/' + user.uid + '/last_login'),user_data)
 
     // Done
-    alert('Inicio de sesion correcto')
-    location.href = "./index.html"
+    if(!alert('Inicio de sesion correcto')) {
+      location.href = "./index.html"
+    }
 
   })
   .catch(function(error) {
-    // Firebase will use this to alert of its errors
-    var error_code = error.code
     var error_message = error.message
 
     alert(error_message)
@@ -121,11 +127,9 @@ export function login () {
 
 // Validate Functions
 function validate_email(email) {
-  if (email.length > 6) {
-    // Email is good
+  if (email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
     return true
   } else {
-    // Email is not good
     return false
   }
 }
@@ -138,6 +142,25 @@ function validate_password(password) {
     return true
   }
 }
+
+function validate_repeatPassword(password, repeatpassword) {
+  // Firebase only accepts lengths greater than 6
+  if (password !== repeatpassword) {
+    return false
+  } else {
+    return true
+  }
+}
+
+function validate_dni(dni) {
+  let nifRegex = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/i;
+  if (!(dni.match(nifRegex))) {
+    return false
+  } else {
+    return true
+  }
+} 
+
 
 function validate_field(field) {
   if (field == null) {

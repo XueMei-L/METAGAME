@@ -38,7 +38,7 @@
                 <ul role="menu" id="nav-mobile" role="menu">
                   <li role="menuitem" aria-haspopup="false"><a href="#">Categorías</a></li>
                   <li role="menuitem" aria-haspopup="false"><a href="#">Búsqueda</a></li>
-                  <li role="menuitem" aria-haspopup="false"><a href="../noticia.html">Noticias</a></li>
+                  <li role="menuitem" aria-haspopup="false"><a href="../news.html">Noticias</a></li>
                   <li role="menuitem" aria-haspopup="false"><a href="#">Lo más vendido</a></li>
                 </ul>
               </div>
@@ -76,7 +76,7 @@
       <ul class="sidenav" id="mobile-demo">
         <li><a href="#">Categorías</a></li>
         <li><a href="#">Búsqueda</a></li>
-        <li><a href="./noticia.html">Noticias</a></li>
+        <li><a href="./news.html">Noticias</a></li>
         <li><a href="#">Lo más vendido</a></li>
         <li>
           <div class="row">
@@ -100,63 +100,33 @@
         <h1 class="center" style="color:white">Perfil</h1>     
         <div class="col s10 offset-s1" style="background-color: #264F89; color:white;">
           <div class="row valign-wrapper" style="background-color: #0a2635; margin:20px;">
-            <div class="col s3">
+            <div class="col s2">
               <img id="pfp" class="responsive-img" src="./img/nopfp.png">
             </div>
             <div class="col s9">
-                <p id ='database-username' style="font-size:35px;">Username01</p>
-                <p id ='database-dni'>There is a dni</p>
-                <p id ='database-email'style="font-size:15px;">username01@gmail.com</p>
-                <p id ='database-location' style="font-size:15px;">España</p>
-                <p id ='database-birthdate' style="font-size:15px;">birthdate</p>
-                <p style="font-size:15px;">un desarrollador de videojuegos que no juega</p><br>
-                <a class="waves-effect waves-light btn">Editar Perfil</a>
-                <a onclick="signOutProfile()" class="waves-effect waves-light btn">Cerrar sesion</a>
-                <form><br>
-                  <div class="file-field input-field">
-                    <div class="btn">
-                      <span>Choose File</span>
-                      <input type="file" id="pfpImageUpload" name="filename">
-                    </div>
-                    <div class="file-path-wrapper col s2">
-                      <input class="file-path validate" type="text">
-                    </div>
-                    <a onclick="loadPFP(); alert('Imagen subida, se recargara la página');" class="waves-effect waves-light btn">Submit</a>
-                  </div><br><br>
-                </form>
+              <p id ='database-username' style="font-size:35px;"> </p>
+              <p id ='database-dni'> </p>
+              <p id ='database-email'style="font-size:15px;"> </p>
+              <p id ='database-location' style="font-size:15px;">España</p>
+              <p id ='database-birthdate' style="font-size:15px;"> </p>
+              <p id ='database-bio'style="font-size:15px;"> </p><br>
+              <a href="./editprofile.html" class="waves-effect waves-light btn">Editar Perfil</a>
+              <a onclick="signOutProfile()" class="waves-effect waves-light btn">Cerrar sesion</a>
             </div>
+          </div><br>
+          <div id="products-history">
           </div>
-              <table style="background-color: #264F89; color:white">
-                  <thead>
-                  <tr>
-                      <p style="font-size:30px;">Juegos comprados</p>
-                  </tr>
-                  </thead>
-          
-                  <tbody>
-                  <tr>
-                      <td>
-                      <p>Elden Ring</p>
-                      </td>
-                  </tr>
-
-                  </tbody>
-              </table>
         </div>
-      </div>
-        
-      
       <footer class="page-footer" role="contentinfo" style="background-color:#141E2B;">
           <div class="container">
             <div class="row" role="row">
               <div class="col l6 s6">
                 <br>
                 <div class="col s12">
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
-
+                    <a href="./privacy.html" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
+                    <a href="./termsofuse.html" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
+                    <a href="./cookies.html" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
+                    <a href="./employment.html" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
                 </div>
                 <div class="col s12">
                   <svg height="30" width="30">
@@ -216,7 +186,7 @@
           <script type="module">import {loadPFP} from './jsonScripts/profileInfor.js'; window.loadPFP = loadPFP</script>
           <script>
             window.onload = () => {
-                showProfileData(2);
+                showProfileData();
             }
             $(document).ready(function(){
               $('.sidenav').sidenav();

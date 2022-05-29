@@ -38,7 +38,7 @@
                 <ul role="menu" id="nav-mobile" role="menu" >
                   <li role="menuitem" aria-haspopup="false"><a href="#">Categorías</a></li>
                   <li role="menuitem" aria-haspopup="false"><a href="#">Búsqueda</a></li>
-                  <li role="menuitem" aria-haspopup="false"><a href="../noticia.html">Noticias</a></li>
+                  <li role="menuitem" aria-haspopup="false"><a href="../news.html">Noticias</a></li>
                   <li role="menuitem" aria-haspopup="false"><a href="#">Lo más vendido</a></li>
                 </ul>
               </div>
@@ -121,7 +121,7 @@
                       Mundo abierto
                     </div>
                     <div class="right">
-                      <a id="buy-button" class="waves-effect waves-light btn-large" onclick="addProductToUser('ARK')"><i class="material-icons left">add_shopping_cart</i>24.99€ Comprar</a>
+                      <a id="buy-button" class="waves-effect waves-light btn-large" onclick="addProductToUser('ARK')"><i class="material-icons left">add_shopping_cart</i>Comprar</a>
                     </div>
                   </div><br><br><br>
                 </div>
@@ -263,10 +263,10 @@
               <div class="col l6 s6">
                 <br>
                 <div class="col s12">
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
+                  <a href="../privacy.html" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
+                  <a href="../termsofuse.html" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
+                  <a href="../cookies.html" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
+                  <a href="../employment.html" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
 
                 </div>
                 <div class="col s12">
@@ -322,10 +322,11 @@
           <script type="module"> import {getAllCommentsFromDB} from '../jsonScripts/databaseFunctions.js';  window.getAllCommentsFromDB = getAllCommentsFromDB</script>
           <script type="module"> import {getProductFromDB} from '../jsonScripts/databaseFunctions.js';  window.getProductFromDB = getProductFromDB</script>
           <script type="module"> import {deleteCommentFromUser} from '../jsonScripts/databaseFunctions.js';  window.deleteCommentFromUser = deleteCommentFromUser</script>
+          <script type="module"> import {getProductPriceToBuyButton} from '../jsonScripts/databaseFunctions.js';  window.getProductPriceToBuyButton = getProductPriceToBuyButton</script>
           <script>
             window.onload = () => {
               getAllCommentsFromDB('ARK');
-
+              getProductPriceToBuyButton('ARK');
             }
             $(document).ready(function(){
               $('.sidenav').sidenav();

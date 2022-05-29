@@ -65,9 +65,12 @@ export function getCartFromDB(user) {
     let tableTitle = '<table class=\'centered\' highlight> <thead> <tr> <th>Nº</th> <th>Product</th> <th>Item Price</th> </tr> </thead> <tbody> ';
     
     current_cart.forEach((item) => {
-      tableTitle += '<tr> <td>' + numOfProduct  + '</td> <td>' + item.product + '</td> <td>' +  ` ${item.price}` + ' €' + '</td></tr>'
-      //wholeString += '<p class="flow-text">' + numOfProduct + ' | '   + item.product + ` ${item.price}`  + '€' + '</p>'
-      totalPrice += item.price;
+      if (item.price !== 'Gratis') {
+        tableTitle += '<tr> <td>' + numOfProduct  + '</td> <td>' + item.product + '</td> <td>' +  ` ${item.price}` + ' €' + '</td></tr>'
+        totalPrice += item.price;
+      } else {
+        tableTitle += '<tr> <td>' + numOfProduct  + '</td> <td>' + item.product + '</td> <td>' +  ` ${item.price}` + '</td></tr>'
+      }
       numOfProduct++;
     });
     tableTitle += '</tbody> </table>';
@@ -75,6 +78,7 @@ export function getCartFromDB(user) {
     $("#cart-Price").html('Precio Total: '+totalPrice.toFixed(2) + ' €');
   
   }).catch((error) => {
+    console.log(error)
     $("#cart-Paragraph-Title").text('El carro esta vacio');
     // alert('El carro esta vacio')
   });
@@ -85,7 +89,6 @@ export function getCartFromDB(user) {
 export async function getProductFromDB(name) {
   const db = getDatabase();
   let price = 0;
-  alert(name + ' añadido');
   const currentDB = ref(getDatabase());
   await get(child(currentDB, 'products/' + name)).then((snapshot) => {
     price = snapshot.val().price;
@@ -96,6 +99,18 @@ export async function getProductFromDB(name) {
   //console.log(price);
   return price;
 }
+
+export async function getProductPriceToBuyButton(game) {
+  let price = await getProductFromDB(game);
+  if (price == "Gratis"){
+    $("#buy-button").html('<i class="material-icons left">add_shopping_cart</i>' + price + ' COMPRAR');
+  } else {
+    $("#buy-button").html('<i class="material-icons left">add_shopping_cart</i>' + price + '€ COMPRAR');
+  }
+  
+}
+
+
 
 export function getAllProductsFromDB(searchText) {
   localStorage.removeItem("searchText");
@@ -156,6 +171,49 @@ export function addProductToUser(product) {
   });
   
 }
+export function addCartToUserProductHistory() {
+  const auth = firebaseAuth.getAuth();
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      addCartToDBProductHistory(user.uid);
+    } else {
+      alert('No hay usuario conectado, inicie sesion primero para comprar');
+    }
+  });
+}
+
+export async function addCartToDBProductHistory(id) {
+  const db = getDatabase();
+  const currentDB = ref(getDatabase());
+
+  get(child(currentDB, `users/${id}/current_cart`)).then((snapshot) => {
+    let current_cart = snapshot.val()
+    get(child(currentDB, `users/${id}/product_history`)).then(async (snapshot) => {
+      let product_history = snapshot.val()
+      product_history = product_history.concat(current_cart);
+      let updates = {};
+      updates['users/' + `${id}` + '/product_history'] = product_history;
+      await update(ref(db), updates)
+      current_cart = []
+      updates = {};
+      updates['users/' + `${id}` + '/current_cart'] = current_cart;
+      update(ref(db), updates)
+      location.reload();
+    }).catch(async(error) => {
+      let updates = {};
+      let product_history = current_cart;
+      updates['users/' + `${id}` + '/product_history'] = product_history;
+      await update(ref(db), updates);
+      current_cart = []
+      updates = {};
+      updates['users/' + `${id}` + '/current_cart'] = current_cart;
+      update(ref(db), updates)
+      location.reload();
+    });
+  });
+}
+
+
 
 export async function addProductToDB(product, id) {
   const db = getDatabase();
@@ -182,6 +240,7 @@ export async function addProductToDB(product, id) {
     updates['users/' + id + '/current_cart'] = current_cart;
     update(ref(db), updates);
   });
+  alert(product + ' añadido')
 }
 
 
@@ -200,7 +259,8 @@ export function addComment(page, comment) {
         let comments = snapshot.val()
         comments.push({
           "uid":user.uid,
-          "comment": comment
+          "comment": comment,
+          "date" : Date.now()
         });
           const updates = {};
           updates['comments/' + `${page}`] = comments;
@@ -210,7 +270,8 @@ export function addComment(page, comment) {
           let comments = [];
           comments.push({
             "uid":user.uid,
-            "comment": comment
+            "comment": comment,
+            "date" : Date.now()
           });
           updates['comments/' + `${page}`] = comments;
           update(ref(db), updates);
@@ -220,7 +281,8 @@ export function addComment(page, comment) {
         let comments = snapshot.val()
         comments.push({
           "page": page,
-          "comment": comment
+          "comment": comment,
+          "date" : Date.now()
         });
           const updates = {};
           updates['users/' + `${user.uid}` + '/comments'] = comments;
@@ -231,7 +293,8 @@ export function addComment(page, comment) {
           let comments = [];
           comments.push({
             "page": page,
-            "comment": comment
+            "comment": comment,
+            "date" : Date.now()
           });
           updates['users/' + `${user.uid}` + '/comments'] = comments;
           update(ref(db), updates);
@@ -252,6 +315,7 @@ export function getAllCommentsFromDB(page) {
     comments.forEach((entry, index) => {
       let userID = entry.uid;
       let comment = entry.comment;
+      let date = new Date(entry.date).toLocaleString('es-ES', { timeZone: 'Atlantic/Canary' });
       let html = '';
       get(child(currentDB, `users/${userID}`)).then((snapshot) => {
         let dbUsername = snapshot.val();
@@ -259,9 +323,9 @@ export function getAllCommentsFromDB(page) {
           const auth = firebaseAuth.getAuth();
           auth.onAuthStateChanged(function(user) {
             if (user.uid === userID) {
-              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="../img/nopfp.png" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p style="font-size:15px;">${comment}</p><br><a onclick="deleteCommentFromUser('${page}', ${index})" class="waves-effect waves-light btn">Eliminar</a></span></div> </div></div></div>` + commentsBlock;
+              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="../img/nopfp.png" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p class="right" style="font-size:15px;">${comment}</p></p><p style="font-size:15px;">${date}</p><br><a onclick="deleteCommentFromUser('${page}', ${index})" class="waves-effect waves-light btn">Eliminar</a></span></div> </div></div></div>` + commentsBlock;
             } else {
-              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="../img/nopfp.png" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p style="font-size:15px;">${comment}</p></span></div> </div></div></div>` + commentsBlock;
+              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="../img/nopfp.png" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p class="right" style="font-size:15px;">${comment}</p></span></div> </div></div></div>` + commentsBlock;
             }
             $("#comments-db").html(html + commentsBlock);
           });        
@@ -269,9 +333,9 @@ export function getAllCommentsFromDB(page) {
           const auth = firebaseAuth.getAuth();
           auth.onAuthStateChanged(function(user) {
             if (user.uid === userID) {
-              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="${dbUsername.pfp}" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p style="font-size:15px;">${comment}</p><br><a onclick="deleteCommentFromUser('${page}', ${index})" class="waves-effect waves-light btn">Eliminar</a></span></div> </div></div></div>` + commentsBlock;
+              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="${dbUsername.pfp}" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p style="font-size:15px;">${comment}</p></p><p class="right" style="font-size:15px;">${date}</p><br><a onclick="deleteCommentFromUser('${page}', ${index})" class="waves-effect waves-light btn">Eliminar</a></span></div> </div></div></div>` + commentsBlock;
             } else {
-              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="${dbUsername.pfp}" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p style="font-size:15px;">${comment}</p></span></div> </div></div></div>` + commentsBlock;
+              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="${dbUsername.pfp}" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p style="font-size:15px;">${comment}</p></p><p class="right" style="font-size:15px;">${date}</p></span></div> </div></div></div>` + commentsBlock;
             }
             $("#comments-db").html(html + commentsBlock);
           });
@@ -303,7 +367,9 @@ export function deleteCommentFromUser(page, index) {
           comments.splice(index,1);
           //console.log(comments);
           set(ref(database_ref, `users/${userID}/comments/`),comments);
-          location.reload();
+          if(!alert('Se ha borrado el comentario, se recargara la página')) {
+            location.reload();
+          }
         }
       });
     });

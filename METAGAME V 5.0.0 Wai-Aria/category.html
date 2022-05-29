@@ -18,7 +18,7 @@
         
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Stardew Valley</title>
+        <title>Noticias</title>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -26,18 +26,19 @@
     
     <body style="background-color:#0a2635;">
       <!-- La cabecera de la pagina web -->
+      <!-- La cabecera de la pagina web -->
       <div role="navigation" aria-label="Barra de navegacion" class="navbar-fixed">
         <nav style="background-color:#264F89;">
           <div class="nav-wrapper">
             <div class="row" role="row">
-              <div class="s1">
-              <a href="../index.html" style="text-shadow: 2px 2px;" class="col s1"><img src="../img/logo.png" alt="metagame" width="auto" height="64"></a>
+              <div class="col s1">
+              <a href="./index.html" style="text-shadow: 2px 2px;"><img src="./img/logo.png" alt="metagame" width="auto" height="64"></a>
               </div>
               <div class="left hide-on-med-and-down">
                 <ul role="menu" id="nav-mobile" role="menu" >
                   <li role="menuitem" aria-haspopup="false"><a href="#">Categorías</a></li>
                   <li role="menuitem" aria-haspopup="false"><a href="#">Búsqueda</a></li>
-                  <li role="menuitem" aria-haspopup="false"><a href="../news.html">Noticias</a></li>
+                  <li role="menuitem" aria-haspopup="false"><a href="./news.html">Noticias</a></li>
                   <li role="menuitem" aria-haspopup="false"><a href="#">Lo más vendido</a></li>
                 </ul>
               </div>
@@ -55,17 +56,17 @@
                         <label for="searchBox">Búsqueda</label>
                       </div>
                       <div class="input-field col s2">
-                        <a href="" onclick ="processSearch(document.getElementById('searchBox').value)"><i class="material-icons">search</i></a>
+                        <a href="./searchResults.html" onclick ="processSearch(document.getElementById('searchBox').value)"><i class="material-icons">search</i></a>
                       </div>
                     </div>
                   </form>
                 </div>
               </div>
-              <div class="right hide-on-med-and-down">
+              <div class=" right hide-on-med-and-down">
                 <ul>
                   <li><a tabindex="0" class="waves-effect waves-light btn" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li" onclick="alert(getElementsCountString())"><i class="material-icons">settings</i></a>
-                    <a class="waves-effect waves-light btn" style="margin-left:0px;" href="../login.html"><i class="material-icons">account_box</i></a>
-                    <a class="waves-effect waves-light btn" style="margin-left:0px;" href="../shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
+                    <a class="waves-effect waves-light btn" style="margin-left:0px;" href="./login.html"><i class="material-icons">account_box</i></a>
+                    <a class="waves-effect waves-light btn" style="margin-left:0px;" href="shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
                   </li>
                 </ul>
             </div>
@@ -77,7 +78,7 @@
       <ul class="sidenav" id="mobile-demo">
         <li><a href="#">Categorías</a></li>
         <li><a href="#">Búsqueda</a></li>
-        <li><a href="#">Noticias</a></li>
+        <li><a href="./news.html">Noticias</a></li>
         <li><a href="#">Lo más vendido</a></li>
         <li>
           <div class="row">
@@ -88,7 +89,7 @@
                   <label for="sideNavSearchBox">Búsqueda</label>
                 </div>
                 <div class="input-field col s1">
-                  <a class="right" href="#" onclick = "processSearch(document.getElementById('sideNavSearchBox').value)"><i class="material-icons prefix ">search</i></a>
+                  <a class="right" href="./searchResults.html" onclick ="processSearch(document.getElementById('sideNavSearchBox').value)"><i class="material-icons prefix ">search</i></a>
                 </div>
               </div>
             </form>
@@ -98,75 +99,37 @@
       <!-- BLOQUE PRINCIPAL -->
 
       <div class="row" >
-        <h1 class="center" style="color:white">Stardew Valley</h1>
-        <div class="col s10 offset-s1" style="background-color: #264F89;"><br><br>
-          <div class="col s10 offset-s1">
-            <div class="row">
-              <div class="col s12" >
-                <div class="video-container">
-                  <iframe src="https://www.youtube.com/embed/ot7uXNQskhs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-              </div>
-              <div class="col s12" style="color:white">
-                <p style="font-size:20px; color:white">Acabas de heredar la vieja parcela agrícola de tu abuelo de Stardew Valley. Decides partir hacia una nueva vida con unas herramientas usadas y algunas monedas. ¿Te ves capaz de vivir de la tierra y convertir estos campos descuidados en un hogar próspero?</p>
-                <div class="row" >
-                  <div class="col s12">
-                    <br>
-                    <div class="chip z-depth-2">
-                      Simulador agrícola
-                    </div>
-                    <div class="chip z-depth-2">
-                      Simulador de vida
-                    </div>
-                    <div class="chip z-depth-2">
-                      Pixelados
-                    </div>
-                    <div class="right">
-                      <a id="buy-button" class="waves-effect waves-light btn-large" onclick="addProductToUser('Stardew Valley')"><i class="material-icons left">add_shopping_cart</i>Comprar</a>
-                    </div>
-                  </div><br><br><br>
-                </div>
-              </div>
-              <div class="col s12">
-                <div class="carousel" data-indicators="true">
-                  <a class="carousel-item" href="#one!"><img src="../img/"></a>
-                  <a class="carousel-item" href="#two!"><img src="../img/"></a>
-                  <a class="carousel-item" href="#three!"><img src="../img/"></a>
-                  <a class="carousel-item" href="#four!"><img src="../img/"></a>
-                  <a class="carousel-item" href="#five!"><img src="../img/"></a>
-                </div>
-              </div>
-              <div class="col s12" style="color:white"><br><br>
-                <p id="descripcion" style="font-size:20px;">
-                  Acabas de heredar la vieja parcela agrícola de tu abuelo de Stardew Valley. Decides partir hacia una nueva vida con unas herramientas usadas y algunas monedas. ¿Te ves capaz de vivir de la tierra y convertir estos campos descuidados en un hogar próspero? ¡Crea la granja de tus sueños! Constrúyela desde cero en una de las cinco configuraciones del mapa. ¡Domina tu habilidad con la ganadería! Cría animales, siembra cultivos y fabrica maquinaria útil entre muchas más cosas. ¡Únete a la comunidad local! Entabla amistad con más de 30 habitantes de Pelican Town. ¡Personaliza a tu granjero! Podrás elegir entre cientos de opciones de personalización de personajes. ¡Instálate y empieza a formar una familia! Comparte tu vida en la granja con uno de los doce personajes con los que podrás tener una relación. ¡Explora grandes y misteriosas cuevas! Encuentra monstruos peligrosos y tesoros valiosos.
-                </p>
-                <p style="font-size:20px;">
-                  Simulación en múltiples niveles Es fácil empezar a construir tu ciudad desde abajo, pero dominar esto no es tarea fácil. Encarna al alcalde de tu ciudad y enfréntate a unos requisitos vitales para el equilibrio, como la educación, el agua, la electricidad, la policía, el parque de bomberos, el sistema de salud y muchas más cosas, todo dentro del sistema económico real de tu ciudad. Los ciudadanos de tu ciudad reaccionan rápida y seriamente, con gran autenticidad, a una gran variedad de escenarios de juego.
-                </p>
-                <br>
-              </div>
-
-              <div class="col s12 z-depth-5" style="background-color: #142c4f; color:white;">
-                <h2 style="margin:10px; color:white;">Comentarios</h2><br>
-                <div class="col s10 offset-s1">
-                  <div class="card blue-grey darken-1">
-                    <div class="card-content white-text" style="background-color: #ffffff;">
-                      <div class="input-field col s12">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Añadir un comentario</label>
+          <table style="background-color: #264F89; color:white">
+            <thead>
+              <tr>
+                  <h1 class="center" style="color:white">Categorías</h1>
+              </tr>
+            </thead>
+    
+            <tbody>
+              <tr>
+                <td>
+                  <div class="col s10 offset-s1">
+                    <div class="card horizontal">
+                      <div class="card-image" >
+                        <img src="./img/apex-featured-image-saviors-season.jpg.adapt.crop191x100.1200w.jpg">
                       </div>
-                      <a href="#!" class="btn waves-effect waves-teal" onclick ="addComment('Stardew Valley', document.getElementById('textarea1').value)">Enviar</a>
+                      <div class="card-stacked">
+                        <div class="card-content" style="background-color: #171D2D; color:white" >
+                          <p style="font-size:30px;">Apex Legends Season 13 Patch Notes Finally Nerf Fortified Legends</p>
+                          <p>Ahead of Apex Legends' 13th season launch on May 10, Respawn has released patch notes detailing the changes that will arrive alongside the new season.</p>
+                        </div>
+                        <a href="./news/new01.html" class="waves-effect waves-teal btn-flat center" style="background-color: #0A2635; color:white">READMORE</a>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </td>
+              </tr>
 
-                <div>
-                  <p id="comments-db"><p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>          
+
+            </tbody>
+          </table>
+
       </div>
           
         </div>
@@ -176,10 +139,10 @@
               <div class="col l6 s6">
                 <br>
                 <div class="col s12">
-                    <a href="../privacy.html" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
-                    <a href="../termsofuse.html" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
-                    <a href="../cookies.html" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
-                    <a href="../employment.html" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
+                    <a href="./privacy.html" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
+                    <a href="./termsofuse.html" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
+                    <a href="./cookies.html" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
+                    <a href="./employment.html" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
 
                 </div>
                 <div class="col s12">
@@ -228,25 +191,18 @@
           <!-- <div> -->
         </footer>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+          <script src="./jsonScripts/processSearch.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-          <script type="module"> import {addProductToUser} from '../jsonScripts/databaseFunctions.js';  window.addProductToUser = addProductToUser</script>
-          <script type="module"> import {addComment} from '../jsonScripts/databaseFunctions.js';  window.addComment = addComment</script>
-          <script type="module"> import {getAllCommentsFromDB} from '../jsonScripts/databaseFunctions.js';  window.getAllCommentsFromDB = getAllCommentsFromDB</script>
-          <script type="module"> import {getProductFromDB} from '../jsonScripts/databaseFunctions.js';  window.getProductFromDB = getProductFromDB</script>
-          <script type="module"> import {deleteCommentFromUser} from '../jsonScripts/databaseFunctions.js';  window.deleteCommentFromUser = deleteCommentFromUser</script>
-          <script type="module"> import {getProductPriceToBuyButton} from '../jsonScripts/databaseFunctions.js';  window.getProductPriceToBuyButton = getProductPriceToBuyButton</script>
+          <script type="module">import {getPricesFromDB} from './jsonScripts/databaseFunctions.js'; window.getPricesFromDB = getPricesFromDB</script>
+          <script type="module">import {addProductToDB} from './jsonScripts/databaseFunctions.js';  window.addProductToDB = addProductToDB</script>
+          <script type="module">import {getProductFromDB} from './jsonScripts/databaseFunctions.js';  window.getProductFromDB = getProductFromDB</script>
+          <script type="module">import {getCartFromDB} from './jsonScripts/databaseFunctions.js'; window.getCartFromDB = getCartFromDB</script>
+          <script type="module">import {purgeCartFromDB} from './jsonScripts/databaseFunctions.js'; window.purgeCartFromDB = purgeCartFromDB</script>
           <script>
             window.onload = () => {
-              getAllCommentsFromDB('Stardew Valley');
-              getProductPriceToBuyButton('Stardew Valley');
             }
             $(document).ready(function(){
               $('.sidenav').sidenav();
-              $('.carousel').carousel();
-            });
-            $('.carousel.carousel-slider').carousel({
-              fullWidth: true,
-              indicators: true
             });
           </script>
     </body>

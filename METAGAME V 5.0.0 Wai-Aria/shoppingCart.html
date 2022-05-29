@@ -37,7 +37,7 @@
                 <ul role="menu" id="nav-mobile" role="menu" >
                   <li role="menuitem" aria-haspopup="false"><a href="#">Categorías</a></li>
                   <li role="menuitem" aria-haspopup="false"><a href="#">Búsqueda</a></li>
-                  <li role="menuitem" aria-haspopup="false"><a href="#">Noticias</a></li>
+                  <li role="menuitem" aria-haspopup="false"><a href="./news.html">Noticias</a></li>
                   <li role="menuitem" aria-haspopup="false"><a href="#">Lo más vendido</a></li>
                 </ul>
               </div>
@@ -106,9 +106,10 @@
                 <hr>
 
                 <p id ='cart-Paragraph-Title'>Title</p>
-                <p id ='cart-Price'>price</p>
+                <p id ='cart-Price'> </p>
 
                 <button id="boton-vaciar" role="alert" aria-label="Vaciar carrito de productos" onclick="purgeCartFromUser()" class="btn btn-danger">Vaciar</button>
+                <button id="boton-comprar" role="alert" aria-label="Comprar los productos del carrito" onclick="addCartToUserProductHistory(); alert('Se ha realizado la compra del carrito, se va a vaciar su contenido')" class="btn btn-danger">Comprar</button>
             </aside>
         </div>
           
@@ -175,11 +176,12 @@
           <script type="module">import {getPricesFromDB} from './jsonScripts/databaseFunctions.js'; window.getPricesFromDB = getPricesFromDB</script>
           <script type="module">import {addProductToDB} from './jsonScripts/databaseFunctions.js';  window.addProductToDB = addProductToDB</script>
           <script type="module">import {getProductFromDB} from './jsonScripts/databaseFunctions.js';  window.getProductFromDB = getProductFromDB</script>
+          <script type="module">import {addCartToUserProductHistory} from './jsonScripts/databaseFunctions.js';  window.addCartToUserProductHistory = addCartToUserProductHistory</script>
           <script type="module">import {getCartFromUser} from './jsonScripts/databaseFunctions.js'; window.getCartFromUser = getCartFromUser</script>
           <script type="module">import {purgeCartFromUser} from './jsonScripts/databaseFunctions.js'; window.purgeCartFromUser = purgeCartFromUser</script>
           <script>
             window.onload = () => {
-              getCartFromUser(2);
+              getCartFromUser();
             }
             $(document).ready(function(){
               $('.sidenav').sidenav();

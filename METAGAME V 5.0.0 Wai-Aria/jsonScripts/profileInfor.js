@@ -15,7 +15,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export function showProfileData(username) {
+export function showProfileData() {
     const currentDB = ref(getDatabase());
     const auth = firebaseAuth.getAuth();
     auth.onAuthStateChanged(function(user) {
@@ -23,23 +23,28 @@ export function showProfileData(username) {
         get(child(currentDB, `users/${user.uid}`)).then((snapshot) => {
             // let dbUsername = snapshot.val();
             let dbUsername = snapshot.val();
-            console.log(dbUsername);
             $("#database-username").html(dbUsername.username);
             $("#database-dni").html(dbUsername.dni);
             $("#database-email").html(dbUsername.email);
             $("#database-username").html(dbUsername.account);
             $("#database-birthdate").html(dbUsername.birthdate);
+            $("#database-bio").html(dbUsername.bio);
             const pfpTag = document.getElementById('pfp');
             if (dbUsername.pfp === undefined) {
               pfpTag.src='./img/nopfp.png'
             } else {
               pfpTag.src=dbUsername.pfp
             }
+            if (dbUsername.product_history !== undefined){
+              console.log(dbUsername.product_history)
+              loadUserProductHistory(dbUsername.product_history);
+            } else {
+              $("#products-history").html('<p>El usuario no ha comprado ningun producto</p>');
+            }
         }).catch((error) => {
             // $("#database-username").text('Get User data failed.');
         });
     } else {
-      console.log('logged out')
     }
   });
 }
@@ -72,8 +77,9 @@ export function getLoginStatusToProfile() {
 export function signOutProfile() {
     const auth = firebaseAuth.getAuth();
     auth.signOut(auth).then(() => {
-     alert('Se ha cerrado la sesion')
-     location.href= "./login.html"
+     if (!alert('Se ha cerrado la sesion')) {
+      location.href= "./login.html"
+     }
     }).catch((error) => {
     // An error happened.
     });
@@ -90,9 +96,20 @@ export function showType(fileInput) {
   }
 }
 
-export function loadPFP() {
+export async function loadPFP() {
   const file = document.getElementById('pfpImageUpload').files[0];
+  if (file.type !== "image/jpeg") {
+    if(!alert('El fichero introducido no se trata de un jpeg')){
+      return
+    }
+  }
   const reader = new FileReader();
+  let imgDimensions =  await checkPFPDimensions(file);
+  if (imgDimensions.width > 250 || imgDimensions.height > 250) {
+    if(!alert('La imagen tiene un tamaño superior a 250x250, vuelve a intentarlo')) {
+      return
+    }
+  }
   reader.readAsDataURL(file)
   reader.onload = function() {
     let imgBase64 = reader.result
@@ -104,10 +121,11 @@ export function loadPFP() {
           //console.log(snapshot.val())
           
           let pfp = imgBase64;
-          console.log('ok')
           // Push to Firebase Database
           set(ref(database_ref, 'users/' + user.uid + '/pfp'),pfp)
-          location.reload(); 
+          if(!alert('Imagen subida, se recargara la página')){
+            location.reload(); 
+          }
           //console.log(current_cart)
         }).catch((error) => {
         });
@@ -115,5 +133,99 @@ export function loadPFP() {
         alert('No hay usuario conectado, inicie sesion primero');
       }
     });
-  };
+  }
+}
+
+
+async function checkPFPDimensions(file) {
+  return new Promise((resolve, reject) =>  {
+    try {
+      const fileReader = new FileReader()
+      fileReader.onload = () => {
+        const img = new Image()
+
+        img.onload = () => {
+          resolve({ width: img.width, height: img.height })
+        }
+
+        img.src = fileReader.result
+      }
+
+      fileReader.readAsDataURL(file)
+    } catch (e) {
+      reject(e)
+    }
+  });
+}
+
+export function isUserLoggedProfileButton() {
+  const currentDB = ref(getDatabase());
+  const auth = firebaseAuth.getAuth();
+  auth.onAuthStateChanged(function(user) {
+  if (user) {
+    get(child(currentDB, `users/${user.uid}`)).then((snapshot) => {
+      let dbUsername = snapshot.val();
+      if (dbUsername.pfp !== undefined) {
+        $("#profileButton").html(`<img style="margin-top:8px" height="20px" width="20px" src = ${dbUsername.pfp}></img>`);
+      }
+    });
+  } else {
+     
+  }
+});
+}
+
+
+function loadUserProductHistory(product_history) {
+  let tableTitle = '<table class=\'centered\' highlight> <thead> <tr> <th>Nº</th> <th>Producto</th> <th>Precio</th> </tr> </thead> <tbody> ';
+  let numOfProduct = 1;
+  product_history.forEach((item) => {
+    if (item.price !== 'Gratis') {
+      tableTitle += '<tr> <td>' + numOfProduct  + '</td> <td>' + item.product + '</td> <td>' +  ` ${item.price}` + ' €' + '</td></tr>'
+    } else {
+      tableTitle += '<tr> <td>' + numOfProduct  + '</td> <td>' + item.product + '</td> <td>' +  ` ${item.price}` + '</td></tr>'
+    }
+    numOfProduct++;
+  });
+  tableTitle += '</tbody> </table>';
+  $("#products-history").html('<h2 style="margin-left:10px">Tu historial de compras</h2>' +tableTitle);
+
+}
+
+export function userUpdateProfile() {
+  let biography = $("#biography").val();
+  let username = $("#username").val();
+  let birthdate = $("#birthdate").val();
+  var database_ref = getDatabase();
+  const auth = firebaseAuth.getAuth(); 
+    auth.onAuthStateChanged(function(user) {
+      if (user) {
+        get(child(ref(database_ref), `users/${user.uid}`)).then(async (snapshot) => {
+          //console.log(snapshot.val())
+          let userDB = snapshot.val();
+          if (biography !== "" || biography !== " ") {
+            userDB.bio = biography;
+          }
+          if (username !== "" || username !== " ") {
+            userDB.username = username;
+          }
+          if (birthdate !== "" && birthdate !== " ") {
+            userDB.birthdate = birthdate;
+          }
+          console.log(user);
+          if (document.getElementById('pfpImageUpload').files[0] !== undefined) {
+            await loadPFP();
+          }
+          // Push to Firebase Database
+          await set(ref(database_ref, 'users/' + user.uid),userDB);
+          if(!alert('Informacion actualizada, se le redirigira al perfil')){
+            location.href = "./profile.html"; 
+          }
+          //console.log(current_cart)
+        }).catch((error) => {
+        });
+      } else {
+        alert('No hay usuario conectado, inicie sesion primero');
+      }
+    });
 }
