@@ -29,7 +29,12 @@ export function showProfileData(username) {
             $("#database-email").html(dbUsername.email);
             $("#database-username").html(dbUsername.account);
             $("#database-birthdate").html(dbUsername.birthdate);
-    
+            const pfpTag = document.getElementById('pfp');
+            if (dbUsername.pfp === undefined) {
+              pfpTag.src='./img/nopfp.png'
+            } else {
+              pfpTag.src=dbUsername.pfp
+            }
         }).catch((error) => {
             // $("#database-username").text('Get User data failed.');
         });
@@ -72,4 +77,43 @@ export function signOutProfile() {
     }).catch((error) => {
     // An error happened.
     });
+}
+
+export function showType(fileInput) {
+  const files = fileInput.files;
+
+  for (let i = 0; i < files.length; i++) {
+    const name = files[i].name;
+    console.log(files[i])
+    const type = files[i].type;
+    alert("Filename: " + name + " , Type: " + type);
+  }
+}
+
+export function loadPFP() {
+  const file = document.getElementById('pfpImageUpload').files[0];
+  const reader = new FileReader();
+  reader.readAsDataURL(file)
+  reader.onload = function() {
+    let imgBase64 = reader.result
+    const auth = firebaseAuth.getAuth();  
+    var database_ref = getDatabase();
+    auth.onAuthStateChanged(function(user) {
+      if (user) {
+        get(child(ref(database_ref), `users/${user.uid}/pfp`)).then((snapshot) => {
+          //console.log(snapshot.val())
+          
+          let pfp = imgBase64;
+          console.log('ok')
+          // Push to Firebase Database
+          set(ref(database_ref, 'users/' + user.uid + '/pfp'),pfp)
+          location.reload(); 
+          //console.log(current_cart)
+        }).catch((error) => {
+        });
+      } else {
+        alert('No hay usuario conectado, inicie sesion primero');
+      }
+    });
+  };
 }

@@ -50,6 +50,7 @@ export function purgeCartFromDB(user) {
     update(ref(db), updates)
     alert('Se han borrado todos los elementos del carro')
     location.href = './shoppingCart.html'
+  }).catch((error) => {
   });
 }
 
@@ -81,17 +82,18 @@ export function getCartFromDB(user) {
 
 
 
-export function getProductFromDB(name) {
+export async function getProductFromDB(name) {
   const db = getDatabase();
   let price = 0;
   alert(name + ' añadido');
-  const productsReference = ref(db, 'products/' + name);
-  onValue(productsReference, (snapshot) => {
+  const currentDB = ref(getDatabase());
+  await get(child(currentDB, 'products/' + name)).then((snapshot) => {
     price = snapshot.val().price;
     if (snapshot.val().discount != null) {
       price = +((price - (price * snapshot.val().discount)).toFixed(2));
     }
   });
+  //console.log(price);
   return price;
 }
 
@@ -103,10 +105,10 @@ export function getAllProductsFromDB(searchText) {
     let numOfProduct = 1;
     let productsNames = Object.keys(snapshot.val());
     
-    let tableTitle = `<h1 id ="searchResultTitle" class="center" style="font-size:2em;">Resultados de la busqueda</h1>` + '<table class=\'centered\' highlight> <thead> <tr> <th>Nº</th> <th>Product</th> <th>Item Price</th> </tr> </thead> <tbody> ';
+    let tableTitle = `<h1 id ="searchResultTitle" class="center" style="font-size:2em;">Resultados de la busqueda</h1>` + '<table class=\'centered\' highlight> <thead> <tr> <th>Product</th> <th>Item Price</th> </tr> </thead> <tbody> ';
     for (let i = 0; i < productsNames.length; i++) {
       if (productsNames[i].toLowerCase().includes(searchText.toLowerCase())) {
-        tableTitle += '<tr> <td>' + numOfProduct  + '</td> <td>' + productsNames[i] + '</td> <td>' +  ` ${snapshot.val()[productsNames[i]].price}` + ' €' + '</td></tr>'
+        tableTitle += `<tr> <td> <a href="${snapshot.val()[productsNames[i]].page}">` + productsNames[i] + '</a> </td> <td>' +  ` ${snapshot.val()[productsNames[i]].price}` + ' €' + '</td></tr>'
         //wholeString += '<p class="flow-text">' + numOfProduct + ' | '   + item.product + ` ${item.price}`  + '€' + '</p>'
         numOfProduct++;
       }
@@ -116,19 +118,6 @@ export function getAllProductsFromDB(searchText) {
     //console.log(current_cart)
   }).catch((error) => {
   });
-}
-
-
-export function addProductToUser(product) {
-  const auth = firebaseAuth.getAuth();
-  auth.onAuthStateChanged(function(user) {
-    if (user) {
-      addProductToDB(product, user.uid)
-    } else {
-      alert('No hay usuario conectado, inicie sesion primero para añadir un juego');
-    }
-  });
-  
 }
 
 
@@ -156,16 +145,25 @@ export function purgeCartFromUser() {
   });
 }
 
+export function addProductToUser(product) {
+  const auth = firebaseAuth.getAuth();
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      addProductToDB(product, user.uid)
+    } else {
+      alert('No hay usuario conectado, inicie sesion primero para añadir un juego');
+    }
+  });
+  
+}
 
-export function addProductToDB(product, id) {
+export async function addProductToDB(product, id) {
   const db = getDatabase();
-  let current_cart = null;
-  let price = getProductFromDB(product);
+  let price = await getProductFromDB(product);
   const currentDB = ref(getDatabase());
 
   get(child(currentDB, `users/${id}/current_cart`)).then((snapshot) => {
-    //console.log(snapshot.val())
-    current_cart = snapshot.val()
+    let current_cart = snapshot.val()
     current_cart.push({
       "price": price,
       "product": product
@@ -183,7 +181,131 @@ export function addProductToDB(product, id) {
     })
     updates['users/' + id + '/current_cart'] = current_cart;
     update(ref(db), updates);
-  
   });
-  
+}
+
+
+export function addComment(page, comment) {
+  const auth = firebaseAuth.getAuth();
+  auth.onAuthStateChanged(function(user) {
+    if(comment == null) {
+      alert('El comentario no puede estar vacio.');
+    }
+    
+    if (user) {
+      const currentDB = ref(getDatabase());
+      const db = getDatabase();
+      
+      get(child(currentDB, `comments/${page}`)).then((snapshot) => {
+        let comments = snapshot.val()
+        comments.push({
+          "uid":user.uid,
+          "comment": comment
+        });
+          const updates = {};
+          updates['comments/' + `${page}`] = comments;
+          update(ref(db), updates)
+        }).catch((error) => {
+          const updates = {};
+          let comments = [];
+          comments.push({
+            "uid":user.uid,
+            "comment": comment
+          });
+          updates['comments/' + `${page}`] = comments;
+          update(ref(db), updates);
+      });
+
+      get(child(currentDB, `users/${user.uid}/comments`)).then((snapshot) => {
+        let comments = snapshot.val()
+        comments.push({
+          "page": page,
+          "comment": comment
+        });
+          const updates = {};
+          updates['users/' + `${user.uid}` + '/comments'] = comments;
+          update(ref(db), updates)
+          location.reload();
+        }).catch((error) => {
+          const updates = {};
+          let comments = [];
+          comments.push({
+            "page": page,
+            "comment": comment
+          });
+          updates['users/' + `${user.uid}` + '/comments'] = comments;
+          update(ref(db), updates);
+          location.reload();
+      });
+    } else {
+      alert('No hay usuario conectado, inicie sesion primero para añadir un comentario');
+    }
+  });
+}
+
+export function getAllCommentsFromDB(page) {
+  const currentDB = ref(getDatabase());
+  get(child(currentDB, `comments/${page}`)).then((snapshot) => {
+    // COMMENTS ES UN ARRAY
+    let comments = snapshot.val();
+    let commentsBlock = '';
+    comments.forEach((entry, index) => {
+      let userID = entry.uid;
+      let comment = entry.comment;
+      let html = '';
+      get(child(currentDB, `users/${userID}`)).then((snapshot) => {
+        let dbUsername = snapshot.val();
+        if (dbUsername.pfp === undefined) {
+          const auth = firebaseAuth.getAuth();
+          auth.onAuthStateChanged(function(user) {
+            if (user.uid === userID) {
+              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="../img/nopfp.png" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p style="font-size:15px;">${comment}</p><br><a onclick="deleteCommentFromUser('${page}', ${index})" class="waves-effect waves-light btn">Eliminar</a></span></div> </div></div></div>` + commentsBlock;
+            } else {
+              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="../img/nopfp.png" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p style="font-size:15px;">${comment}</p></span></div> </div></div></div>` + commentsBlock;
+            }
+            $("#comments-db").html(html + commentsBlock);
+          });        
+        } else {
+          const auth = firebaseAuth.getAuth();
+          auth.onAuthStateChanged(function(user) {
+            if (user.uid === userID) {
+              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="${dbUsername.pfp}" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p style="font-size:15px;">${comment}</p><br><a onclick="deleteCommentFromUser('${page}', ${index})" class="waves-effect waves-light btn">Eliminar</a></span></div> </div></div></div>` + commentsBlock;
+            } else {
+              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="${dbUsername.pfp}" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p style="font-size:15px;">${comment}</p></span></div> </div></div></div>` + commentsBlock;
+            }
+            $("#comments-db").html(html + commentsBlock);
+          });
+        }
+      });
+      html = $("#comments-db").html();
+    });
+  }).catch((error) => {
+  });
+}
+
+
+export function deleteCommentFromUser(page, index) {
+  var database_ref = getDatabase();
+  get(child(ref(database_ref), `comments/${page}`)).then((snapshot) => {
+    // COMMENTS ES UN ARRAY
+    let comments = snapshot.val();
+    let userID = comments[index].uid;
+    comments.splice(index,1);
+
+    set(ref(database_ref, `comments/${page}/`),comments);
+    get(child(ref(database_ref), `users/${userID}/comments`)).then((snapshot) => {
+      // COMMENTS ES UN ARRAY
+      //console.log('entre!!')
+      let comments = snapshot.val();
+      // console.log(comments)
+      comments.forEach((entry, index) => {
+        if (entry.page === page) {
+          comments.splice(index,1);
+          //console.log(comments);
+          set(ref(database_ref, `users/${userID}/comments/`),comments);
+          location.reload();
+        }
+      });
+    });
+  });
 }
