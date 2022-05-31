@@ -26,76 +26,76 @@
     </head>
 
     <body style="background-color:#0a2635;">
-        <!-- La cabecera de la pagina web -->
-        <div role="navigation" aria-label="Barra de navegacion" class="navbar-fixed">
-          <nav style="background-color:#264F89;">
-            <div class="nav-wrapper">
-              <div class="row" role="row">
-                <div class="s1">
-                <a href="./index.html" style="text-shadow: 2px 2px;" class="col s1"><img src="./img/logo.png" alt="metagame" width="auto" height="64"></a>
-                </div>
-                <div class="left hide-on-med-and-down">
-                  <ul role="menu" id="nav-mobile" role="menu" >
-                    <li role="menuitem" aria-haspopup="false"><a href="#">Categorías</a></li>
-                    <li role="menuitem" aria-haspopup="false"><a href="#">Búsqueda</a></li>
-                    <li role="menuitem" aria-haspopup="false"><a href="./news.html">Noticias</a></li>
-                    <li role="menuitem" aria-haspopup="false"><a href="#">Lo más vendido</a></li>
-                  </ul>
-                </div>
+      <div role="navigation" aria-label="Barra de navegacion" class="navbar-fixed">
+        <nav style="background-color:#264F89;">
+          <div class="nav-wrapper">
+            <div class="row" role="row">
+              <div class="col s1">
+              <a href="./index.html" style="text-shadow: 2px 2px;"><img src="./img/logo.png" alt="metagame-logo" width="auto" height="64"></a>
+              </div>
+              <div class="left hide-on-med-and-down">
+                <ul role="menu" id="nav-mobile" role="menu" >
+                  <li role="menuitem" aria-haspopup="false"><a href="./category.html">Categorías</a></li>
+                  <li role="menuitem" aria-haspopup="false"><a href="./searchResults.html">Búsqueda</a></li>
+                  <li role="menuitem" aria-haspopup="false"><a href="./news.html">Noticias</a></li>
+                </ul>
+              </div>
 
 
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
-                
-                
-                <div class="col s3 hide-on-med-and-down">
-                  <div class="row">
-                    <form class="col s12">
-                      <div class="row">
-                        <div class="input-field col s10">
-                          <input id="searchBox" type="text" class="validate" placeholder="Introduzca el termino de busqueda">
-                          <label for="searchBox">Búsqueda</label>
-                        </div>
-                        <div class="input-field col s2">
-                          <a href="" onclick ="processSearch(document.getElementById('searchBox').value)"><i class="material-icons">search</i></a>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div class="right hide-on-med-and-down">
-                  <ul>
-                    <li><a tabindex="0" class="waves-effect waves-light btn" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li" onclick="alert(getElementsCountString())"><i class="material-icons">settings</i></a>
-                      <a class="waves-effect waves-light btn" style="margin-left:0px;" href="./login.html"><i class="material-icons">account_box</i></a>
-                      <a class="waves-effect waves-light btn" style="margin-left:0px;" href="shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
-                    </li>
-                  </ul>
-              </div>
-              </div>
-            </div>
-          </nav>
-        </div>
-        <!-- Sidenav que se muestra al pulsar el boton de menu del navbar superior en tamaños de pantalla pequeños -->
-        <ul class="sidenav" id="mobile-demo">
-          <li><a href="#">Categorías</a></li>
-          <li><a href="#">Búsqueda</a></li>
-          <li><a href="#">Noticias</a></li>
-          <li><a href="#">Lo más vendido</a></li>
-          <li>
-            <div class="row">
-              <form class="col s12">
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+              
+              
+              <div class="col s3 hide-on-med-and-down">
                 <div class="row">
-                  <div class="input-field col s10">
-                    <input id="sideNavSearchBox" type="text" class="validate">
-                    <label for="sideNavSearchBox">Búsqueda</label>
-                  </div>
-                  <div class="input-field col s1">
-                    <a class="right" href="#" onclick = "processSearch(document.getElementById('sideNavSearchBox').value);"><i class="material-icons prefix ">search</i></a>
-                  </div>
+                  <form class="col s12" onsubmit="return false">
+                    <div class="row">
+                      <div class="input-field col s10">
+                        <input id="searchBox"  type="text" placeholder="Introduzca el termino de busqueda" onkeydown="processSearch($('#searchBox').val())">
+                        <label for="searchBox" style="color: white;">Búsqueda</label>
+                      </div>
+                      <div class="input-field col s2">
+                        <a href="./searchResults.html" onclick ="processSearchClick($('#searchBox').val())"><i class="material-icons" >search</i></a>
+                      </div>
+                    </div>
+                  </form>
                 </div>
-              </form>
+              </div>
+              <div class=" right hide-on-med-and-down">
+                <ul>
+                  <li><a tabindex="0" class="teal waves-light btn" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li" onclick="alert(getElementsCountString())"><i class="material-icons">settings</i></a>
+                    <a id="profileButton" class="teal waves-light btn" style="margin-left:0px;" onclick='isUserLogged()'><i class="material-icons">account_box</i></a>
+                    <a class="teal waves-light btn" style="margin-left:0px;" href="shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
+
+                  </li>
+                </ul>
             </div>
-          </li>    
-        </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <!-- Sidenav que se muestra al pulsar el boton de menu del navbar superior en tamaños de pantalla pequeños -->
+      <ul class="sidenav" id="mobile-demo" style="background-color:#264F89;">
+        <li><a href="./category.html" style="color:white;">Categorías</a></li>
+        <li><a href="./searchResults.html" style="color:white;">Búsqueda</a></li>
+        <li><a href="./news.html" style="color:white;">Noticias</a></li>
+        <li><a href="#!" onclick="isUserLogged()" style="color:white;">Cuenta</a></li>
+        <li><a href="./shoppingCart.html" style="color:white;">Carrito</a></li>
+        <li>
+          <div class="row">
+            <form class="col s12" onsubmit="return false">
+              <div class="row">
+                <div class="input-field col s10">
+                  <input id="sideNavSearchBox" style="color:white;" type="text" class="validate" onkeydown="processSearch($('#sideNavSearchBox').val())">
+                  <label for="sideNavSearchBox" style="color: white;">Búsqueda</label>
+                </div>
+                <div class="input-field col s1">
+                  <a class="right" href="./searchResults.html" onclick ="processSearchClick($('#sideNavSearchBox').val())"><i class="material-icons prefix "style="color: white;">search</i></a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </li>    
+      </ul>
       <!-- Log in and Sign in part -->
       <div class="row">
         <form class="col s12" style="margin-top:50px"> 
@@ -111,7 +111,7 @@
                 <div class="input-field col s12">
                     <!-- <p style="color: white;"> Username:  </p> -->
                     
-                    <input placeholder="Ej: metagame@provider.com" id="email" type="text">
+                    <input placeholder="Ej: metagame@provider.com" style="color: white;" id="email" type="text">
                     <label style="color: white;" for="email">Email</label>
                 </div>
 
@@ -121,7 +121,7 @@
                 </div> -->
 
                 <div class="input-field col s12">
-                  <input id="password" type="password">
+                  <input id="password" style="color: white;"  type="password">
                   <label style="color: rgba(255, 255, 255, 0.479);" for="password">Password</label>
                 </div>
                 
@@ -182,7 +182,7 @@
           
           <div class="footer-copyright ">
             <div class="container">
-              <a class="grey-text text-lighten-4 right" href="#!"></a>
+              
               <p class="center">© 2022 XMOJ Corporation. All rights reserved. <br>
                 All product names, logos, brands, trademarks and registered trademarks are property of their respective owners. 
                 All company, product and service names used in this website are for identification purposes only. 
@@ -192,38 +192,23 @@
         <!-- <div> -->
       </footer>
       <!--JavaScript at end of body for optimized loading-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      <script src="./jsonScripts/calculateTotal.js"></script>
-      <script src="./jsonScripts/processCart.js"></script>
-      <script src="./jsonScripts/processSearch.js"></script>
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="./jsonScripts/ElementsCount.js"></script>
-      <script src="./jsonScripts/processJson.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <script type="module"> import {isUserLogged} from './jsonScripts/profileInfor.js';  window.isUserLogged = isUserLogged</script>
+      <script type="module"> import {isUserLoggedProfileButton} from './jsonScripts/profileInfor.js';  window.isUserLoggedProfileButton = isUserLoggedProfileButton</script>
+      <script type="module">import {processSearch} from './jsonScripts/processSearch.js'; window.processSearch = processSearch</script>
+      <script type="module">import {processSearchClick} from './jsonScripts/processSearch.js'; window.processSearchClick = processSearchClick</script>
       <script type="module">import {login} from './jsonScripts/firebase/loginRegister.js';  window.login = login</script>
-      <script type="module">import {getPricesFromDB} from './jsonScripts/databaseFunctions.js'; window.getPricesFromDB = getPricesFromDB</script>
-      <script type="module">import {addProductToDB} from './jsonScripts/databaseFunctions.js';  window.addProductToDB = addProductToDB</script>
-      <script type="module">import {getProductFromDB} from './jsonScripts/databaseFunctions.js';  window.getProductFromDB = getProductFromDB</script>
       <script type="module"> import {getLoginStatusToProfile} from './jsonScripts/profileInfor.js';  window.getLoginStatusToProfile = getLoginStatusToProfile</script>
 
       <script>
         window.onload = () => {
+          isUserLoggedProfileButton();
         }
         $(document).ready(function(){
           $('.sidenav').sidenav();
         });
-      </script>
-      
-      <!-- para ocultar -->
-      <script>
-        function myFunction() {
-          var x = document.getElementById("demo");
-          if (x.style.display === "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-        }
-      </script>
-      <script>
       </script>
     </body>
 </html>

@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
         <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
-        <link rel="icon" href="img/logo.png" width="32" height="32" >
+        <link rel="icon" href="../img/logo.png" width="32" height="32" >
         
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -25,20 +25,18 @@
     </head>
     
     <body style="background-color:#0a2635;">
-      <!-- La cabecera de la pagina web -->
       <div role="navigation" aria-label="Barra de navegacion" class="navbar-fixed">
         <nav style="background-color:#264F89;">
           <div class="nav-wrapper">
             <div class="row" role="row">
-              <div class="s1">
-              <a href="../index.html" style="text-shadow: 2px 2px;" class="col s1"><img src="../img/logo.png" alt="metagame" width="auto" height="64"></a>
+              <div class="col s1">
+              <a href="../index.html" style="text-shadow: 2px 2px;"><img src="../img/logo.png" alt="metagame" width="auto" height="64"></a>
               </div>
               <div class="left hide-on-med-and-down">
                 <ul role="menu" id="nav-mobile" role="menu" >
-                  <li role="menuitem" aria-haspopup="false"><a href="#">Categorías</a></li>
-                  <li role="menuitem" aria-haspopup="false"><a href="#">Búsqueda</a></li>
+                  <li role="menuitem" aria-haspopup="false"><a href="../category.html">Categorías</a></li>
+                  <li role="menuitem" aria-haspopup="false"><a href="../searchResults.html">Búsqueda</a></li>
                   <li role="menuitem" aria-haspopup="false"><a href="../news.html">Noticias</a></li>
-                  <li role="menuitem" aria-haspopup="false"><a href="#">Lo más vendido</a></li>
                 </ul>
               </div>
 
@@ -48,24 +46,25 @@
               
               <div class="col s3 hide-on-med-and-down">
                 <div class="row">
-                  <form class="col s12">
+                  <form class="col s12" onsubmit="return false">
                     <div class="row">
                       <div class="input-field col s10">
-                        <input id="searchBox" type="text" class="validate" placeholder="Introduzca el termino de busqueda">
-                        <label for="searchBox">Búsqueda</label>
+                        <input id="searchBox" type="text" placeholder="Introduzca el termino de busqueda" onkeydown="processSearch($('#searchBox').val())">
+                        <label for="searchBox" style="color: white;">Búsqueda</label>
                       </div>
                       <div class="input-field col s2">
-                        <a href="" onclick ="processSearch(document.getElementById('searchBox').value)"><i class="material-icons">search</i></a>
+                        <a href="../searchResults.html" onclick ="processSearchClick($('#searchBox').val())"><i class="material-icons" >search</i></a>
                       </div>
                     </div>
                   </form>
                 </div>
               </div>
-              <div class="right hide-on-med-and-down">
+              <div class=" right hide-on-med-and-down">
                 <ul>
-                  <li><a tabindex="0" class="waves-effect waves-light btn" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li" onclick="alert(getElementsCountString())"><i class="material-icons">settings</i></a>
-                    <a class="waves-effect waves-light btn" style="margin-left:0px;" href="../login.html"><i class="material-icons">account_box</i></a>
-                    <a class="waves-effect waves-light btn" style="margin-left:0px;" href="../shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
+                  <li><a tabindex="0" class="teal waves-light btn" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li" onclick="alert(getElementsCountString())"><i class="material-icons">settings</i></a>
+                    <a id="profileButton" class="teal waves-light btn" style="margin-left:0px;" onclick='isUserLogged()'><i class="material-icons">account_box</i></a>
+                    <a class="teal waves-light btn" style="margin-left:0px;" href="../shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
+
                   </li>
                 </ul>
             </div>
@@ -74,21 +73,22 @@
         </nav>
       </div>
       <!-- Sidenav que se muestra al pulsar el boton de menu del navbar superior en tamaños de pantalla pequeños -->
-      <ul class="sidenav" id="mobile-demo">
-        <li><a href="#">Categorías</a></li>
-        <li><a href="#">Búsqueda</a></li>
-        <li><a href="#">Noticias</a></li>
-        <li><a href="#">Lo más vendido</a></li>
+      <ul class="sidenav" id="mobile-demo" style="background-color:#264F89;">
+        <li><a href="../category.html" style="color:white;">Categorías</a></li>
+        <li><a href="../searchResults.html" style="color:white;">Búsqueda</a></li>
+        <li><a href="../news.html" style="color:white;">Noticias</a></li>
+        <li><a href="#!" onclick="isUserLogged()" style="color:white;">Cuenta</a></li>
+        <li><a href="../shoppingCart.html" style="color:white;">Carrito</a></li>
         <li>
           <div class="row">
-            <form class="col s12">
+            <form class="col s12" onsubmit="return false">
               <div class="row">
                 <div class="input-field col s10">
-                  <input id="sideNavSearchBox" type="text" class="validate">
-                  <label for="sideNavSearchBox">Búsqueda</label>
+                  <input id="sideNavSearchBox" style="color:white;" type="text" class="validate" onkeydown="processSearch($('#sideNavSearchBox').val())">
+                  <label for="sideNavSearchBox" style="color: white;">Búsqueda</label>
                 </div>
                 <div class="input-field col s1">
-                  <a class="right" href="#" onclick = "processSearch(document.getElementById('sideNavSearchBox').value)"><i class="material-icons prefix ">search</i></a>
+                  <a class="right" href="../searchResults.html" onclick ="processSearchClick($('#sideNavSearchBox').val())"><i class="material-icons prefix "style="color: white;">search</i></a>
                 </div>
               </div>
             </form>
@@ -121,19 +121,44 @@
                       Cooperativos en línea
                     </div>
                     <div class="right">
-                      <a id="buy-button" class="waves-effect waves-light btn-large" onclick="addProductToUser('Valheim')"><i class="material-icons left">add_shopping_cart</i>Comprar</a>
+                      <a id="buy-button" class="teal darken-4 waves-light btn-large" onclick="addProductToUser('Valheim')"><i class="material-icons left">add_shopping_cart</i>Comprar</a>
                     </div>
                   </div><br><br><br>
                 </div>
               </div>
-              <div class="col s12">
-                <div class="carousel" data-indicators="true">
-                  <a class="carousel-item" href="#one!"><img src="../img/"></a>
-                  <a class="carousel-item" href="#two!"><img src="../img/"></a>
-                  <a class="carousel-item" href="#three!"><img src="../img/"></a>
-                  <a class="carousel-item" href="#four!"><img src="../img/"></a>
-                  <a class="carousel-item" href="#five!"><img src="../img/"></a>
+              <div class="carousel carousel-slider center col s12">
+                <div class="carousel-item" style="background-color: #264F89;" href="#one!">
+                  <img role="img" aria-label="Portada juego Have a nice death"  class="responsive-img" src="../img/c1/vh1.jpg" alt="carousel-img-valheim-1">
                 </div>
+                <div class="carousel-item" style="background-color: #264F89;" href="#two!">
+                  <img role="img" aria-label="Portada juego Have a nice death"  class="responsive-img" src="../img/c1/vh2.jpg" alt="carousel-img-valheim-2">
+                </div>
+                <div class="carousel-item" style="background-color: #264F89;" href="#three!">
+                  <img role="img" aria-label="Portada juego Have a nice death"  class="responsive-img" src="../img/c1/vh3.jpg" alt="carousel-img-valheim-3">
+                </div>
+                <div class="carousel-item" style="background-color: #264F89;" href="#four!">
+                  <img role="img" aria-label="Portada juego Have a nice death"  class="responsive-img" src="../img/c1/vh4.jpg" alt="carousel-img-valheim-4">
+                </div>
+              </div>
+              <div class="col s12">
+                <div class="col s1 offset-s3">
+                  <a href="javascript:moveCaroussel(-1)"><i class="material-icons" style="color:white;">arrow_back</i></a>
+                </div>
+                <div class="col s1 offset-s4">
+                  <a href="javascript:moveCaroussel(1)"><i class="material-icons" style="color:white;">arrow_forward</i></a>
+                </div>
+                
+              </div>          
+              <!-- carousel -->
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  var elems = document.querySelectorAll('.carousel.carousel-slider');
+                  var instance = M.Carousel.init(elems, {
+                      fullWidth: true,
+                      indicators: false
+                  });
+                });
+              </script>
               </div>
               <div class="col s12" style="color:white"><br><br>
                 <p id="descripcion" style="font-size:20px;">
@@ -153,7 +178,7 @@
                         <textarea id="textarea1" class="materialize-textarea"></textarea>
                         <label for="textarea1">Añadir un comentario</label>
                       </div>
-                      <a href="#!" class="btn waves-effect waves-teal" onclick ="addComment('Valheim', document.getElementById('textarea1').value)">Enviar</a>
+                      <a href="#!" class="btn waves-effect teal darken-4" onclick ="addComment('Valheim', document.getElementById('textarea1').value)">Enviar</a>
                     </div>
                   </div>
                 </div>
@@ -216,7 +241,7 @@
             
             <div class="footer-copyright ">
               <div class="container">
-                <a class="grey-text text-lighten-4 right" href="#!"></a>
+                
                 <p class="center">© 2022 XMOJ Corporation. All rights reserved. <br>
                   All product names, logos, brands, trademarks and registered trademarks are property of their respective owners. 
                   All company, product and service names used in this website are for identification purposes only. 
@@ -225,27 +250,30 @@
           </div>
           <!-- <div> -->
         </footer>
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-          <script type="module"> import {addProductToUser} from '../jsonScripts/databaseFunctions.js';  window.addProductToUser = addProductToUser</script>
-          <script type="module"> import {addComment} from '../jsonScripts/databaseFunctions.js';  window.addComment = addComment</script>
-          <script type="module"> import {getAllCommentsFromDB} from '../jsonScripts/databaseFunctions.js';  window.getAllCommentsFromDB = getAllCommentsFromDB</script>
-          <script type="module"> import {getProductFromDB} from '../jsonScripts/databaseFunctions.js';  window.getProductFromDB = getProductFromDB</script>
-          <script type="module"> import {deleteCommentFromUser} from '../jsonScripts/databaseFunctions.js';  window.deleteCommentFromUser = deleteCommentFromUser</script>
-          <script type="module"> import {getProductPriceToBuyButton} from '../jsonScripts/databaseFunctions.js';  window.getProductPriceToBuyButton = getProductPriceToBuyButton</script>
-          <script>
-            window.onload = () => {
-              getAllCommentsFromDB('Valheim');
-              getProductPriceToBuyButton('Valheim');
-            }
-            $(document).ready(function(){
-              $('.sidenav').sidenav();
-              $('.carousel').carousel();
-            });
-            $('.carousel.carousel-slider').carousel({
-              fullWidth: true,
-              indicators: true
-            });
-          </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../jsonScripts/ElementsCount.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script type="module"> import {isUserLogged} from '../jsonScripts/profileInfor.js';  window.isUserLogged = isUserLogged</script>
+        <script type="module"> import {isUserLoggedProfileButton} from '../jsonScripts/profileInfor.js';  window.isUserLoggedProfileButton = isUserLoggedProfileButton</script>
+        <script type="module">import {processSearch} from '../jsonScripts/processSearch.js'; window.processSearch = processSearch</script>
+        <script type="module">import {processSearchClick} from '../jsonScripts/processSearch.js'; window.processSearchClick = processSearchClick</script>
+        <script type="module"> import {addProductToUser} from '../jsonScripts/databaseFunctions.js';  window.addProductToUser = addProductToUser</script>
+        <script type="module"> import {addComment} from '../jsonScripts/databaseFunctions.js';  window.addComment = addComment</script>
+        <script type="module"> import {getAllCommentsFromDB} from '../jsonScripts/databaseFunctions.js';  window.getAllCommentsFromDB = getAllCommentsFromDB</script>
+        <script type="module"> import {deleteCommentFromUser} from '../jsonScripts/databaseFunctions.js';  window.deleteCommentFromUser = deleteCommentFromUser</script>
+        <script type="module"> import {getProductPriceToBuyButton} from '../jsonScripts/databaseFunctions.js';  window.getProductPriceToBuyButton = getProductPriceToBuyButton</script>
+        <script>
+          window.onload = () => {
+            isUserLoggedProfileButton();
+            getAllCommentsFromDB('Valheim');
+            getProductPriceToBuyButton('Valheim');
+          }
+          $(document).ready(function(){
+            $('.sidenav').sidenav();
+          });
+          function moveCaroussel(steps) {
+            $('.carousel').carousel('next', steps);
+          }
+        </script>
     </body>
 </html>

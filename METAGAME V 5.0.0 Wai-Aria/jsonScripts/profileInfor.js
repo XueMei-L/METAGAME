@@ -166,7 +166,7 @@ export function isUserLoggedProfileButton() {
     get(child(currentDB, `users/${user.uid}`)).then((snapshot) => {
       let dbUsername = snapshot.val();
       if (dbUsername.pfp !== undefined) {
-        $("#profileButton").html(`<img style="margin-top:8px" height="20px" width="20px" src = ${dbUsername.pfp}></img>`);
+        $("#profileButton").html(`<img style="margin-top:8px" height="20px" width="20px" src = ${dbUsername.pfp} alt="foto de perfil de usuario"></img>`);
       }
     });
   } else {

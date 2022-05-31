@@ -78,7 +78,6 @@ export function getCartFromDB(user) {
     $("#cart-Price").html('Precio Total: '+totalPrice.toFixed(2) + ' €');
   
   }).catch((error) => {
-    console.log(error)
     $("#cart-Paragraph-Title").text('El carro esta vacio');
     // alert('El carro esta vacio')
   });
@@ -112,20 +111,41 @@ export async function getProductPriceToBuyButton(game) {
 
 
 
-export function getAllProductsFromDB(searchText) {
+export function getAllProductsFromDB(searchText, tag = undefined) {
   localStorage.removeItem("searchText");
+  localStorage.removeItem("tag");
   const currentDB = ref(getDatabase());
   get(child(currentDB, `products`)).then((snapshot) => {
     //console.log(snapshot.val())
     let numOfProduct = 1;
+    let tagsToFilter = [];
+    let index = 1;
+    if (tag != undefined) {
+      tagsToFilter.push(tag);
+    } else {
+      while ($(`#check${index}`).val() != undefined) {
+        if ($(`#check${index}`)[0].checked == true) {
+          tagsToFilter.push($(`#check${index}`).val());
+        }
+        index++;
+      }
+    }
     let productsNames = Object.keys(snapshot.val());
-    
+    let products = snapshot.val();
     let tableTitle = `<h1 id ="searchResultTitle" class="center" style="font-size:2em;">Resultados de la busqueda</h1>` + '<table class=\'centered\' highlight> <thead> <tr> <th>Product</th> <th>Item Price</th> </tr> </thead> <tbody> ';
     for (let i = 0; i < productsNames.length; i++) {
       if (productsNames[i].toLowerCase().includes(searchText.toLowerCase())) {
-        tableTitle += `<tr> <td> <a href="${snapshot.val()[productsNames[i]].page}">` + productsNames[i] + '</a> </td> <td>' +  ` ${snapshot.val()[productsNames[i]].price}` + ' €' + '</td></tr>'
-        //wholeString += '<p class="flow-text">' + numOfProduct + ' | '   + item.product + ` ${item.price}`  + '€' + '</p>'
-        numOfProduct++;
+        if (tagsToFilter.length > 0) {
+          if(tagsToFilter.every(ai => products[`${productsNames[i]}`].tags.includes(ai))) {
+            tableTitle += `<tr> <td> <a href="${snapshot.val()[productsNames[i]].page}">` + productsNames[i] + '</a> </td> <td>' +  ` ${snapshot.val()[productsNames[i]].price}` + ' €' + '</td></tr>'
+            //wholeString += '<p class="flow-text">' + numOfProduct + ' | '   + item.product + ` ${item.price}`  + '€' + '</p>'
+            numOfProduct++;
+          }
+        }else {
+          tableTitle += `<tr> <td> <a href="${snapshot.val()[productsNames[i]].page}">` + productsNames[i] + '</a> </td> <td>' +  ` ${snapshot.val()[productsNames[i]].price}` + ' €' + '</td></tr>'
+          //wholeString += '<p class="flow-text">' + numOfProduct + ' | '   + item.product + ` ${item.price}`  + '€' + '</p>'
+          numOfProduct++;
+        }
       }
     }
     tableTitle += '</tbody> </table>';

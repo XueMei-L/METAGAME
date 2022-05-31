@@ -21,50 +21,49 @@
         <title>Elden Ring</title>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <link rel="stylesheet" href="../css/1.css"/>
-        <link rel="stylesheet" href="../css/2.css"/> 
     </head>
     
     <body style="background-color:#0a2635;">
-      <!-- La cabecera de la pagina web -->
       <div role="navigation" aria-label="Barra de navegacion" class="navbar-fixed">
         <nav style="background-color:#264F89;">
           <div class="nav-wrapper">
             <div class="row" role="row">
-              <div class="s1">
-              <a href="../index.html" style="text-shadow: 2px 2px;" class="col s1"><img src="../img/logo.png" alt="metagame" width="auto" height="64"></a>
+              <div class="col s1">
+              <a href="../index.html" style="text-shadow: 2px 2px;"><img src="../img/logo.png" alt="metagame" width="auto" height="64"></a>
               </div>
               <div class="left hide-on-med-and-down">
                 <ul role="menu" id="nav-mobile" role="menu" >
-                  <li role="menuitem" aria-haspopup="false"><a href="#">Categorías</a></li>
-                  <li role="menuitem" aria-haspopup="false"><a href="#">Búsqueda</a></li>
+                  <li role="menuitem" aria-haspopup="false"><a href="../category.html">Categorías</a></li>
+                  <li role="menuitem" aria-haspopup="false"><a href="../searchResults.html">Búsqueda</a></li>
                   <li role="menuitem" aria-haspopup="false"><a href="../news.html">Noticias</a></li>
-                  <li role="menuitem" aria-haspopup="false"><a href="#">Lo más vendido</a></li>
                 </ul>
               </div>
 
+
               <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+              
               
               <div class="col s3 hide-on-med-and-down">
                 <div class="row">
-                  <form class="col s12">
+                  <form class="col s12" onsubmit="return false">
                     <div class="row">
                       <div class="input-field col s10">
-                        <input id="searchBox" type="text" class="validate" placeholder="Introduzca el termino de busqueda">
-                        <label for="searchBox">Búsqueda</label>
+                        <input id="searchBox" type="text" placeholder="Introduzca el termino de busqueda" onkeydown="processSearch($('#searchBox').val())">
+                        <label for="searchBox" style="color: white;">Búsqueda</label>
                       </div>
                       <div class="input-field col s2">
-                        <a href="" onclick ="processSearch(document.getElementById('searchBox').value)"><i class="material-icons">search</i></a>
+                        <a href="../searchResults.html" onclick ="processSearchClick($('#searchBox').val())"><i class="material-icons" >search</i></a>
                       </div>
                     </div>
                   </form>
                 </div>
               </div>
-              <div class="right hide-on-med-and-down">
+              <div class=" right hide-on-med-and-down">
                 <ul>
-                  <li><a tabindex="0" class="waves-effect waves-light btn" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li" onclick="alert(getElementsCountString())"><i class="material-icons">settings</i></a>
-                    <a class="waves-effect waves-light btn" style="margin-left:0px;" href="../login.html"><i class="material-icons">account_box</i></a>
-                    <a class="waves-effect waves-light btn" style="margin-left:0px;" href="../shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
+                  <li><a tabindex="0" class="teal waves-light btn" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li" onclick="alert(getElementsCountString())"><i class="material-icons">settings</i></a>
+                    <a id="profileButton" class="teal waves-light btn" style="margin-left:0px;" onclick='isUserLogged()'><i class="material-icons">account_box</i></a>
+                    <a class="teal waves-light btn" style="margin-left:0px;" href="../shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
+
                   </li>
                 </ul>
             </div>
@@ -73,21 +72,22 @@
         </nav>
       </div>
       <!-- Sidenav que se muestra al pulsar el boton de menu del navbar superior en tamaños de pantalla pequeños -->
-      <ul class="sidenav" id="mobile-demo">
-        <li><a href="#">Categorías</a></li>
-        <li><a href="#">Búsqueda</a></li>
-        <li><a href="#">Noticias</a></li>
-        <li><a href="#">Lo más vendido</a></li>
+      <ul class="sidenav" id="mobile-demo" style="background-color:#264F89;">
+        <li><a href="../category.html" style="color:white;">Categorías</a></li>
+        <li><a href="../searchResults.html" style="color:white;">Búsqueda</a></li>
+        <li><a href="../news.html" style="color:white;">Noticias</a></li>
+        <li><a href="#!" onclick="isUserLogged()" style="color:white;">Cuenta</a></li>
+        <li><a href="../shoppingCart.html" style="color:white;">Carrito</a></li>
         <li>
           <div class="row">
-            <form class="col s12">
+            <form class="col s12" onsubmit="return false">
               <div class="row">
                 <div class="input-field col s10">
-                  <input id="sideNavSearchBox" type="text" class="validate">
-                  <label for="sideNavSearchBox">Búsqueda</label>
+                  <input id="sideNavSearchBox" style="color:white;" type="text" class="validate" onkeydown="processSearch($('#sideNavSearchBox').val())">
+                  <label for="sideNavSearchBox" style="color: white;">Búsqueda</label>
                 </div>
                 <div class="input-field col s1">
-                  <a class="right" href="#" onclick = "processSearch(document.getElementById('sideNavSearchBox').value)"><i class="material-icons prefix ">search</i></a>
+                  <a class="right" href="../searchResults.html" onclick ="processSearchClick($('#sideNavSearchBox').val())"><i class="material-icons prefix "style="color: white;">search</i></a>
                 </div>
               </div>
             </form>
@@ -121,20 +121,44 @@
                       Fantasía oscura
                     </div>
                     <div class="right">
-                      <a id="buy-button" class="waves-effect waves-light btn-large" onclick="addProductToUser('Elden Ring')"><i class="material-icons left">add_shopping_cart</i>Comprar</a>
+                      <a id="buy-button" class="teal darken-4 waves-light btn-large" onclick="addProductToUser('Elden Ring')"><i class="material-icons left">add_shopping_cart</i>Comprar</a>
                     </div>
                   </div><br><br><br>
                 </div>
               </div>
-              <div class="col s12">
-                <div class="carousel" data-indicators="true">
-                  <a class="carousel-item" href="#one!"><img src="../img/0nqwv0u5j8161.jpg"></a>
-                  <a class="carousel-item" href="#two!"><img src="../img/1366_2000.jpg"></a>
-                  <a class="carousel-item" href="#three!"><img src="../img/ark_genesis_03.jpg"></a>
-                  <a class="carousel-item" href="#four!"><img src="../img/ark-survival-evolved-20151223111142_1.jpg"></a>
-                  <a class="carousel-item" href="#five!"><img src="../img/EGS_ARKUltimateSurvivorEdition_StudioWildcard_Bundles_S1_2560x1440-9271500d584d8d0f075828975a10e00e.jpg"></a>
+              <div class="carousel carousel-slider center col s12">
+                <div class="carousel-item" style="background-color: #264F89;" href="#one!">
+                  <img role="img" aria-label="Portada juego Have a nice death"  class="responsive-img" src="../img/c2/eldenc1.jpg" alt="carousel-img-eldenring-1">
+                </div>
+                <div class="carousel-item" style="background-color: #264F89;" href="#two!">
+                  <img role="img" aria-label="Portada juego Have a nice death"  class="responsive-img" src="../img/c2/eldenc2.jpg" alt="carousel-img-eldenring-2">
+                </div>
+                <div class="carousel-item" style="background-color: #264F89;" href="#three!">
+                  <img role="img" aria-label="Portada juego Have a nice death"  class="responsive-img" src="../img/c2/elden3.webp" alt="carousel-img-eldenring-3">
+                </div>
+                <div class="carousel-item" style="background-color: #264F89;" href="#four!">
+                  <img role="img" aria-label="Portada juego Have a nice death"  class="responsive-img" src="../img/c2/elden4.jpg" alt="carousel-img-eldenring-4">
                 </div>
               </div>
+              <div class="col s12">
+                <div class="col s1 offset-s3">
+                  <a href="javascript:moveCaroussel(-1)"><i class="material-icons" style="color:white;">arrow_back</i></a>
+                </div>
+                <div class="col s1 offset-s4">
+                  <a href="javascript:moveCaroussel(1)"><i class="material-icons" style="color:white;">arrow_forward</i></a>
+                </div>
+                
+              </div>          
+              <!-- carousel -->
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  var elems = document.querySelectorAll('.carousel.carousel-slider');
+                  var instance = M.Carousel.init(elems, {
+                      fullWidth: true,
+                      indicators: false
+                  });
+                });
+              </script>
               <div class="col s12" style="color:white"><br><br>
               <p id="descripcion" style="font-size:20px;">
                 EL NUEVO JUEGO DE ROL Y ACCIÓN DE AMBIENTACIÓN FANTÁSTICA.
@@ -171,7 +195,7 @@
                         <textarea id="textarea1" class="materialize-textarea"></textarea>
                         <label for="textarea1">Añadir un comentario</label>
                       </div>
-                      <a href="#!" class="btn waves-effect waves-teal" onclick ="addComment('Elden Ring', document.getElementById('textarea1').value)">Enviar</a>
+                      <a href="#!" class="btn waves-effect teal darken-4" onclick ="addComment('Elden Ring', document.getElementById('textarea1').value)">Enviar</a>
                     </div>
                   </div>
                 </div>
@@ -179,94 +203,13 @@
                 <div>
                   <p id="comments-db"><p>
                 </div>
-
-                <!-- <div class="col s10 offset-s1" >
-                  <div class="grey lighten-5 z-depth-3">
-                    <div class="row valign-wrapper">
-                      <div class="col s2">
-                        <img src="../img/anya.jpg" alt="" class="circle responsive-img" style="margin:10px;">
-                      </div>
-                      <div class="col s10" style="color: white; margin:10px;">
-                        <span class="black-text">
-                          <p style="font-size:25px;">Pomelo</p>
-                          <p style="font-size:15px;">Mi valoración de 6 puntos es bastante generosa, pues, si en un juego se tarda mas de 5 segundos en abrir el menú(Cosa que lo haces para TODO), es una broma de mal gusto. La idea esta brutal puesto que es un juego de Supervivencia dispuesto a la imaginación del jugador. Es bastante divertido y sobre todo engancha de formas colosales pero el problema erradica en la calidad de juego. Una consola como Ps4 no esta diseñada para soportar este juego que contiene gran contenido pero poca ayuda a la hora de mantener estable el juego durante horas prolongadas.</p>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col s10 offset-s1" >
-                  <div class="grey lighten-5 z-depth-3">
-                    <div class="row valign-wrapper">
-                      <div class="col s2">
-                        <img src="../img/umaru.jpg" alt="" class="circle responsive-img" style="margin:10px;">
-                      </div>
-                      <div class="col s10" style="color: white; margin:10px;">
-                        <span class="black-text">
-                          <p style="font-size:30px; word-break: break-all">Tengo un nombre super largooooooooooo</p>
-                          <p style="font-size:15px;">Juegazo es verdad que Le falla la optimization pero es un Juegazo la gente que lo critica x aquí es poequrñe nunca abran podido completar las cuevas ni una tribu suficientemente fuerte para combatir este juego si vienes de juegos estilo cod fifa eetc y nunca as jugado juegos de rol será una mierda en cambio si te gusta el rol este es tu juego puedes desde criar dinosaurios y mascotas a robar en bases ajenas hacer cuevas para consegir materiales únicos 6 mapas diferente para explorar cada uno con sus jefes para el easteregg que sólo lo conseguirás entendiendo el rol y el juego</p>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col s10 offset-s1" >
-                  <div class="grey lighten-5 z-depth-3">
-                    <div class="row valign-wrapper">
-                      <div class="col s2">
-                        <img src="../img/diana.jpg" alt="" class="circle responsive-img" style="margin:10px;">
-                      </div>
-                      <div class="col s10" style="color: white; margin:10px;">
-                        <span class="black-text">
-                          <p style="font-size:30px;">Diana yyds</p>
-                          <p style="font-size:15px;">Yo personalmente llevo 3 años jugando ARK he estado en muchas tribus y e disfrutado al máximo el juego. Digo que no es para todos porque es un juego en el que se tarda mucho tiempo en tener un visión general del juego y crecer es imposible te raiedean al día y la comunidad es muy tóxica tiene muchos bugs pero el ark al contrario de lo que muchos dicen si arreglan cosas arreglarlos el undermap y muchos spots de mesh. Como puntos positivos el juego es increíble es una odisea en el que cada día aprendes algo nuevo y si bie. Te joden y raiedean tu también lo puedes hacer si tienes la suerte de en algún momento entrar a una tribu muy fuerte como hice yo es el mejor juego todo el día de pvp raideando criando y se conoce mucha gente interesante y de todo tipo hasta el punto de poder llamar amigos a algunos de ellos en resumen un gran juego pero hay que darle mucho tiempo para que te encantar</p>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col s10 offset-s1" >
-                  <div class="grey lighten-5 z-depth-3">
-                    <div class="row valign-wrapper">
-                      <div class="col s2">
-                        <img src="../img/profesor.jpg" alt="" class="circle responsive-img" style="margin:10px;">
-                      </div>
-                      <div class="col s10" style="color: white; margin:10px;">
-                        <span class="black-text">
-                          <p style="font-size:30px;">XMOJ</p>
-                          <p style="font-size:15px;">El juego es excelente solo si lo juegas en un aparato que pueda soportarle y además tener un gran espacio extra para que los errores no pasen demasiado. Si querías ser paleontólogo de chico y amas los dinos es un buen juego, y si no te frustra tanto por los pequeños bajones de calidad, todos esta de lujo, menos el renderizado.  Los sonidos son muy imersivos, y la comunidad es buena. El online es bueno, pero juegalo con amigos que conozcas, así la experiencia es más llevadera</p>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
-
-                <!-- <div class="col s10 offset-s1" >
-                  <div class="grey lighten-5 z-depth-3">
-                    <div class="row valign-wrapper">
-                      <div class="col s2">
-                        <img src="../img/one-piece.jpg" alt="" class="circle responsive-img" style="margin:10px;">
-                      </div>
-                      <div class="col s10" style="color: white;">
-                        <span class="black-text">
-                          <p style="font-size:30px;">Hoy es sabado</p>
-                          <p style="font-size:15px;">La verdad es que el juego me gusta si aún con un poco de lag lo puedo jugar,pero lo que no me agrada es la jugabilidad literalmente hoy me e aventado 9 horas seguidas intentado hacer algo productivo pero cada vez que avanzó viene un puto bicho y me lo destruye todo y no falta los pesados de jugadores que tiene un t-rex nivel 301 y lo destruye no importa si la casa es de paja les vale un comino,y luego está el no poder saber si juega en un servidor donde se hable el español y el ingles,x si se le pudiera poner una característica de servidoras donde sea de cierto país sería la ostia así será más divertido el conocer personas dentro del juego claro</p>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
               </div>
             </div>
           </div>
         </div>          
       </div>
 
-
-
+        <!-- footer content -->
         <footer class="page-footer" role="contentinfo" style="background-color:#141E2B;">
           <div class="container">
             <div class="row" role="row">
@@ -315,7 +258,7 @@
             
             <div class="footer-copyright ">
               <div class="container">
-                <a class="grey-text text-lighten-4 right" href="#!"></a>
+                
                 <p class="center">© 2022 XMOJ Corporation. All rights reserved. <br>
                   All product names, logos, brands, trademarks and registered trademarks are property of their respective owners. 
                   All company, product and service names used in this website are for identification purposes only. 
@@ -324,28 +267,30 @@
           </div>
         
           <!-- <div> -->
-        </footer>
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-          <script type="module"> import {addProductToUser} from '../jsonScripts/databaseFunctions.js';  window.addProductToUser = addProductToUser</script>
-          <script type="module"> import {addComment} from '../jsonScripts/databaseFunctions.js';  window.addComment = addComment</script>
-          <script type="module"> import {getAllCommentsFromDB} from '../jsonScripts/databaseFunctions.js';  window.getAllCommentsFromDB = getAllCommentsFromDB</script>
-          <script type="module"> import {getProductFromDB} from '../jsonScripts/databaseFunctions.js';  window.getProductFromDB = getProductFromDB</script>
-          <script type="module"> import {deleteCommentFromUser} from '../jsonScripts/databaseFunctions.js';  window.deleteCommentFromUser = deleteCommentFromUser</script>
-          <script type="module"> import {getProductPriceToBuyButton} from '../jsonScripts/databaseFunctions.js';  window.getProductPriceToBuyButton = getProductPriceToBuyButton</script>
-          <script>
-            window.onload = () => {
-              getAllCommentsFromDB('Elden Ring');
-              getProductPriceToBuyButton('Elden Ring');
-            }
-            $(document).ready(function(){
-              $('.sidenav').sidenav();
-              $('.carousel').carousel();
-            });
-            $('.carousel.carousel-slider').carousel({
-              fullWidth: true,
-              indicators: true
-            });
-          </script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="../jsonScripts/ElementsCount.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            <script type="module"> import {isUserLogged} from '../jsonScripts/profileInfor.js';  window.isUserLogged = isUserLogged</script>
+            <script type="module"> import {isUserLoggedProfileButton} from '../jsonScripts/profileInfor.js';  window.isUserLoggedProfileButton = isUserLoggedProfileButton</script>
+            <script type="module">import {processSearch} from '../jsonScripts/processSearch.js'; window.processSearch = processSearch</script>
+            <script type="module">import {processSearchClick} from '../jsonScripts/processSearch.js'; window.processSearchClick = processSearchClick</script>
+            <script type="module"> import {addProductToUser} from '../jsonScripts/databaseFunctions.js';  window.addProductToUser = addProductToUser</script>
+            <script type="module"> import {addComment} from '../jsonScripts/databaseFunctions.js';  window.addComment = addComment</script>
+            <script type="module"> import {getAllCommentsFromDB} from '../jsonScripts/databaseFunctions.js';  window.getAllCommentsFromDB = getAllCommentsFromDB</script>
+            <script type="module"> import {deleteCommentFromUser} from '../jsonScripts/databaseFunctions.js';  window.deleteCommentFromUser = deleteCommentFromUser</script>
+            <script type="module"> import {getProductPriceToBuyButton} from '../jsonScripts/databaseFunctions.js';  window.getProductPriceToBuyButton = getProductPriceToBuyButton</script>
+            <script>
+              window.onload = () => {
+                isUserLoggedProfileButton();
+                getAllCommentsFromDB('Elden Ring');
+                getProductPriceToBuyButton('Elden Ring');
+              }
+              $(document).ready(function(){
+                $('.sidenav').sidenav();
+              });
+              function moveCaroussel(steps) {
+                $('.carousel').carousel('next', steps);
+              }
+            </script>
     </body>
 </html>
