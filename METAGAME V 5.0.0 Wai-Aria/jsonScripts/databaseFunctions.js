@@ -132,17 +132,17 @@ export function getAllProductsFromDB(searchText, tag = undefined) {
     }
     let productsNames = Object.keys(snapshot.val());
     let products = snapshot.val();
-    let tableTitle = `<h1 id ="searchResultTitle" class="center" style="font-size:2em;">Resultados de la busqueda</h1>` + '<table class=\'centered\' highlight> <thead> <tr> <th>Product</th> <th>Item Price</th> </tr> </thead> <tbody> ';
+    let tableTitle = `<h1 id ="searchResultTitle" class="center" style="font-size:2em;color: white;">Resultados de la busqueda</h1>` + '<table class=\'centered\' highlight> <thead> <tr> <th style="color: white;">Product</th> <th style="color: white;">Item Price</th> </tr> </thead> <tbody> ';
     for (let i = 0; i < productsNames.length; i++) {
       if (productsNames[i].toLowerCase().includes(searchText.toLowerCase())) {
         if (tagsToFilter.length > 0) {
           if(tagsToFilter.every(ai => products[`${productsNames[i]}`].tags.includes(ai))) {
-            tableTitle += `<tr> <td> <a href="${snapshot.val()[productsNames[i]].page}">` + productsNames[i] + '</a> </td> <td>' +  ` ${snapshot.val()[productsNames[i]].price}` + ' €' + '</td></tr>'
+            tableTitle += `<tr> <td> <a href="${snapshot.val()[productsNames[i]].page}">` + productsNames[i] + '</a> </td> <td style="color: white;">' +  ` ${snapshot.val()[productsNames[i]].price}` + ' €' + '</td></tr>'
             //wholeString += '<p class="flow-text">' + numOfProduct + ' | '   + item.product + ` ${item.price}`  + '€' + '</p>'
             numOfProduct++;
           }
         }else {
-          tableTitle += `<tr> <td> <a href="${snapshot.val()[productsNames[i]].page}">` + productsNames[i] + '</a> </td> <td>' +  ` ${snapshot.val()[productsNames[i]].price}` + ' €' + '</td></tr>'
+          tableTitle += `<tr> <td> <a href="${snapshot.val()[productsNames[i]].page}">` + productsNames[i] + '</a> </td> <td style="color: white;">' +  ` ${snapshot.val()[productsNames[i]].price}` + ' €' + '</td></tr>'
           //wholeString += '<p class="flow-text">' + numOfProduct + ' | '   + item.product + ` ${item.price}`  + '€' + '</p>'
           numOfProduct++;
         }
@@ -195,6 +195,7 @@ export function addCartToUserProductHistory() {
   const auth = firebaseAuth.getAuth();
   auth.onAuthStateChanged(function(user) {
     if (user) {
+      alert('Se ha realizado la compra del carrito, se va a vaciar su contenido');
       addCartToDBProductHistory(user.uid);
     } else {
       alert('No hay usuario conectado, inicie sesion primero para comprar');
@@ -343,9 +344,9 @@ export function getAllCommentsFromDB(page) {
           const auth = firebaseAuth.getAuth();
           auth.onAuthStateChanged(function(user) {
             if (user.uid === userID) {
-              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="../img/nopfp.png" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p class="right" style="font-size:15px;">${comment}</p></p><p style="font-size:15px;">${date}</p><br><a onclick="deleteCommentFromUser('${page}', ${index})" class="waves-effect waves-light btn">Eliminar</a></span></div> </div></div></div>` + commentsBlock;
+              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="../img/nopfp.png" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><h1 style="font-size:30px; word-break: break-all">${dbUsername.username}</h1><p class="right" style="font-size:15px;">${comment}</p></p><p style="font-size:15px;">${date}</p><br><a onclick="deleteCommentFromUser('${page}', ${index})" class="teal darken-4 waves-effect waves-light btn">Eliminar</a></span></div> </div></div></div>` + commentsBlock;
             } else {
-              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="../img/nopfp.png" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p class="right" style="font-size:15px;">${comment}</p></span></div> </div></div></div>` + commentsBlock;
+              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="../img/nopfp.png" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><h1 style="font-size:30px; word-break: break-all">${dbUsername.username}</h1><p class="right" style="font-size:15px;">${comment}</p></span></div> </div></div></div>` + commentsBlock;
             }
             $("#comments-db").html(html + commentsBlock);
           });        
@@ -353,9 +354,9 @@ export function getAllCommentsFromDB(page) {
           const auth = firebaseAuth.getAuth();
           auth.onAuthStateChanged(function(user) {
             if (user.uid === userID) {
-              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="${dbUsername.pfp}" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p style="font-size:15px;">${comment}</p></p><p class="right" style="font-size:15px;">${date}</p><br><a onclick="deleteCommentFromUser('${page}', ${index})" class="waves-effect waves-light btn">Eliminar</a></span></div> </div></div></div>` + commentsBlock;
+              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="${dbUsername.pfp}" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><h1 style="font-size:30px; word-break: break-all">${dbUsername.username}</h1><p style="font-size:15px;">${comment}</p></p><p class="right" style="font-size:15px;">${date}</p><br><a onclick="deleteCommentFromUser('${page}', ${index})" class="teal darken-4 waves-effect waves-light btn">Eliminar</a></span></div> </div></div></div>` + commentsBlock;
             } else {
-              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="${dbUsername.pfp}" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><p style="font-size:30px; word-break: break-all">${dbUsername.username}</p><p style="font-size:15px;">${comment}</p></p><p class="right" style="font-size:15px;">${date}</p></span></div> </div></div></div>` + commentsBlock;
+              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="${dbUsername.pfp}" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><h1 style="font-size:30px; word-break: break-all">${dbUsername.username}</h1><p style="font-size:15px;">${comment}</p></p><p class="right" style="font-size:15px;">${date}</p></span></div> </div></div></div>` + commentsBlock;
             }
             $("#comments-db").html(html + commentsBlock);
           });

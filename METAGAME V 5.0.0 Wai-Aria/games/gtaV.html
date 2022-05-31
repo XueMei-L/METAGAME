@@ -49,7 +49,7 @@
                   <form class="col s12" onsubmit="return false">
                     <div class="row">
                       <div class="input-field col s10">
-                        <input id="searchBox" type="text" placeholder="Introduzca el termino de busqueda" onkeydown="processSearch($('#searchBox').val())">
+                        <input id="searchBox" style="color: white;" type="text" placeholder="Introduzca el termino de busqueda" onkeydown="processSearch($('#searchBox').val())">
                         <label for="searchBox" style="color: white;">Búsqueda</label>
                       </div>
                       <div class="input-field col s2">
@@ -199,9 +199,9 @@
                     <div class="card-content white-text" style="background-color: #ffffff;">
                       <div class="input-field col s12">
                         <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Añadir un comentario</label>
+                        <label style="color: black;" for="textarea1">Añadir un comentario</label>
                       </div>
-                      <a href="#!" class="btn waves-effect teal darken-4" onclick ="addComment('GTAV', document.getElementById('textarea1').value)">Enviar</a>
+                      <a href="javascript:addComment('GTAV', document.getElementById('textarea1').value)" class="btn waves-effect teal darken-4">Enviar</a>
                     </div>
                   </div>
                 </div>

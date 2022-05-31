@@ -49,7 +49,7 @@
                   <form class="col s12" onsubmit="return false">
                     <div class="row">
                       <div class="input-field col s10">
-                        <input id="searchBox" type="text" placeholder="Introduzca el termino de busqueda" onkeydown="processSearch($('#searchBox').val())">
+                        <input id="searchBox" style="color: white;" type="text" placeholder="Introduzca el termino de busqueda" onkeydown="processSearch($('#searchBox').val())">
                         <label for="searchBox" style="color: white;">Búsqueda</label>
                       </div>
                       <div class="input-field col s2">
@@ -104,11 +104,11 @@
                 
                 <hr>
 
-                <p id ='cart-Paragraph-Title'>Title</p>
+                <p id ='cart-Paragraph-Title'> </p>
                 <p id ='cart-Price'> </p>
 
-                <button id="boton-vaciar" role="alert" aria-label="Vaciar carrito de productos" onclick="purgeCartFromUser()" class="btn btn-danger">Vaciar</button>
-                <button id="boton-comprar" role="alert" aria-label="Comprar los productos del carrito" onclick="addCartToUserProductHistory(); alert('Se ha realizado la compra del carrito, se va a vaciar su contenido')" class="btn btn-danger">Comprar</button>
+                <button id="boton-vaciar" role="alert" aria-label="Vaciar carrito de productos" onclick="purgeCartFromUser()" class="btn teal darken-4">Vaciar</button>
+                <button id="boton-comprar" role="alert" aria-label="Comprar los productos del carrito" onclick="addCartToUserProductHistory()" class="btn teal darken-4">Comprar</button>
             </aside>
         </div>
           
@@ -119,10 +119,10 @@
               <div class="col l6 s6">
                 <br>
                 <div class="col s12">
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
-                    <a href="#" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
+                    <a href="./privacy.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
+                    <a href="./termsofuse.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
+                    <a href="./cookies.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
+                    <a href="./employment.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
 
                 </div>
                 <div class="col s12">
@@ -152,16 +152,17 @@
 
               <div class="col l4 offset-l1 s12">
                 <ul>
-                  <li><i class="material-icons">email</i><span> support@metagame.com</span></li>
-                  <li><i class="material-icons">place</i><span> Av. Capitán Ramón Freire, Rancagua, O'Higgins, Chile</span></li>
-                  <li><i class="material-icons">contacts</i><span> +34 123456789</span></li>
+                  <li tabindex="0"><i class="material-icons">email</i><span> support@metagame.com</span></li>
+                  <li tabindex="0"><i class="material-icons">place</i><span> Av. Capitán Ramón Freire, Rancagua, O'Higgins, Chile</span></li>
+                  <li tabindex="0"><i class="material-icons">contacts</i><span> +34 123456789</span></li>
                 </ul>
               </div>  
             </div>
             
             <div class="footer-copyright ">
               <div class="container">
-                <p class="center">© 2022 XMOJ Corporation. All rights reserved. <br>
+                
+                <p tabindex="0" class="center">© 2022 XMOJ Corporation. All rights reserved. <br>
                   All product names, logos, brands, trademarks and registered trademarks are property of their respective owners. 
                   All company, product and service names used in this website are for identification purposes only. 
                 </p>
