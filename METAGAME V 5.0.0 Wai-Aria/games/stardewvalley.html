@@ -21,6 +21,7 @@
         <title>Stardew Valley</title>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="../css/focusStyle.css">
 
     </head>
     
@@ -30,7 +31,7 @@
           <div class="nav-wrapper">
             <div class="row" role="row">
               <div class="col s1">
-              <a href="../index.html" style="text-shadow: 2px 2px;"><img src="../img/logo.png" alt="metagame" width="auto" height="64"></a>
+              <a href="../index.html" style="text-shadow: 2px 2px;"><img src="../img/logo.png" alt="metagame-logo" width="auto" height="64"></a>
               </div>
               <div class="left hide-on-med-and-down">
                 <ul role="menu" id="nav-mobile" role="menu" >
@@ -40,9 +41,7 @@
                 </ul>
               </div>
 
-
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
-              
+              <a href="#!" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
               
               <div class="col s3 hide-on-med-and-down">
                 <div class="row">
@@ -53,7 +52,7 @@
                         <label for="searchBox" style="color: white;">Búsqueda</label>
                       </div>
                       <div class="input-field col s2">
-                        <a href="../searchResults.html" onclick ="processSearchClick($('#searchBox').val())"><i class="material-icons" >search</i></a>
+                        <a href="../searchResults.html" onclick ="processSearchClick($('#searchBox').val())"><i class="material-icons">search</i></a>
                       </div>
                     </div>
                   </form>
@@ -61,9 +60,9 @@
               </div>
               <div class=" right hide-on-med-and-down">
                 <ul>
-                  <li><a tabindex="0" class="teal waves-light btn" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li" onclick="alert(getElementsCountString())"><i class="material-icons">settings</i></a>
-                    <a id="profileButton" class="teal waves-light btn" style="margin-left:0px;" onclick='isUserLogged()'><i class="material-icons">account_box</i></a>
-                    <a class="teal waves-light btn" style="margin-left:0px;" href="../shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
+                  <li><a tabindex="0" href="javascript:alert(getElementsCountString())" class="teal waves-light btn focus-visible-only" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li"><i class="material-icons">settings</i></a>
+                    <a href="javascript:isUserLogged()" id="profileButton" class="teal waves-light btn focus-visible-only" style="margin-left:0px;"><i class="material-icons">account_box</i></a>
+                    <a class="teal waves-light btn focus-visible-only" style="margin-left:0px;" href="shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
 
                   </li>
                 </ul>
@@ -73,22 +72,22 @@
         </nav>
       </div>
       <!-- Sidenav que se muestra al pulsar el boton de menu del navbar superior en tamaños de pantalla pequeños -->
-      <ul class="sidenav" id="mobile-demo" style="background-color:#264F89;">
-        <li><a href="../category.html" style="color:white;">Categorías</a></li>
-        <li><a href="../searchResults.html" style="color:white;">Búsqueda</a></li>
-        <li><a href="../news.html" style="color:white;">Noticias</a></li>
-        <li><a href="#!" onclick="isUserLogged()" style="color:white;">Cuenta</a></li>
-        <li><a href="../shoppingCart.html" style="color:white;">Carrito</a></li>
+      <ul tabindex="-1" class="sidenav" id="mobile-demo" style="background-color:#264F89;">
+        <li><a tabindex="-1" href="../category.html" style="color:white;">Categorías</a></li>
+        <li><a tabindex="-1" href="../searchResults.html" style="color:white;">Búsqueda</a></li>
+        <li><a tabindex="-1" href="../news.html" style="color:white;">Noticias</a></li>
+        <li><a tabindex="-1" href="javascript:isUserLogged()" style="color:white;">Cuenta</a></li>
+        <li><a tabindex="-1" href="../shoppingCart.html" style="color:white;">Carrito</a></li>
         <li>
           <div class="row">
             <form class="col s12" onsubmit="return false">
               <div class="row">
                 <div class="input-field col s10">
-                  <input id="sideNavSearchBox" style="color:white;" type="text" class="validate" onkeydown="processSearch($('#sideNavSearchBox').val())">
+                  <input tabindex="-1" id="sideNavSearchBox" style="color:white;" type="text" class="validate" onkeydown="processSearch($('#sideNavSearchBox').val())">
                   <label for="sideNavSearchBox" style="color: white;">Búsqueda</label>
                 </div>
                 <div class="input-field col s1">
-                  <a class="right" href="../searchResults.html" onclick ="processSearchClick($('#sideNavSearchBox').val())"><i class="material-icons prefix "style="color: white;">search</i></a>
+                  <a tabindex="-1" class="right" href="../searchResults.html" onclick ="processSearchClick($('#sideNavSearchBox').val())"><i class="material-icons prefix " style="color: white;">search</i></a>
                 </div>
               </div>
             </form>
@@ -122,7 +121,7 @@
                       Pixelados
                     </div>
                     <div class="right">
-                      <a id="buy-button" class="teal darken-4 waves-light btn-large" onclick="addProductToUser('Stardew Valley')"><i class="material-icons left">add_shopping_cart</i>Comprar</a>
+                      <a tabindex="0" id="buy-button" href="javascript:addProductToUser('Stardew Valley')" aria-label="Añadir al carro Stardew Valley" class="teal darken-4 waves-light btn-large focus-visible-only"><i class="material-icons left">add_shopping_cart</i>Comprar</a>
                     </div>
                   </div><br><br><br>
                 </div>
@@ -180,7 +179,7 @@
                         <textarea id="textarea1" class="materialize-textarea"></textarea>
                         <label style="color: black;" for="textarea1">Añadir un comentario</label>
                       </div>
-                      <a href="javascript:addComment('Stardew Valley', document.getElementById('textarea1').value)" class="btn waves-effect teal darken-4" >Enviar</a>
+                      <a tabindex="0" aria-label="comentar" href="javascript:addComment('Stardew Valley', document.getElementById('textarea1').value)" class="btn waves-effect teal darken-4 focus-visible-only-black">Enviar</a>
                     </div>
                   </div>
                 </div>
@@ -201,11 +200,11 @@
               <div class="col l6 s6">
                 <br>
                 <div class="col s12">
-                    <a href="../privacy.html" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
-                    <a href="../termsofuse.html" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
-                    <a href="../cookies.html" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
-                    <a href="../employment.html" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
-
+                    <a href="../privacy.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">PRIVACIDAD</a>
+                    <a href="../termsofuse.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">TÉRMINOS DE USO</a>
+                    <a href="../cookies.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">cookies</a>
+                    <a href="../employment.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">EMPLEO</a>
+  
                 </div>
                 <div class="col s12">
                   <svg height="30" width="30">
@@ -222,7 +221,7 @@
                       </path>
                     </svg>
                   </a>
-
+  
                   <svg height="30" width="30">
                     <a href="https://instagram.com" tabindex="0" role="link">
                       <path fill="white" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z">
@@ -231,12 +230,12 @@
                   </svg>
                 </div>
               </div>
-
+  
               <div class="col l4 offset-l1 s12">
                 <ul>
-                  <li><i class="material-icons">email</i><span> support@metagame.com</span></li>
-                  <li><i class="material-icons">place</i><span> Av. Capitán Ramón Freire, Rancagua, O'Higgins, Chile</span></li>
-                  <li><i class="material-icons">contacts</i><span> +34 123456789</span></li>
+                  <li tabindex="0"><i class="material-icons">email</i><span> support@metagame.com</span></li>
+                  <li tabindex="0"><i class="material-icons">place</i><span> Av. Capitán Ramón Freire, Rancagua, O'Higgins, Chile</span></li>
+                  <li tabindex="0"><i class="material-icons">contacts</i><span> +34 123456789</span></li>
                 </ul>
               </div>  
             </div>
@@ -244,7 +243,7 @@
             <div class="footer-copyright ">
               <div class="container">
                 
-                <p class="center">© 2022 XMOJ Corporation. All rights reserved. <br>
+                <p tabindex="0" class="center">© 2022 XMOJ Corporation. All rights reserved. <br>
                   All product names, logos, brands, trademarks and registered trademarks are property of their respective owners. 
                   All company, product and service names used in this website are for identification purposes only. 
                 </p>

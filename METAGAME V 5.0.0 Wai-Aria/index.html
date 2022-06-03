@@ -22,6 +22,7 @@
         <title>METAGAMES</title>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="./css/focusStyle.css">
 
     </head>
     <body style="background-color:#0a2635;">
@@ -60,9 +61,9 @@
               </div>
               <div class=" right hide-on-med-and-down">
                 <ul>
-                  <li><a tabindex="0" href="javascript:alert(getElementsCountString())" class="teal waves-light btn" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li"><i class="material-icons">settings</i></a>
-                    <a href="javascript:isUserLogged()" id="profileButton" class="teal waves-light btn" style="margin-left:0px;"><i class="material-icons">account_box</i></a>
-                    <a class="teal waves-light btn" style="margin-left:0px;" href="shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
+                  <li><a tabindex="0" href="javascript:alert(getElementsCountString())" class="teal waves-light btn focus-visible-only" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li"><i class="material-icons">settings</i></a>
+                    <a href="javascript:isUserLogged()" id="profileButton" class="teal waves-light btn focus-visible-only" style="margin-left:0px;"><i class="material-icons">account_box</i></a>
+                    <a class="teal waves-light btn focus-visible-only" style="margin-left:0px;" href="shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
 
                   </li>
                 </ul>
@@ -72,22 +73,22 @@
         </nav>
       </div>
       <!-- Sidenav que se muestra al pulsar el boton de menu del navbar superior en tamaños de pantalla pequeños -->
-      <ul class="sidenav" id="mobile-demo" style="background-color:#264F89;">
-        <li><a href="./category.html" style="color:white;">Categorías</a></li>
-        <li><a href="./searchResults.html" style="color:white;">Búsqueda</a></li>
-        <li><a href="./news.html" style="color:white;">Noticias</a></li>
-        <li><a href="javascript:isUserLogged()" style="color:white;">Cuenta</a></li>
-        <li><a href="./shoppingCart.html" style="color:white;">Carrito</a></li>
+      <ul tabindex="-1" class="sidenav" id="mobile-demo" style="background-color:#264F89;">
+        <li><a tabindex="-1" href="./category.html" style="color:white;">Categorías</a></li>
+        <li><a tabindex="-1" href="./searchResults.html" style="color:white;">Búsqueda</a></li>
+        <li><a tabindex="-1" href="./news.html" style="color:white;">Noticias</a></li>
+        <li><a tabindex="-1" href="javascript:isUserLogged()" style="color:white;">Cuenta</a></li>
+        <li><a tabindex="-1" href="./shoppingCart.html" style="color:white;">Carrito</a></li>
         <li>
           <div class="row">
             <form class="col s12" onsubmit="return false">
               <div class="row">
                 <div class="input-field col s10">
-                  <input id="sideNavSearchBox" style="color:white;" type="text" class="validate" onkeydown="processSearch($('#sideNavSearchBox').val())">
+                  <input tabindex="-1" id="sideNavSearchBox" style="color:white;" type="text" class="validate" onkeydown="processSearch($('#sideNavSearchBox').val())">
                   <label for="sideNavSearchBox" style="color: white;">Búsqueda</label>
                 </div>
                 <div class="input-field col s1">
-                  <a class="right" href="./searchResults.html" onclick ="processSearchClick($('#sideNavSearchBox').val())"><i class="material-icons prefix " style="color: white;">search</i></a>
+                  <a tabindex="-1" class="right" href="./searchResults.html" onclick ="processSearchClick($('#sideNavSearchBox').val())"><i class="material-icons prefix " style="color: white;">search</i></a>
                 </div>
               </div>
             </form>
@@ -95,16 +96,16 @@
         </li>    
       </ul>
       <div class="carousel carousel-slider center">
-        <div style="background-color:#030b0f;" class="carousel-item" href="#one!">
+        <div tabindex="-1" style="background-color:#030b0f;" class="carousel-item" href="#one!">
           <a href="./games/haveanicedeath.html"><img role="img" aria-label="Portada juego Have a nice death"  class="responsive-img" src="./img/haveANiceDeath.jpg" alt="Juego Have a Nice Death"></a>
         </div>
-        <div class="carousel-item" style="background-color:#030b0f;" href="#two!">
+        <div tabindex="-1" class="carousel-item" style="background-color:#030b0f;" href="#two!">
           <a href="./games/midnightghosthunt.html"><img role="img" aria-label="Portada juego Midnight Ghost Hunt" class="responsive-img" src="./img/midnight.jpg" alt="Juego Midnight"></a>
         </div>
-        <div class="carousel-item" style="background-color:#030b0f;" href="#three!">
-          <a href="./games/deathstranding.html"><img role="img" aria-label="Portada juego Death Stranding" class="responsive-img" src="./img/death.jpg" alt="Juego Death Stranding"></a>
+        <div tabindex="-1" class="carousel-item" style="background-color:#030b0f;" href="#three!">
+          <a  href="./games/deathstranding.html"><img role="img" aria-label="Portada juego Death Stranding" class="responsive-img" src="./img/death.jpg" alt="Juego Death Stranding"></a>
         </div>
-        <div class="carousel-item" style="background-color:#030b0f;" href="#four!">
+        <div tabindex="-1" class="carousel-item" style="background-color:#030b0f;" href="#four!">
           <a href="./games/overcooked.html"><img role="img" aria-label="Portada juego OverCooked" class="responsive-img" src="./img/overCooked.jpg" alt="Juego Overcooked"></a>
         </div>
       </div>
@@ -171,7 +172,7 @@
                         Elden Ring
                       </p>
                       <p class="light-blue-text text-darken-2 flow-text center">
-                        <a tabindex="0" id="eldenring-price" role="alert" aria-label="Añade el producto Elden Ring al carrito" onclick="addProductToUser('Elden Ring')" class="teal darken-4 waves-light btn">placeholder</a>
+                        <a href="javascript:addProductToUser('Elden Ring')" tabindex="0" id="eldenring-price" role="alert" aria-label="Añade el producto Elden Ring al carrito" class="teal darken-4 waves-light btn focus-visible-only">placeholder</a>
                       </p>
                       
                     </div>
@@ -182,7 +183,7 @@
                         Ark
                       </p>
                       <p class="light-blue-text text-darken-2 flow-text center">
-                        <a tabindex="0" id = "ark-price" role="alert" aria-label="Añade el producto ARK al carrito" onclick="addProductToUser('ARK');" class="teal darken-4 waves-light btn">placeholder</a>
+                        <a href="javascript:addProductToUser('ARK')" tabindex="0" id = "ark-price" role="alert" aria-label="Añade el producto ARK al carrito" class="teal darken-4 waves-light btn focus-visible-only">placeholder</a>
                       </p>
                     </div>
 
@@ -192,7 +193,7 @@
                         GTA V 
                       </p>
                       <p class="light-blue-text text-darken-2 flow-text center">
-                        <a tabindex="0" id="gta-price" role="alert" aria-label="Añade el producto GTA V al carrito" onclick="addProductToUser('GTAV')" class="teal darken-4 waves-light btn">placeholder</a>
+                        <a href="javascript:addProductToUser('GTAV')" tabindex="0" id="gta-price" role="alert" aria-label="Añade el producto GTA V al carrito" class="teal darken-4 waves-light btn focus-visible-only">placeholder</a>
                       </p>
                       
                     </div>
@@ -225,7 +226,7 @@
                       Valheim 
                     </p>
                     <p class="light-blue-text text-darken-2 flow-text center">
-                      <a tabindex="0" id="valheim-price" role="alert" aria-label="Añade el producto Valheim al carrito" onclick="addProductToUser('Valheim')"class="teal darken-4 waves-light btn">placeholder</a>
+                      <a tabindex="0" href="javascript:addProductToUser('Valheim')" id="valheim-price" role="alert" aria-label="Añade el producto Valheim al carrito" class="teal darken-4 waves-light btn focus-visible-only">placeholder</a>
                     </p>
                   </div>
 
@@ -236,7 +237,7 @@
                     </p>
                   
                     <p class="light-blue-text text-darken-2 flow-text center">
-                      <a tabindex="0" id = "overcooked-price" role="alert" aria-label="Añade el producto Overcooked al carrito" onclick="addProductToUser('Overcooked')" class="teal darken-4 waves-light btn">placeholder</a>
+                      <a href="javascript:addProductToUser('Overcooked')" tabindex="0" id = "overcooked-price" role="alert" aria-label="Añade el producto Overcooked al carrito" class="teal darken-4 waves-light btn focus-visible-only">placeholder</a>
                     </p>
                   </div>
 
@@ -246,7 +247,7 @@
                       Lost ARK Gratis
                     </p>
                     <p class="light-blue-text text-darken-2 flow-text center">
-                      <a tabindex="0" id = "lostark-price" role="alert" aria-label="Añade el producto Lost Ark al carrito" onclick="addProductToUser('Lost Ark')" class="teal darken-4 waves-light btn">placeholder</a>
+                      <a href="javascript:addProductToUser('Lost Ark')" tabindex="0" id = "lostark-price" role="alert" aria-label="Añade el producto Lost Ark al carrito" class="teal darken-4 waves-light btn focus-visible-only">placeholder</a>
                     </p>
                   </div>
                 </div>
@@ -276,7 +277,7 @@
                         Stardew Valley 
                       </p>
                       <p class="light-blue-text text-darken-2 flow-text center">
-                        <a tabindex="0" id = "stardew-price" role="alert" aria-label="Añade el producto Stardew Valley al carrito" onclick="addProductToUser('Stardew Valley')" class="teal darken-4 waves-light btn">placeholder</a>
+                        <a href="javascript:addProductToUser('Stardew Valley')" tabindex="0" id = "stardew-price" role="alert" aria-label="Añade el producto Stardew Valley al carrito" class="teal darken-4 waves-light btn focus-visible-only">placeholder</a>
                       </p>
                     </div>
 
@@ -286,7 +287,7 @@
                         Dying Light 2 
                       </p>
                       <p class="light-blue-text text-darken-2 flow-text center">
-                        <a tabindex="0" id = "dyinglight2-price" role="alert" aria-label="Añade el producto Dying Light 2 al carrito" onclick="addProductToUser('Dying Light 2')" class="teal darken-4 waves-light btn">placeholder</a>
+                        <a href="javascript:addProductToUser('Dying Light 2')" tabindex="0" id = "dyinglight2-price" role="alert" aria-label="Añade el producto Dying Light 2 al carrito" class="teal darken-4 waves-light btn focus-visible-only">placeholder</a>
                       </p>
                     </div>
 
@@ -295,7 +296,7 @@
                       <p class="light-blue-text text-darken-2 flow-text center">
                         Cities: Skylines
                       <p class="light-blue-text text-darken-2 flow-text center">
-                        <a tabindex="0" id = "citiesskylines-price" role="alert" aria-label="Añade el producto Cities Skylines al carrito" onclick="addProductToUser('Cities Skylines')" class="teal darken-4 waves-light btn">placeholder</a>
+                        <a href="javascript:addProductToUser('Cities Skylines')" tabindex="0" id = "citiesskylines-price" role="alert" aria-label="Añade el producto Cities Skylines al carrito" class="teal darken-4 waves-light btn focus-visible-only">placeholder</a>
                     </div> 
                   </div>
               </div>
@@ -307,10 +308,10 @@
             <div class="col l6 s6">
               <br>
               <div class="col s12">
-                  <a href="./privacy.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
-                  <a href="./termsofuse.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
-                  <a href="./cookies.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
-                  <a href="./employment.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
+                  <a href="./privacy.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">PRIVACIDAD</a>
+                  <a href="./termsofuse.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">TÉRMINOS DE USO</a>
+                  <a href="./cookies.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">cookies</a>
+                  <a href="./employment.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">EMPLEO</a>
 
               </div>
               <div class="col s12">

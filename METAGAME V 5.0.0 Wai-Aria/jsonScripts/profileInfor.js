@@ -36,7 +36,7 @@ export function showProfileData() {
               pfpTag.src=dbUsername.pfp
             }
             if (dbUsername.product_history !== undefined){
-              console.log(dbUsername.product_history)
+              //console.log(dbUsername.product_history)
               loadUserProductHistory(dbUsername.product_history);
             } else {
               $("#products-history").html('<p>El usuario no ha comprado ningun producto</p>');
@@ -55,9 +55,9 @@ export function isUserLogged() {
     const auth = firebaseAuth.getAuth();
     auth.onAuthStateChanged(function(user) {
     if (user) {
-        location.href = "./profile.html"
+        location.href = "/METAGAME V 5.0.0 Wai-Aria/profile.html"
     } else {
-        location.href = "./login.html"
+        location.href = "/METAGAME V 5.0.0 Wai-Aria/login.html"
     }
   });
 }
@@ -67,7 +67,7 @@ export function getLoginStatusToProfile() {
     const auth = firebaseAuth.getAuth();
     auth.onAuthStateChanged(function(user) {
     if (user) {
-      location.href = "./profile.html"
+      location.href = "/METAGAME V 5.0.0 Wai-Aria/profile.html"
     } else {
       alert('No hay usuario conectado, inicie sesion primero');
     }
@@ -78,7 +78,7 @@ export function signOutProfile() {
     const auth = firebaseAuth.getAuth();
     auth.signOut(auth).then(() => {
      if (!alert('Se ha cerrado la sesion')) {
-      location.href= "./login.html"
+      location.href= "/METAGAME V 5.0.0 Wai-Aria/login.html"
      }
     }).catch((error) => {
     // An error happened.
@@ -90,7 +90,7 @@ export function showType(fileInput) {
 
   for (let i = 0; i < files.length; i++) {
     const name = files[i].name;
-    console.log(files[i])
+    //console.log(files[i])
     const type = files[i].type;
     alert("Filename: " + name + " , Type: " + type);
   }
@@ -203,23 +203,23 @@ export function userUpdateProfile() {
         get(child(ref(database_ref), `users/${user.uid}`)).then(async (snapshot) => {
           //console.log(snapshot.val())
           let userDB = snapshot.val();
-          if (biography !== "" || biography !== " ") {
+          if (biography !== "" && biography !== " ") {
             userDB.bio = biography;
           }
-          if (username !== "" || username !== " ") {
+          if (username !== "" && username !== " ") {
             userDB.username = username;
           }
           if (birthdate !== "" && birthdate !== " ") {
             userDB.birthdate = birthdate;
           }
-          console.log(user);
+          //console.log(user);
           if (document.getElementById('pfpImageUpload').files[0] !== undefined) {
             await loadPFP();
           }
           // Push to Firebase Database
           await set(ref(database_ref, 'users/' + user.uid),userDB);
           if(!alert('Informacion actualizada, se le redirigira al perfil')){
-            location.href = "./profile.html"; 
+            location.href = "/METAGAME V 5.0.0 Wai-Aria/profile.html"; 
           }
           //console.log(current_cart)
         }).catch((error) => {

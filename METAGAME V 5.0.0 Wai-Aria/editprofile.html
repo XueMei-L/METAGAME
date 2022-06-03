@@ -15,13 +15,14 @@
         <!--Import materialize.css-->
         <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
         <link rel="icon" href="img/logo.png" width="32" height="32" >
-        
+
+
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Editar Perfil</title>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+        <link rel="stylesheet" href="./css/focusStyle.css">
     </head>
     
     <body style="background-color:#0a2635;">
@@ -40,9 +41,7 @@
                 </ul>
               </div>
 
-
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
-              
+              <a href="#!" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
               
               <div class="col s3 hide-on-med-and-down">
                 <div class="row">
@@ -53,7 +52,7 @@
                         <label for="searchBox" style="color: white;">Búsqueda</label>
                       </div>
                       <div class="input-field col s2">
-                        <a href="./searchResults.html" onclick ="processSearchClick($('#searchBox').val())"><i class="material-icons" >search</i></a>
+                        <a href="./searchResults.html" onclick ="processSearchClick($('#searchBox').val())"><i class="material-icons">search</i></a>
                       </div>
                     </div>
                   </form>
@@ -61,9 +60,9 @@
               </div>
               <div class=" right hide-on-med-and-down">
                 <ul>
-                  <li><a tabindex="0" class="teal waves-light btn" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li" onclick="alert(getElementsCountString())"><i class="material-icons">settings</i></a>
-                    <a id="profileButton" class="teal waves-light btn" style="margin-left:0px;" onclick='isUserLogged()'><i class="material-icons">account_box</i></a>
-                    <a class="teal waves-light btn" style="margin-left:0px;" href="shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
+                  <li><a tabindex="0" href="javascript:alert(getElementsCountString())" class="teal waves-light btn focus-visible-only" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li"><i class="material-icons">settings</i></a>
+                    <a href="javascript:isUserLogged()" id="profileButton" class="teal waves-light btn focus-visible-only" style="margin-left:0px;"><i class="material-icons">account_box</i></a>
+                    <a class="teal waves-light btn focus-visible-only" style="margin-left:0px;" href="shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
 
                   </li>
                 </ul>
@@ -73,22 +72,22 @@
         </nav>
       </div>
       <!-- Sidenav que se muestra al pulsar el boton de menu del navbar superior en tamaños de pantalla pequeños -->
-      <ul class="sidenav" id="mobile-demo" style="background-color:#264F89;">
-        <li><a href="./category.html" style="color:white;">Categorías</a></li>
-        <li><a href="./searchResults.html" style="color:white;">Búsqueda</a></li>
-        <li><a href="./news.html" style="color:white;">Noticias</a></li>
-        <li><a href="javascript:isUserLogged()" style="color:white;">Cuenta</a></li>
-        <li><a href="./shoppingCart.html" style="color:white;">Carrito</a></li>
+      <ul tabindex="-1" class="sidenav" id="mobile-demo" style="background-color:#264F89;">
+        <li><a tabindex="-1" href="./category.html" style="color:white;">Categorías</a></li>
+        <li><a tabindex="-1" href="./searchResults.html" style="color:white;">Búsqueda</a></li>
+        <li><a tabindex="-1" href="./news.html" style="color:white;">Noticias</a></li>
+        <li><a tabindex="-1" href="javascript:isUserLogged()" style="color:white;">Cuenta</a></li>
+        <li><a tabindex="-1" href="./shoppingCart.html" style="color:white;">Carrito</a></li>
         <li>
           <div class="row">
             <form class="col s12" onsubmit="return false">
               <div class="row">
                 <div class="input-field col s10">
-                  <input id="sideNavSearchBox" style="color:white;" type="text" class="validate" onkeydown="processSearch($('#sideNavSearchBox').val())">
+                  <input tabindex="-1" id="sideNavSearchBox" style="color:white;" type="text" class="validate" onkeydown="processSearch($('#sideNavSearchBox').val())">
                   <label for="sideNavSearchBox" style="color: white;">Búsqueda</label>
                 </div>
                 <div class="input-field col s1">
-                  <a class="right" href="./searchResults.html" onclick ="processSearchClick($('#sideNavSearchBox').val())"><i class="material-icons prefix "style="color: white;">search</i></a>
+                  <a tabindex="-1" class="right" href="./searchResults.html" onclick ="processSearchClick($('#sideNavSearchBox').val())"><i class="material-icons prefix " style="color: white;">search</i></a>
                 </div>
               </div>
             </form>
@@ -109,52 +108,52 @@
                 <form class="col s12">
                   <div class="row">
                     <div class="input-field col s10 offset-s1">
-                      <h1 tabindex="0" class="flow-text center" style="font-size:50px;"><b><i>Informacion Personal</i></b></h1>
+                      <h1 class="flow-text center" style="font-size:50px;"><b><i>Informacion Personal</i></b></h1>
                       <div class="divider">
                       </div>
                     </div>
                     
                     <div class="input-field col s10 offset-s1">
-                      <h1 tabindex="0" class="flow-text">Nombre de usuario</h1>
+                      <h1 class="flow-text">Nombre de usuario</h1>
                       <div class="input-field col s12">
                         <div class="input-field col s12">
-                          <input placeholder="Ej: UserXMRJ" id="username" type="text" style="color: white;">
-                          <label tabindex="0" style="font-size:20px; color: white;" for="username">Username</label>
+                          <input tabindex="0" placeholder="Ej: UserXMRJ" id="username" type="text" style="color: white;">
+                          <label style="font-size:20px; color: white;" for="username">Nombre de usuario</label>
                         </div>
                       </div>
                     </div>
                     <div class="input-field col s10 offset-s1">
-                      <h1 tabindex="0" class="flow-text">Foto de perfil</h1>
+                      <h1 class="flow-text">Foto de perfil</h1>
                       <div class="input-field col s12">
                         <form>
                           <div class="file-field input-field">
                             <div class="btn teal darken-4">
-                              <span tabindex="0">Choose File</span>
-                              <input type="file" id="pfpImageUpload" name="filename" style="color: white;">
+                              <span>Elegir archivo</span>
+                              <input tabindex="0" type="file" id="pfpImageUpload" name="filename" class="focus-visible-only" style="color: white;">
                             </div>
                             <div class="file-path-wrapper">
                               <input class="pfpImageUpload" id="pfpImageUploadBar" type="text" style="color: white;">
-                              <label tabindex="0" for="pfpImageUploadBar" style="color: white;">Sube un fichero</label>
+                              <label for="pfpImageUploadBar" style="color: white;">Sube un fichero</label>
                             </div>
                           </div>
                         </form>
                       </div>
                     </div>
                     <div class="input-field col s10 offset-s1">
-                      <h1 tabindex="0" class="flow-text">Fecha de nacimiento</h1>
+                      <h1 class="flow-text">Fecha de nacimiento</h1>
                       <div class="input-field col s12">
                         <div class="input-field col s12">
                           <input tabindex="0" id="birthdate" type="date" style="color: white;">
-                          <label tabindex="0" style="color: rgb(255, 255, 255);" for="birthdate">Año de nacimiento</label>
+                          <label style="color: rgb(255, 255, 255);" for="birthdate">Año de nacimiento</label>
                         </div>
                       </div>
                     </div>
                     <div class="input-field col s10 offset-s1">
-                      <h1 tabindex="0" class="flow-text">Biografia</h1>
+                      <h1 class="flow-text">Biografia</h1>
                       <div class="input-field col s12">
                         <div class="input-field col s12">
                           <textarea id="biography" tabindex="0" class="materialize-textarea" style="color: white;"></textarea>
-                          <label tabindex="0" for="biography" style="color: white;">Texto</label>
+                          <label for="biography" style="color: white;">Texto</label>
                         </div>
                       </div>
                     </div>
@@ -168,15 +167,15 @@
                 <form class="col s12">
                   <div class="row">
                     <div class="input-field col s10 offset-s1">
-                      <h1 tabindex="0" class="flow-text center" style="font-size:50px;"><b><i>Comentarios</i></b></h1>
+                      <h1 class="flow-text center" style="font-size:50px;"><b><i>Comentarios</i></b></h1>
                       <div class="divider">
                       </div>
                     </div><br>                    
                     <div class="input-field col s10 offset-s1">
-                      <a class="teal darken-4 waves-effect waves-light btn-large" href="./login.html"><i class="material-icons left">delete</i>Borrar todos los comentarios</a>
+                      <a tabindex="0" class="teal darken-4 waves-effect waves-light btn-large focus-visible-only" href="./login.html"><i class="material-icons left">delete</i>Borrar todos los comentarios</a>
                     </div>
                     <div class="col s11">
-                      <a onclick="userUpdateProfile();" class="teal darken-4 waves-effect waves-light btn right">GUARDAR</a>
+                      <a tabindex="0" href="javascript:userUpdateProfile()" class="teal darken-4 waves-effect waves-light btn right focus-visible-only">GUARDAR</a>
                     </div>
                   </div>
                 </form>
@@ -194,10 +193,10 @@
             <div class="col l6 s6">
               <br>
               <div class="col s12">
-                  <a href="./privacy.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
-                  <a href="./termsofuse.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
-                  <a href="./cookies.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
-                  <a href="./employment.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
+                  <a href="./privacy.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">PRIVACIDAD</a>
+                  <a href="./termsofuse.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">TÉRMINOS DE USO</a>
+                  <a href="./cookies.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">cookies</a>
+                  <a href="./employment.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">EMPLEO</a>
 
               </div>
               <div class="col s12">

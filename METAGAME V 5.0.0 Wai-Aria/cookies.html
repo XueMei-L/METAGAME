@@ -21,6 +21,7 @@
         <title>Política de cookies</title>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="./css/focusStyle.css">
     </head>
     
     <body style="background-color:#0a2635;">
@@ -40,7 +41,7 @@
                 </ul>
               </div>
 
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+              <a href="#!" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
               
               <div class="col s3 hide-on-med-and-down">
                 <div class="row">
@@ -51,7 +52,7 @@
                         <label for="searchBox" style="color: white;">Búsqueda</label>
                       </div>
                       <div class="input-field col s2">
-                        <a href="./searchResults.html" onclick ="processSearchClick($('#searchBox').val())"><i class="material-icons" >search</i></a>
+                        <a href="./searchResults.html" onclick ="processSearchClick($('#searchBox').val())"><i class="material-icons">search</i></a>
                       </div>
                     </div>
                   </form>
@@ -59,9 +60,10 @@
               </div>
               <div class=" right hide-on-med-and-down">
                 <ul>
-                  <li><a tabindex="0" class="teal waves-light btn" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li" onclick="alert(getElementsCountString())"><i class="material-icons">settings</i></a>
-                    <a id="profileButton" class="teal waves-light btn" style="margin-left:0px;" onclick='isUserLogged()'><i class="material-icons">account_box</i></a>
-                    <a class="teal waves-light btn" style="margin-left:0px;" href="shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
+                  <li><a tabindex="0" href="javascript:alert(getElementsCountString())" class="teal waves-light btn focus-visible-only" role="alert" aria-label="Debug, muestra numero de etiquetas p, divs, li"><i class="material-icons">settings</i></a>
+                    <a href="javascript:isUserLogged()" id="profileButton" class="teal waves-light btn focus-visible-only" style="margin-left:0px;"><i class="material-icons">account_box</i></a>
+                    <a class="teal waves-light btn focus-visible-only" style="margin-left:0px;" href="shoppingCart.html"><i class="material-icons">shopping_cart</i></a>
+
                   </li>
                 </ul>
             </div>
@@ -69,24 +71,23 @@
           </div>
         </nav>
       </div>
-
       <!-- Sidenav que se muestra al pulsar el boton de menu del navbar superior en tamaños de pantalla pequeños -->
-      <ul class="sidenav" id="mobile-demo" style="background-color:#264F89;">
-        <li><a href="./category.html" style="color:white;">Categorías</a></li>
-        <li><a href="./searchResults.html" style="color:white;">Búsqueda</a></li>
-        <li><a href="./news.html" style="color:white;">Noticias</a></li>
-        <li><a href="#!" onclick="isUserLogged()" style="color:white;">Cuenta</a></li>
-        <li><a href="./shoppingCart.html" style="color:white;">Carrito</a></li>
+      <ul tabindex="-1" class="sidenav" id="mobile-demo" style="background-color:#264F89;">
+        <li><a tabindex="-1" href="./category.html" style="color:white;">Categorías</a></li>
+        <li><a tabindex="-1" href="./searchResults.html" style="color:white;">Búsqueda</a></li>
+        <li><a tabindex="-1" href="./news.html" style="color:white;">Noticias</a></li>
+        <li><a tabindex="-1" href="javascript:isUserLogged()" style="color:white;">Cuenta</a></li>
+        <li><a tabindex="-1" href="./shoppingCart.html" style="color:white;">Carrito</a></li>
         <li>
           <div class="row">
             <form class="col s12" onsubmit="return false">
               <div class="row">
                 <div class="input-field col s10">
-                  <input id="sideNavSearchBox" style="color:white;" type="text" class="validate" onkeydown="processSearch($('#sideNavSearchBox').val())">
+                  <input tabindex="-1" id="sideNavSearchBox" style="color:white;" type="text" class="validate" onkeydown="processSearch($('#sideNavSearchBox').val())">
                   <label for="sideNavSearchBox" style="color: white;">Búsqueda</label>
                 </div>
                 <div class="input-field col s1">
-                  <a class="right" href="./searchResults.html" onclick ="processSearchClick($('#sideNavSearchBox').val())"><i class="material-icons prefix "style="color: white;">search</i></a>
+                  <a tabindex="-1" class="right" href="./searchResults.html" onclick ="processSearchClick($('#sideNavSearchBox').val())"><i class="material-icons prefix " style="color: white;">search</i></a>
                 </div>
               </div>
             </form>
@@ -97,187 +98,187 @@
       <!-- BLOQUE PRINCIPAL -->
 
       <div class="row" >
-        <h1 tabindex="0" class="center" style="color:white">Política de cookies</h1>
+        <h1 class="center" style="color:white">Política de cookies</h1>
         <div class="col s10 offset-s1" style="background-color: #264F89; color:white"><br><br>
           <div class="col s10 offset-s1">
             <div class="row">
-              <p tabindex="0" id="descripcion" style="font-size:30px;"><b>¿Qué son las cookies?</b></p>
-                <p tabindex="0" style="font-size:20px;">
+              <h2 tabindex="0" id="descripcion" style="font-size:30px;"><b>¿Qué son las cookies?</b></h2>
+                <p style="font-size:20px;">
                     Las cookies son archivos que se pueden descargar en su equipo a través de las páginas web. Son herramientas que tienen un papel 
                     esencial para la prestación de numerosos servicios de la sociedad de la información. Entre otros, permiten a una página web 
                     almacenar y recuperar información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo de la información 
                     obtenida, se pueden utilizar para reconocer al usuario y mejorar el servicio ofrecido.<br>
                 </p>
               
-              <p tabindex="0" id="descripcion" style="font-size:30px;"><b>¿Qué información almacena una cookie?</b></p>
-                <p tabindex="0" style="font-size:20px;">
-                  cookies no suelen almacenar información sensible sobre usted, como tarjetas de crédito o datos bancarios, fotografías, su DNI o información personal, etc. Los datos que guardan son de carácter técnico, preferencias personales, personalización de contenidos, etc.
+              <h2 tabindex="0" id="descripcion" style="font-size:30px;"><b>¿Qué información almacena una cookie?</b></h2>
+                <p style="font-size:20px;">
+                  Las cookies no suelen almacenar información sensible sobre usted, como tarjetas de crédito o datos bancarios, fotografías, su DNI o información personal, etc. Los datos que guardan son de carácter técnico, preferencias personales, personalización de contenidos, etc.
                   <br><br>El servidor web no le asocia a usted como persona si no a su navegador web. De hecho, si usted navega habitualmente con Internet Explorer y prueba a navegar por la misma web con Firefox o Chrome verá que la web no se da cuenta que es usted la misma persona porque en realidad está asociando al navegador, no a la persona.
                 </p>
 
-              <p tabindex="0" id="descripcion" style="font-size:30px;"><b>Tipos de cookies</b></p>
-                <p tabindex="0" style="font-size:20px;">
+              <h2 tabindex="0" id="descripcion" style="font-size:30px;"><b>Tipos de cookies</b></h2>
+                <p style="font-size:20px;">
                   Según quien sea la entidad que gestione el dominio desde donde se envían las cookies y trate los datos que se obtengan se pueden 
                     distinguir dos tipos:
                 </p>
                 <div class="col s12" style="font-size:20px;">
                   <ol>
-                      <li tabindex="0">
+                      <li>
                         Cookies técnicas: Son las más elementales y permiten, entre otras cosas, saber cuándo está navegando un humano o una aplicación automatizada, cuándo navega un usuario anónimo y uno registrado, tareas básicas para el funcionamiento de cualquier web dinámica.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         Cookies de análisis: Recogen información sobre el tipo de navegación que está realizando, las secciones que más utiliza, productos consultados, franja horaria de uso, idioma, etc.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         Cookies publicitarias: Muestran publicidad en función de su navegación, su país de procedencia, idioma, etc.
                       </li>
                   </ol>
                 </div>
 
-              <p tabindex="0" id="descripcion" style="font-size:30px;"><b>¿Qué son las cookies propias y las de terceros?</b></p>
-                <p tabindex="0" style="font-size:20px;">
+              <h1 tabindex="0" id="descripcion" style="font-size:30px;"><b>¿Qué son las cookies propias y las de terceros?</b></h1>
+                <p style="font-size:20px;">
                   Las cookies propias son las generadas por la página que está visitando y las de terceros son las generadas por servicios o proveedores externos como Facebook, Twitter, Google, etc.
                 </p>
 
-              <p tabindex="0" id="descripcion" style="font-size:30px;"><b>¿Qué ocurre si desactivo las cookies?</b></p>
-                <p tabindex="0" style="font-size:20px;">
+              <h2 tabindex="0" id="descripcion" style="font-size:30px;"><b>¿Qué ocurre si desactivo las cookies?</b></h2>
+                <p style="font-size:20px;">
                   Para que entienda el alcance que puede tener desactivar las cookies le mostramos unos ejemplos:
                 </p>
                 <div class="col s12" style="font-size:20px;">
-                  <ol tabindex="0">
-                      <li tabindex="0">
+                  <ol>
+                      <li>
                         No podrá compartir contenidos de esa web en Facebook, Twitter o cualquier otra red social.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         El sitio web no podrá adaptar los contenidos a sus preferencias personales, como suele ocurrir en las tiendas online.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         No podrá acceder al área personal de esa web, como por ejemplo Mi cuenta, o Mi perfil o Mis pedidos.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         Tiendas online: Le será imposible realizar compras online, tendrán que ser telefónicas o visitando la tienda física si es que dispone de ella.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         No será posible personalizar sus preferencias geográficas como franja horaria, divisa o idioma.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         El sitio web no podrá realizar analíticas web sobre visitantes y tráfico en la web, lo que dificultará que la web sea competitiva.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         No podrá escribir en el blog, no podrá subir fotos, publicar comentarios, valorar o puntuar contenidos. La web tampoco podrá saber si usted es un humano o una aplicación automatizada que publica spam.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         Todas las redes sociales usan cookies, si las desactiva no podrá utilizar ninguna red social.
                       </li>
                   </ol>
                 </div>
 
-              <p tabindex="0" id="descripcion" style="font-size:30px;"><b>¿Se pueden eliminar las cookies?</b></p>
-                <p tabindex="0" style="font-size:20px;">
+              <h2 tabindex="0" id="descripcion" style="font-size:30px;"><b>¿Se pueden eliminar las cookies?</b></h2>
+                <p style="font-size:20px;">
                   Sí. No sólo eliminar, también bloquear, de forma general o particular para un dominio específico.<br><br>
                   Para eliminar las cookies de un sitio web debe ir a la configuración de su navegador y allí podrá buscar las asociadas al dominio en cuestión y proceder a su eliminación.
                 </p>
                 
-                <p tabindex="0" style="font-size:30px;">
-                  Configuración de cookies para los navegadores más polulares
-                </p>
-                <p tabindex="0" style="font-size:20px;">
+                <h2 tabindex="0" style="font-size:30px;">
+                  <b>Configuración de cookies para los navegadores más polulares</b>
+                </h2>
+                <p style="font-size:20px;">
                   Para que entienda el alcance que puede tener desactivar las cookies le mostramos unos ejemplos:
                 </p>
                 <div class="col s12" style="font-size:20px;">
                   <ol>
-                      <li tabindex="0">
+                      <li>
                         Vaya a Configuración o Preferencias mediante el menú Archivo o bien pinchando el icono de personalización que aparece arriba a la derecha.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         Verá diferentes secciones, pinche la opción Mostrar opciones avanzadas.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         Vaya a Privacidad, Configuración de contenido.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         Seleccione Todas las cookies y los datos de sitios.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         Aparecerá un listado con todas las cookies ordenadas por dominio. Para que le sea más fácil encontrar las cookies de un determinado dominio introduzca parcial o totalmente la dirección en el campo Buscar cookies.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         Tras realizar este filtro aparecerán en pantalla una o varias líneas con las cookies de la web solicitada. Ahora sólo tiene que seleccionarla y pulsar la X para proceder a su eliminación.
                       </li>
                   </ol>
                 </div>
 
-                <p tabindex="0" style="font-size:20px;">
+                <h1 tabindex="0" style="font-size:20px;">
                   Para acceder a la configuración de cookies del navegador Internet Explorer siga estos pasos (pueden variar en función de la versión del navegador):
-                </p>
+                </h1>
                 <div class="col s12" style="font-size:20px;">
                   <ol>
-                      <li tabindex="0">
+                      <li>
                         Vaya a Herramientas, Opciones de Internet
                       </li>
-                      <li tabindex="0">
+                      <li>
                         Haga click en Privacidad.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         Mueva el deslizador hasta ajustar el nivel de privacidad que desee.
                       </li>
                   </ol>
                 </div>
 
-                <p tabindex="0" style="font-size:20px;">
+                <h1 tabindex="0" style="font-size:20px;">
                   Para acceder a la configuración de cookies del navegador Safari para OSX siga estos pasos (pueden variar en función de la versión del navegador):
-                </p>
+                </h1>
                 <div class="col s12" style="font-size:20px;">
                   <ol>
-                      <li tabindex="0">
+                      <li>
                         Vaya a Preferencias, luego Privacidad.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         En este lugar verá la opción Bloquear cookies para que ajuste el tipo de bloqueo que desea realizar.
                       </li>
                   </ol>
                 </div>
 
-                <p tabindex="0" style="font-size:20px;">
-                  Para acceder a la configuración de cookies del navegador Safari para iOS siga estos pasos (pueden variar en función de la versión del navegador):</p>
+                <h1 tabindex="0" style="font-size:20px;">
+                  Para acceder a la configuración de cookies del navegador Safari para iOS siga estos pasos (pueden variar en función de la versión del navegador):</h1>
                 <div class="col s12" style="font-size:20px;">
                   <ol>
-                      <li tabindex="0">
+                      <li>
                         Vaya a Ajustes, luego Safari.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         Vaya a Privacidad y Seguridad, verá la opción Bloquear cookies para que ajuste el tipo de bloqueo que desea realizar.
                       </li>
                   </ol>
                 </div>
 
-                <p tabindex="0" style="font-size:20px;">
-                  Para acceder a la configuración de cookies del navegador Safari para iOS siga estos pasos (pueden variar en función de la versión del navegador):</p>
+                <h1 tabindex="0" style="font-size:20px;">
+                  Para acceder a la configuración de cookies del navegador Safari para iOS siga estos pasos (pueden variar en función de la versión del navegador):</h1>
                 <div class="col s12" style="font-size:20px;">
                   <ol>
-                      <li tabindex="0">
+                      <li>
                         Ejecute el navegador y pulse la tecla Menú, luego Ajustes.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         Vaya a Seguridad y Privacidad, verá la opción Aceptar cookies para que active o desactive la casilla.
                       </li>
                   </ol>
                 </div>
 
-                <p tabindex="0" style="font-size:20px;">
-                  Para acceder a la configuración de cookies del navegador para dispositivos Windows Phone siga estos pasos (pueden variar en función de la versión del navegador):
+                <h1 tabindex="0" style="font-size:20px;">
+                  Para acceder a la configuración de cookies del navegador para dispositivos Windows Phone siga estos pasos (pueden variar en función de la versión del navegador):</h1>
                 <div class="col s12" style="font-size:20px;">
                   <ol>
-                      <li tabindex="0">
+                      <li>
                         Abra Internet Explorer, luego Más, luego Configuración.
                       </li>
-                      <li tabindex="0">
+                      <li>
                         Ahora puede activar o desactivar la casilla Permitir cookies.
                       </li>
                   </ol>
                 </div>
-                <p tabindex="0" id="descripcion" style="font-size:30px;"><b>Aceptación de la Política de cookies</b></p>
-                <p tabindex="0" style="font-size:20px;">
+                <h2 tabindex="0" id="descripcion" style="font-size:30px;"><b>Aceptación de la Política de cookies</b></h2>
+                <p style="font-size:20px;">
                   Metagame asume que usted acepta el uso de cookies. No obstante, muestra información sobre su Política de cookies en la parte 
                   inferior o superior de cualquier página del portal con cada inicio de sesión con el objeto de que usted sea consciente. 
                   Ante esta información es posible llevar a cabo las siguientes acciones: 
@@ -298,10 +299,10 @@
             <div class="col l6 s6">
               <br>
               <div class="col s12">
-                  <a href="./privacy.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">PRIVACIDAD</a>
-                  <a href="./termsofuse.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">TÉRMINOS DE USO</a>
-                  <a href="./cookies.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">cookies</a>
-                  <a href="./employment.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2">EMPLEO</a>
+                  <a href="./privacy.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">PRIVACIDAD</a>
+                  <a href="./termsofuse.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">TÉRMINOS DE USO</a>
+                  <a href="./cookies.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">cookies</a>
+                  <a href="./employment.html" tabindex="0" class="waves-effect waves-light btn card-panel black lighten-2 focus-visible-only">EMPLEO</a>
 
               </div>
               <div class="col s12">

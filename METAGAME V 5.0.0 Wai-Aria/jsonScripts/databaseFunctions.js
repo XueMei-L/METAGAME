@@ -49,7 +49,7 @@ export function purgeCartFromDB(user) {
     updates['users/' + user + '/current_cart'] = current_cart;
     update(ref(db), updates)
     alert('Se han borrado todos los elementos del carro')
-    location.href = './shoppingCart.html'
+    location.href = '/METAGAME V 5.0.0 Wai-Aria/shoppingCart.html'
   }).catch((error) => {
   });
 }
@@ -344,9 +344,9 @@ export function getAllCommentsFromDB(page) {
           const auth = firebaseAuth.getAuth();
           auth.onAuthStateChanged(function(user) {
             if (user.uid === userID) {
-              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="../img/nopfp.png" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><h1 style="font-size:30px; word-break: break-all">${dbUsername.username}</h1><p class="right" style="font-size:15px;">${comment}</p></p><p style="font-size:15px;">${date}</p><br><a onclick="deleteCommentFromUser('${page}', ${index})" class="teal darken-4 waves-effect waves-light btn">Eliminar</a></span></div> </div></div></div>` + commentsBlock;
+              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="../img/nopfp.png" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><h1 style="font-size:30px; word-break: break-all">${dbUsername.username}</h1><p style="font-size:15px;">${comment}</p></p><p class="right" style="font-size:15px;">${date}</p><br><a tabindex="0" onclick="deleteCommentFromUser('${page}', ${index})" class="teal darken-4 waves-effect waves-light btn focus-visible-only-black">Eliminar</a></span></div> </div></div></div>` + commentsBlock;
             } else {
-              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="../img/nopfp.png" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><h1 style="font-size:30px; word-break: break-all">${dbUsername.username}</h1><p class="right" style="font-size:15px;">${comment}</p></span></div> </div></div></div>` + commentsBlock;
+              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="../img/nopfp.png" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><h1 style="font-size:30px; word-break: break-all">${dbUsername.username}</h1><p style="font-size:15px;">${comment}</p></p><p class="right" style="font-size:15px;">${date}</p></span></div> </div></div></div>` + commentsBlock;
             }
             $("#comments-db").html(html + commentsBlock);
           });        
@@ -354,7 +354,7 @@ export function getAllCommentsFromDB(page) {
           const auth = firebaseAuth.getAuth();
           auth.onAuthStateChanged(function(user) {
             if (user.uid === userID) {
-              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="${dbUsername.pfp}" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><h1 style="font-size:30px; word-break: break-all">${dbUsername.username}</h1><p style="font-size:15px;">${comment}</p></p><p class="right" style="font-size:15px;">${date}</p><br><a onclick="deleteCommentFromUser('${page}', ${index})" class="teal darken-4 waves-effect waves-light btn">Eliminar</a></span></div> </div></div></div>` + commentsBlock;
+              commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="${dbUsername.pfp}" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><h1 style="font-size:30px; word-break: break-all">${dbUsername.username}</h1><p style="font-size:15px;">${comment}</p></p><p class="right" style="font-size:15px;">${date}</p><br><a tabindex="0" onclick="deleteCommentFromUser('${page}', ${index})" class="teal darken-4 waves-effect waves-light btn focus-visible-only-black">Eliminar</a></span></div> </div></div></div>` + commentsBlock;
             } else {
               commentsBlock = `<div class="col s10 offset-s1"> <div class="grey lighten-5 z-depth-3"> <div class="row valign-wrapper"><div class="col s2"><img id="pfp_${index}" src="${dbUsername.pfp}" alt="foto del perfil del usuario" class="circle responsive-img" style="margin:10px;"></div><div class="col s10" style="color: white; margin:10px;"><span class="black-text"><h1 style="font-size:30px; word-break: break-all">${dbUsername.username}</h1><p style="font-size:15px;">${comment}</p></p><p class="right" style="font-size:15px;">${date}</p></span></div> </div></div></div>` + commentsBlock;
             }
